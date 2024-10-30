@@ -1,5 +1,8 @@
 {
   "name": "toddle-os",
   "module": "index.ts",
-  "type": "module"
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ]
 }
