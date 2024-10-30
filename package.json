@@ -1,8 +1,5 @@
 {
   "name": "toddle-os",
   "module": "index.ts",
-  "type": "module",
-  "peerDependencies": {
-    "typescript": "5.6.3"
-  }
+  "type": "module"
 }
