@@ -1,4 +1,7 @@
 {
+  "files": [
+    "./packages/core/index.ts"
+  ],
   "name": "toddle-os",
   "module": "index.ts",
   "type": "module",
