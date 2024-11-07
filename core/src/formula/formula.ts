@@ -11,7 +11,6 @@ import type {
 import { isDefined, toBoolean } from '@toddle/core/src/utils/util'
 
 // Define the some objects types as union of ServerSide and ClientSide runtime types as applyFormula is used in both
-declare const window: Window | undefined
 declare const document: Document | undefined
 type ShadowRoot = DocumentFragment
 
