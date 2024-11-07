@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "commonjs",
+    "paths": {
+      "@toddle/core/*": ["./*"]
+    },
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictBuiltinIteratorReturn": true,
+    "target": "ESNext"
+  }
+}

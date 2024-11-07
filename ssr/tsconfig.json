@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictBuiltinIteratorReturn": true,
+    "target": "ESNext",
+    "paths": {
+      "@toddle/ssr/*": ["./*"]
+    }
+  },
+  "include": ["src", "ssr.types.d.ts"],
+  "exclude": ["node_modules"]
+}
