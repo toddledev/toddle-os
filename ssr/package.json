@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "test": "bun test",
-    "typecheck": "tsc --noEmit",
-    "typecheck:watch": "tsc --noEmit -w"
+    "typecheck": "tsc --noEmit --project tsconfig.json",
+    "typecheck:watch": "tsc --noEmit -w --project tsconfig.json"
   },
   "dependencies": {
     "@toddle/core": "workspace:*"
