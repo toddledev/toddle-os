@@ -2,7 +2,7 @@
   "compilerOptions": {
     "alwaysStrict": true,
     "esModuleInterop": true,
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "DOM"],
     "module": "commonjs",
     "moduleResolution": "node",
     "preserveConstEnums": true,
