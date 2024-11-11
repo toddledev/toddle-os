@@ -1,6 +1,6 @@
 import { describe, expect, it, test } from '@jest/globals'
-import { ApiMethod, ApiRequest } from '@toddle/core/src/api/apiTypes'
-import { valueFormula } from '@toddle/core/src/formula/formulaUtils'
+import { ApiMethod, ApiRequest } from '../src/api/apiTypes'
+import { valueFormula } from '../src/formula/formulaUtils'
 import {
   createApiRequest,
   getRequestHeaders,

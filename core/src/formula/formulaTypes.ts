@@ -1,4 +1,4 @@
-import type { Formula } from '@toddle/core/src/formula/formula'
+import type { Formula } from '../src/formula/formula'
 
 export interface BaseFormula {
   name: string

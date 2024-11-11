@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ToddleFormula = void 0;
-const formulaUtils_1 = require("@toddle/core/src/formula/formulaUtils");
+const formulaUtils_1 = require("../src/formula/formulaUtils");
 class ToddleFormula {
     formula;
     constructor({ formula }) {

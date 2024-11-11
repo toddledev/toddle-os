@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deepSortObject = exports.easySort = exports.sortObjectEntries = exports.set = exports.filterObject = exports.groupBy = exports.omitKeys = exports.omit = exports.mapValues = exports.mapObject = exports.isObject = void 0;
 exports.get = get;
-const util_1 = require("@toddle/core/src/utils/util");
+const util_1 = require("../src/utils/util");
 const isObject = (input) => typeof input === 'object' && input !== null;
 exports.isObject = isObject;
 const mapObject = (object, f) => Object.fromEntries(Object.entries(object).map(f));

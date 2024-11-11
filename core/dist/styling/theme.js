@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getOldThemeCss = exports.getThemeCss = void 0;
-const theme_const_1 = require("@toddle/core/src/styling/theme.const");
+const theme_const_1 = require("../src/styling/theme.const");
 const getThemeCss = (theme, options) => {
     if ('breakpoints' in theme) {
         return (0, exports.getOldThemeCss)(theme);

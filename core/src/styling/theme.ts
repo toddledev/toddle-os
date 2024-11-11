@@ -1,4 +1,4 @@
-import { RESET_STYLES } from '@toddle/core/src/styling/theme.const'
+import { RESET_STYLES } from '../src/styling/theme.const'
 
 export interface ThemeOptions {
   includeResetStyle: boolean

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.functionFormula = exports.pathFormula = exports.valueFormula = void 0;
 exports.getFormulasInFormula = getFormulasInFormula;
 exports.getFormulasInAction = getFormulasInAction;
-const util_1 = require("@toddle/core/src/utils/util");
+const util_1 = require("../src/utils/util");
 const formula_1 = require("./formula");
 const valueFormula = (value) => ({
     type: 'value',

@@ -1,7 +1,7 @@
-import { ApiPerformance, ApiRequest, ComponentAPI, LegacyComponentAPI, ToddleRequestInit } from '@toddle/core/src/api/apiTypes';
-import { LegacyToddleApi } from '@toddle/core/src/api/LegacyToddleApi';
-import { ToddleApiV2 } from '@toddle/core/src/api/ToddleApiV2';
-import { Formula, FormulaContext } from '@toddle/core/src/formula/formula';
+import { ApiPerformance, ApiRequest, ComponentAPI, LegacyComponentAPI } from '../src/api/apiTypes';
+import { LegacyToddleApi } from '../src/api/LegacyToddleApi';
+import { ToddleApiV2 } from '../src/api/ToddleApiV2';
+import { Formula, FormulaContext } from '../src/formula/formula';
 export declare const NON_BODY_RESPONSE_CODES: number[];
 export declare const isLegacyApi: (api: ComponentAPI | LegacyToddleApi | ToddleApiV2) => api is LegacyComponentAPI | LegacyToddleApi;
 export declare const createApiRequest: ({ api, formulaContext, baseUrl, defaultHeaders, }: {
@@ -24,11 +24,11 @@ export declare const getRequestHeaders: ({ apiHeaders, formulaContext, defaultHe
 export declare const getBaseUrl: ({ origin, url, }: {
     origin: string;
     url?: string;
-}) => string;
+}) => string | undefined;
 /**
  * Calculate the hash of a Request object based on its properties
  */
-export declare const requestHash: (url: URL, request: RequestInit) => Promise<string>;
+export declare const requestHash: (url: URL, request: RequestInit) => any;
 export declare const isApiError: ({ apiName, response, formulaContext, errorFormula, performance, }: {
     apiName: string;
     response: {
@@ -42,5 +42,5 @@ export declare const isApiError: ({ apiName, response, formulaContext, errorForm
     errorFormula?: {
         formula: Formula;
     } | null;
-}) => boolean;
+}) => any;
 export declare const createApiEvent: (eventName: "message" | "success" | "failed", detail: any) => CustomEvent<any>;

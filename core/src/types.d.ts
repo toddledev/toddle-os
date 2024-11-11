@@ -1,9 +1,6 @@
-import {
-  Component,
-  ComponentData,
-} from '@toddle/core/src/component/component.types'
-import { Formula, ToddleEnv } from '@toddle/core/src/formula/formula'
-import { PluginFormula } from '@toddle/core/src/formula/formulaTypes'
+import { Component, ComponentData } from '../src/component/component.types'
+import { Formula, ToddleEnv } from '../src/formula/formula'
+import { PluginFormula } from '../src/formula/formulaTypes'
 
 export type FormulaHandlerV2<R = unknown> = (
   // For v2 of formulas

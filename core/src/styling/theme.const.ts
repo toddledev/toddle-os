@@ -1,4 +1,4 @@
-import { OldTheme } from '@toddle/core/src/styling/theme'
+import { OldTheme } from '../src/styling/theme'
 
 export const RESET_STYLES = `
 @layer reset {

@@ -1,4 +1,4 @@
-import { valueFormula } from '@toddle/core/src/formula/formulaUtils'
+import { valueFormula } from '../src/formula/formulaUtils'
 import { ToddleComponent } from './ToddleComponent'
 
 describe('ToddleComponent.formulasInComponent', () => {

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const formulaUtils_1 = require("@toddle/core/src/formula/formulaUtils");
+const formulaUtils_1 = require("../src/formula/formulaUtils");
 const ToddleComponent_1 = require("./ToddleComponent");
 describe('ToddleComponent.formulasInComponent', () => {
     test('it return formulas used in parameters of TriggerWorkflow actions', () => {

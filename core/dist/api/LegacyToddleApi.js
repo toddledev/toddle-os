@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LegacyToddleApi = void 0;
-const formula_1 = require("@toddle/core/src/formula/formula");
-const formulaUtils_1 = require("@toddle/core/src/formula/formulaUtils");
-const util_1 = require("@toddle/core/src/utils/util");
-const formulaUtils_2 = require("../formula/formulaUtils");
+const formulaUtils_1 = require("../formula/formulaUtils");
+const formula_1 = require("../src/formula/formula");
+const formulaUtils_2 = require("../src/formula/formulaUtils");
+const util_1 = require("../src/utils/util");
 class LegacyToddleApi {
     api;
     key;
@@ -115,10 +115,10 @@ class LegacyToddleApi {
     *formulasInApi() {
         const api = this.api;
         const apiKey = this.key;
-        yield* (0, formulaUtils_1.getFormulasInFormula)(api.autoFetch, ['apis', apiKey, 'autoFetch']);
-        yield* (0, formulaUtils_1.getFormulasInFormula)(api.url, ['apis', apiKey, 'url']);
+        yield* (0, formulaUtils_2.getFormulasInFormula)(api.autoFetch, ['apis', apiKey, 'autoFetch']);
+        yield* (0, formulaUtils_2.getFormulasInFormula)(api.url, ['apis', apiKey, 'url']);
         for (const [pathKey, path] of Object.entries(api.path ?? {})) {
-            yield* (0, formulaUtils_1.getFormulasInFormula)(path.formula, [
+            yield* (0, formulaUtils_2.getFormulasInFormula)(path.formula, [
                 'apis',
                 apiKey,
                 'path',
@@ -127,7 +127,7 @@ class LegacyToddleApi {
             ]);
         }
         for (const [queryParamKey, queryParam] of Object.entries(api.queryParams ?? {})) {
-            yield* (0, formulaUtils_1.getFormulasInFormula)(queryParam.formula, [
+            yield* (0, formulaUtils_2.getFormulasInFormula)(queryParam.formula, [
                 'apis',
                 apiKey,
                 'queryParams',
@@ -137,11 +137,11 @@ class LegacyToddleApi {
         }
         // this is supporting a few legacy cases where the whole header object was set as a formula. This is no longer possible
         if ((0, formula_1.isFormula)(api.headers)) {
-            yield* (0, formulaUtils_1.getFormulasInFormula)(api.headers, ['apis', apiKey, 'headers']);
+            yield* (0, formulaUtils_2.getFormulasInFormula)(api.headers, ['apis', apiKey, 'headers']);
         }
         else {
             for (const [headerKey, header] of Object.entries(api.headers ?? {})) {
-                yield* (0, formulaUtils_1.getFormulasInFormula)(header, [
+                yield* (0, formulaUtils_2.getFormulasInFormula)(header, [
                     'apis',
                     apiKey,
                     'headers',
@@ -149,9 +149,9 @@ class LegacyToddleApi {
                 ]);
             }
         }
-        yield* (0, formulaUtils_1.getFormulasInFormula)(api.body, ['apis', apiKey, 'body']);
+        yield* (0, formulaUtils_2.getFormulasInFormula)(api.body, ['apis', apiKey, 'body']);
         for (const [actionKey, action] of Object.entries(api.onCompleted?.actions ?? {})) {
-            yield* (0, formulaUtils_2.getFormulasInAction)(action, [
+            yield* (0, formulaUtils_1.getFormulasInAction)(action, [
                 'apis',
                 apiKey,
                 'onCompleted',
@@ -160,7 +160,7 @@ class LegacyToddleApi {
             ]);
         }
         for (const [actionKey, action] of Object.entries(api.onFailed?.actions ?? {})) {
-            yield* (0, formulaUtils_2.getFormulasInAction)(action, [
+            yield* (0, formulaUtils_1.getFormulasInAction)(action, [
                 'apis',
                 apiKey,
                 'onFailed',

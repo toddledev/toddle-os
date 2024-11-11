@@ -1,16 +1,16 @@
-import { isLegacyApi } from '@toddle/core/src/api/api'
-import { ToddleApiV2 } from '@toddle/core/src/api/ToddleApiV2'
+import { LegacyToddleApi } from '../api/LegacyToddleApi'
+import { getFormulasInAction } from '../formula/formulaUtils'
+import { isLegacyApi } from '../src/api/api'
+import { ToddleApiV2 } from '../src/api/ToddleApiV2'
 import type {
   ActionModel,
   Component,
   NodeModel,
-} from '@toddle/core/src/component/component.types'
-import { isPageComponent } from '@toddle/core/src/component/isPageComponent'
-import { Formula, FunctionOperation } from '@toddle/core/src/formula/formula'
-import { getFormulasInFormula } from '@toddle/core/src/formula/formulaUtils'
-import { isDefined } from '@toddle/core/src/utils/util'
-import { LegacyToddleApi } from '../api/LegacyToddleApi'
-import { getFormulasInAction } from '../formula/formulaUtils'
+} from '../src/component/component.types'
+import { isPageComponent } from '../src/component/isPageComponent'
+import { Formula, FunctionOperation } from '../src/formula/formula'
+import { getFormulasInFormula } from '../src/formula/formulaUtils'
+import { isDefined } from '../src/utils/util'
 import { getActionsInAction } from './actionUtils'
 
 export class ToddleComponent {

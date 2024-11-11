@@ -1,4 +1,4 @@
-import { isDefined } from '@toddle/core/src/utils/util'
+import { isDefined } from '../src/utils/util'
 export const isObject = (input: any): input is Record<string, any> =>
   typeof input === 'object' && input !== null
 

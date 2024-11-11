@@ -1,10 +1,10 @@
-import { ApiRequest } from '@toddle/core/src/api/apiTypes'
-import { ActionModel } from '@toddle/core/src/component/component.types'
-import { type Formula } from '@toddle/core/src/formula/formula'
-import { getFormulasInFormula } from '@toddle/core/src/formula/formulaUtils'
-import { isDefined } from '@toddle/core/src/utils/util'
 import { getActionsInAction } from '../component/actionUtils'
 import { getFormulasInAction } from '../formula/formulaUtils'
+import { ApiRequest } from '../src/api/apiTypes'
+import { ActionModel } from '../src/component/component.types'
+import { type Formula } from '../src/formula/formula'
+import { getFormulasInFormula } from '../src/formula/formulaUtils'
+import { isDefined } from '../src/utils/util'
 
 export class ToddleApiV2 implements ApiRequest {
   private api: ApiRequest

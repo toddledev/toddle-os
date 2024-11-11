@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const globals_1 = require("@jest/globals");
-const collections_1 = require("@toddle/core/src/utils/collections");
 const crypto_1 = __importDefault(require("crypto"));
+const collections_1 = require("../src/utils/collections");
 const sha1_1 = require("./sha1");
 global.crypto = crypto_1.default;
 (0, globals_1.describe)('sha1', () => {

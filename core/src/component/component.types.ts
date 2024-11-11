@@ -1,11 +1,7 @@
-import {
-  ApiStatus,
-  ComponentAPI,
-  LegacyApiStatus,
-} from '@toddle/core/src/api/apiTypes'
-import { Formula } from '@toddle/core/src/formula/formula'
-import { StyleTokenCategory } from '@toddle/core/src/styling/theme'
-import { RequireFields } from '@toddle/core/src/types'
+import { ApiStatus, ComponentAPI, LegacyApiStatus } from '../src/api/apiTypes'
+import { Formula } from '../src/formula/formula'
+import { StyleTokenCategory } from '../src/styling/theme'
+import { RequireFields } from '../src/types'
 
 interface ListItem {
   Item: unknown

@@ -1,7 +1,5 @@
-import { ToddleApiV2 } from '@toddle/core/src/api/ToddleApiV2';
-import type { ActionModel, Component, NodeModel } from '@toddle/core/src/component/component.types';
-import { Formula } from '@toddle/core/src/formula/formula';
-import { LegacyToddleApi } from '../api/LegacyToddleApi';
+import type { ActionModel, Component } from '../src/component/component.types';
+import { Formula } from '../src/formula/formula';
 export declare class ToddleComponent {
     private component;
     private getComponent;
@@ -24,43 +22,18 @@ export declare class ToddleComponent {
      * @returns An iterable that yields the path and action.
      */
     actionModelsInComponent(): Generator<[(string | number)[], ActionModel]>;
-    get formulas(): Record<string, {
-        name: string;
-        arguments: Array<{
-            name: string;
-            testValue: any;
-        }>;
-        memoize?: boolean;
-        exposeInContext?: boolean;
-        formula: Formula;
-    }> | undefined;
-    get name(): string;
-    get route(): import("@toddle/core/src/component/component.types").PageRoute | null | undefined;
-    get attributes(): Record<string, {
-        name: string;
-        testValue: unknown;
-    }>;
-    get variables(): Record<string, {
-        initialValue: Formula;
-    }>;
-    get workflows(): Record<string, {
-        name: string;
-        parameters: Array<{
-            name: string;
-            testValue: any;
-        }>;
-        actions: ActionModel[];
-        exposeInContext?: boolean;
-    }> | undefined;
+    get formulas(): any;
+    get name(): any;
+    get route(): any;
+    get attributes(): any;
+    get variables(): any;
+    get workflows(): any;
     get apis(): {
-        [k: string]: LegacyToddleApi | ToddleApiV2;
+        [k: string]: any;
     };
-    get nodes(): Record<string, NodeModel>;
-    get events(): {
-        name: string;
-        dummyEvent: any;
-    }[] | undefined;
-    get onLoad(): import("@toddle/core/src/component/component.types").EventModel | undefined;
-    get onAttributeChange(): import("@toddle/core/src/component/component.types").EventModel | undefined;
-    get isPage(): boolean;
+    get nodes(): any;
+    get events(): any;
+    get onLoad(): any;
+    get onAttributeChange(): any;
+    get isPage(): any;
 }

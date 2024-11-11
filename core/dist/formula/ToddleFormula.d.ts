@@ -1,4 +1,4 @@
-import { Formula } from '@toddle/core/src/formula/formula';
+import { Formula } from '../src/formula/formula';
 export declare class ToddleFormula {
     private formula;
     constructor({ formula }: {

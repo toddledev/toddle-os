@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.isFormula = isFormula;
 exports.isFormulaApplyOperation = isFormulaApplyOperation;
 exports.applyFormula = applyFormula;
-const formulaTypes_1 = require("@toddle/core/src/formula/formulaTypes");
-const util_1 = require("@toddle/core/src/utils/util");
+const formulaTypes_1 = require("../src/formula/formulaTypes");
+const util_1 = require("../src/utils/util");
 function isFormula(f) {
     return f && typeof f === 'object' && typeof f.type === 'string';
 }

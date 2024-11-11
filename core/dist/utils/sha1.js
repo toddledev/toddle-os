@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sha1 = exports.stableStringify = void 0;
-const collections_1 = require("@toddle/core/src/utils/collections");
+const collections_1 = require("../src/utils/collections");
 const stableStringify = (obj) => JSON.stringify((0, collections_1.deepSortObject)(obj));
 exports.stableStringify = stableStringify;
 const sha1 = async (data) => {

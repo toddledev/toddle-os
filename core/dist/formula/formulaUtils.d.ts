@@ -1,4 +1,4 @@
-import type { ActionModel } from '@toddle/core/src/component/component.types';
+import type { ActionModel } from '../src/component/component.types';
 import { Formula, FunctionOperation, PathOperation, ValueOperation } from './formula';
 export declare const valueFormula: (value: string | number | boolean | null | object) => ValueOperation;
 export declare const pathFormula: (path: string[]) => PathOperation;

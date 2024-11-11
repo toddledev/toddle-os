@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const collections_1 = require("@toddle/core/src/utils/collections");
+const collections_1 = require("../src/utils/collections");
 describe('sortObjectEntries()', () => {
     test('it sorts entries in an object based on the callback function', () => {
         expect((0, collections_1.sortObjectEntries)({ c: 'hello', a: 'value', b: 'otherValue' }, ([key]) => key)).toEqual([

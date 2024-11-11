@@ -1,13 +1,13 @@
 // cSpell:ignore thinn, ABCDEFGHIJKLMNOPQRSTYVWXYZ
-import type { Component } from '@toddle/core/src/component/component.types'
-import { getClassName } from '@toddle/core/src/styling/className'
+import type { Component } from '../src/component/component.types'
+import { getClassName } from '../src/styling/className'
 import {
   OldTheme,
   Theme,
   ThemeOptions,
   getThemeCss,
-} from '@toddle/core/src/styling/theme'
-import { isDefined } from '@toddle/core/src/utils/util'
+} from '../src/styling/theme'
+import { isDefined } from '../src/utils/util'
 import { omitKeys } from '../utils/collections'
 import {
   ComponentNodeModel,

@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllFonts = exports.createStylesheet = void 0;
 exports.kebabCase = kebabCase;
-const className_1 = require("@toddle/core/src/styling/className");
-const theme_1 = require("@toddle/core/src/styling/theme");
-const util_1 = require("@toddle/core/src/utils/util");
+const className_1 = require("../src/styling/className");
+const theme_1 = require("../src/styling/theme");
+const util_1 = require("../src/utils/util");
 const collections_1 = require("../utils/collections");
 const variantSelector_1 = require("./variantSelector");
 const LEGACY_BREAKPOINTS = {

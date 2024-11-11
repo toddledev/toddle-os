@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const globals_1 = require("@jest/globals");
-const apiTypes_1 = require("@toddle/core/src/api/apiTypes");
-const formulaUtils_1 = require("@toddle/core/src/formula/formulaUtils");
+const apiTypes_1 = require("../src/api/apiTypes");
+const formulaUtils_1 = require("../src/formula/formulaUtils");
 const api_1 = require("./api");
 (0, globals_1.describe)('getApiPath()', () => {
     (0, globals_1.test)('it returns a valid url path string', () => {

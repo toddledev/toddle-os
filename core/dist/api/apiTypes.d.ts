@@ -1,5 +1,5 @@
-import { EventModel } from '@toddle/core/src/component/component.types';
-import { Formula } from '@toddle/core/src/formula/formula';
+import { EventModel } from '../src/component/component.types';
+import { Formula } from '../src/formula/formula';
 export type ComponentAPI = LegacyComponentAPI | ApiRequest;
 export interface LegacyComponentAPI {
     name: string;

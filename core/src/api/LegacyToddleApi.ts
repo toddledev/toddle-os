@@ -1,8 +1,8 @@
-import { type LegacyComponentAPI } from '@toddle/core/src/api/apiTypes'
-import { isFormula, type Formula } from '@toddle/core/src/formula/formula'
-import { getFormulasInFormula } from '@toddle/core/src/formula/formulaUtils'
-import { isDefined } from '@toddle/core/src/utils/util'
 import { getFormulasInAction } from '../formula/formulaUtils'
+import { type LegacyComponentAPI } from '../src/api/apiTypes'
+import { isFormula, type Formula } from '../src/formula/formula'
+import { getFormulasInFormula } from '../src/formula/formulaUtils'
+import { isDefined } from '../src/utils/util'
 
 export class LegacyToddleApi {
   private api: LegacyComponentAPI

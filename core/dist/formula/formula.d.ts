@@ -1,5 +1,5 @@
-import type { Component, ComponentData } from '@toddle/core/src/component/component.types';
-import type { CustomFormulaHandler } from '@toddle/core/src/types';
+import type { Component, ComponentData } from '../src/component/component.types';
+import type { CustomFormulaHandler } from '../src/types';
 type ShadowRoot = DocumentFragment;
 export type PathOperation = {
     type: 'path';

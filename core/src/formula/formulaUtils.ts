@@ -1,5 +1,5 @@
-import type { ActionModel } from '@toddle/core/src/component/component.types'
-import { isDefined } from '@toddle/core/src/utils/util'
+import type { ActionModel } from '../src/component/component.types'
+import { isDefined } from '../src/utils/util'
 import {
   Formula,
   FunctionOperation,

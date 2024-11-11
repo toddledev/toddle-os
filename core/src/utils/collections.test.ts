@@ -1,4 +1,4 @@
-import { sortObjectEntries } from '@toddle/core/src/utils/collections'
+import { sortObjectEntries } from '../src/utils/collections'
 
 describe('sortObjectEntries()', () => {
   test('it sorts entries in an object based on the callback function', () => {

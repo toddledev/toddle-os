@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ToddleApiV2 = void 0;
-const formulaUtils_1 = require("@toddle/core/src/formula/formulaUtils");
-const util_1 = require("@toddle/core/src/utils/util");
 const actionUtils_1 = require("../component/actionUtils");
-const formulaUtils_2 = require("../formula/formulaUtils");
+const formulaUtils_1 = require("../formula/formulaUtils");
+const formulaUtils_2 = require("../src/formula/formulaUtils");
+const util_1 = require("../src/utils/util");
 class ToddleApiV2 {
     api;
     _apiReferences;
@@ -111,7 +111,7 @@ class ToddleApiV2 {
         const api = this.api;
         const apiKey = this.key;
         for (const [input, value] of Object.entries(this.api.inputs)) {
-            yield* (0, formulaUtils_1.getFormulasInFormula)(value.formula, [
+            yield* (0, formulaUtils_2.getFormulasInFormula)(value.formula, [
                 'apis',
                 apiKey,
                 'inputs',
@@ -119,10 +119,10 @@ class ToddleApiV2 {
                 'formula',
             ]);
         }
-        yield* (0, formulaUtils_1.getFormulasInFormula)(api.autoFetch, ['apis', apiKey, 'autoFetch']);
-        yield* (0, formulaUtils_1.getFormulasInFormula)(api.url, ['apis', apiKey, 'url']);
+        yield* (0, formulaUtils_2.getFormulasInFormula)(api.autoFetch, ['apis', apiKey, 'autoFetch']);
+        yield* (0, formulaUtils_2.getFormulasInFormula)(api.url, ['apis', apiKey, 'url']);
         for (const [pathKey, path] of Object.entries(api.path ?? {})) {
-            yield* (0, formulaUtils_1.getFormulasInFormula)(path.formula, [
+            yield* (0, formulaUtils_2.getFormulasInFormula)(path.formula, [
                 'apis',
                 apiKey,
                 'path',
@@ -131,14 +131,14 @@ class ToddleApiV2 {
             ]);
         }
         for (const [queryParamKey, queryParam] of Object.entries(api.queryParams ?? {})) {
-            yield* (0, formulaUtils_1.getFormulasInFormula)(queryParam.formula, [
+            yield* (0, formulaUtils_2.getFormulasInFormula)(queryParam.formula, [
                 'apis',
                 apiKey,
                 'queryParams',
                 queryParamKey,
                 'formula',
             ]);
-            yield* (0, formulaUtils_1.getFormulasInFormula)(queryParam.enabled, [
+            yield* (0, formulaUtils_2.getFormulasInFormula)(queryParam.enabled, [
                 'apis',
                 apiKey,
                 'queryParams',
@@ -147,14 +147,14 @@ class ToddleApiV2 {
             ]);
         }
         for (const [headerKey, header] of Object.entries(api.headers ?? {})) {
-            yield* (0, formulaUtils_1.getFormulasInFormula)(header.formula, [
+            yield* (0, formulaUtils_2.getFormulasInFormula)(header.formula, [
                 'apis',
                 apiKey,
                 'headers',
                 headerKey,
                 'formula',
             ]);
-            yield* (0, formulaUtils_1.getFormulasInFormula)(header.enabled, [
+            yield* (0, formulaUtils_2.getFormulasInFormula)(header.enabled, [
                 'apis',
                 apiKey,
                 'headers',
@@ -162,9 +162,9 @@ class ToddleApiV2 {
                 'enabled',
             ]);
         }
-        yield* (0, formulaUtils_1.getFormulasInFormula)(api.body, ['apis', apiKey, 'body']);
+        yield* (0, formulaUtils_2.getFormulasInFormula)(api.body, ['apis', apiKey, 'body']);
         for (const [actionKey, action] of Object.entries(api.client?.onCompleted?.actions ?? {})) {
-            yield* (0, formulaUtils_2.getFormulasInAction)(action, [
+            yield* (0, formulaUtils_1.getFormulasInAction)(action, [
                 'apis',
                 apiKey,
                 'client',
@@ -174,7 +174,7 @@ class ToddleApiV2 {
             ]);
         }
         for (const [actionKey, action] of Object.entries(api.client?.onFailed?.actions ?? {})) {
-            yield* (0, formulaUtils_2.getFormulasInAction)(action, [
+            yield* (0, formulaUtils_1.getFormulasInAction)(action, [
                 'apis',
                 apiKey,
                 'client',
@@ -183,7 +183,7 @@ class ToddleApiV2 {
                 actionKey,
             ]);
         }
-        yield* (0, formulaUtils_1.getFormulasInFormula)(api.client?.debounce?.formula, [
+        yield* (0, formulaUtils_2.getFormulasInFormula)(api.client?.debounce?.formula, [
             'apis',
             apiKey,
             'client',
@@ -191,7 +191,7 @@ class ToddleApiV2 {
             'formula',
         ]);
         for (const [actionKey, action] of Object.entries(api.client?.onMessage?.actions ?? {})) {
-            yield* (0, formulaUtils_2.getFormulasInAction)(action, [
+            yield* (0, formulaUtils_1.getFormulasInAction)(action, [
                 'apis',
                 apiKey,
                 'client',
@@ -201,7 +201,7 @@ class ToddleApiV2 {
             ]);
         }
         for (const [rule, value] of Object.entries(api.redirectRules ?? {})) {
-            yield* (0, formulaUtils_1.getFormulasInFormula)(value.formula, [
+            yield* (0, formulaUtils_2.getFormulasInFormula)(value.formula, [
                 'apis',
                 apiKey,
                 'redirectRules',
@@ -209,19 +209,19 @@ class ToddleApiV2 {
                 'formula',
             ]);
         }
-        yield* (0, formulaUtils_1.getFormulasInFormula)(api.isError?.formula, [
+        yield* (0, formulaUtils_2.getFormulasInFormula)(api.isError?.formula, [
             'apis',
             apiKey,
             'isError',
             'formula',
         ]);
-        yield* (0, formulaUtils_1.getFormulasInFormula)(api.timeout?.formula, [
+        yield* (0, formulaUtils_2.getFormulasInFormula)(api.timeout?.formula, [
             'apis',
             apiKey,
             'timeout',
             'formula',
         ]);
-        yield* (0, formulaUtils_1.getFormulasInFormula)(api.server?.proxy?.enabled.formula, [
+        yield* (0, formulaUtils_2.getFormulasInFormula)(api.server?.proxy?.enabled.formula, [
             'apis',
             apiKey,
             'server',
@@ -229,7 +229,7 @@ class ToddleApiV2 {
             'enabled',
             'formula',
         ]);
-        yield* (0, formulaUtils_1.getFormulasInFormula)(api.server?.ssr?.enabled?.formula, [
+        yield* (0, formulaUtils_2.getFormulasInFormula)(api.server?.ssr?.enabled?.formula, [
             'apis',
             apiKey,
             'server',

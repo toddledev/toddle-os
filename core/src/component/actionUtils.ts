@@ -1,4 +1,4 @@
-import type { ActionModel } from '@toddle/core/src/component/component.types'
+import type { ActionModel } from '../src/component/component.types'
 import { isDefined } from '../utils/util'
 
 export function* getActionsInAction(

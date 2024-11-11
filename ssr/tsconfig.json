@@ -16,6 +16,6 @@
     "outDir": "dist",
     "declaration": true
   },
-  "include": ["src", "ssr.types.d.ts"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

@@ -5,17 +5,13 @@ import {
   ComponentAPI,
   LegacyComponentAPI,
   ToddleRequestInit,
-} from '@toddle/core/src/api/apiTypes'
-import { LegacyToddleApi } from '@toddle/core/src/api/LegacyToddleApi'
-import { ToddleApiV2 } from '@toddle/core/src/api/ToddleApiV2'
-import {
-  applyFormula,
-  Formula,
-  FormulaContext,
-} from '@toddle/core/src/formula/formula'
-import { omitKeys, sortObjectEntries } from '@toddle/core/src/utils/collections'
-import { sha1 } from '@toddle/core/src/utils/sha1'
-import { isDefined, isObject, toBoolean } from '@toddle/core/src/utils/util'
+} from '../src/api/apiTypes'
+import { LegacyToddleApi } from '../src/api/LegacyToddleApi'
+import { ToddleApiV2 } from '../src/api/ToddleApiV2'
+import { applyFormula, Formula, FormulaContext } from '../src/formula/formula'
+import { omitKeys, sortObjectEntries } from '../src/utils/collections'
+import { sha1 } from '../src/utils/sha1'
+import { isDefined, isObject, toBoolean } from '../src/utils/util'
 
 export const NON_BODY_RESPONSE_CODES = [101, 204, 205, 304]
 

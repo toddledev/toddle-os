@@ -1,1 +1,1 @@
-{"version":3,"file":"isPageComponent.js","sourceRoot":"","sources":["../../src/component/isPageComponent.ts"],"names":[],"mappings":";;;AACA,sDAAuD;AAEhD,MAAM,eAAe,GAAG,CAAC,SAAoB,EAAE,EAAE,CACtD,IAAA,gBAAS,EAAC,SAAS,CAAC,KAAK,CAAC,CAAA;AADf,QAAA,eAAe,mBACA"}
+{"version":3,"file":"isPageComponent.js","sourceRoot":"","sources":["../../src/component/isPageComponent.ts"],"names":[],"mappings":";;;AACA,4CAA6C;AAEtC,MAAM,eAAe,GAAG,CAAC,SAAoB,EAAE,EAAE,CACtD,IAAA,gBAAS,EAAC,SAAS,CAAC,KAAK,CAAC,CAAA;AADf,QAAA,eAAe,mBACA"}

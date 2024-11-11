@@ -1,4 +1,4 @@
-import { deepSortObject } from '@toddle/core/src/utils/collections'
+import { deepSortObject } from '../src/utils/collections'
 
 export const stableStringify = (obj: any) => JSON.stringify(deepSortObject(obj))
 

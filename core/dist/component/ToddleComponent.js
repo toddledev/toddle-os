@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ToddleComponent = void 0;
-const api_1 = require("@toddle/core/src/api/api");
-const ToddleApiV2_1 = require("@toddle/core/src/api/ToddleApiV2");
-const isPageComponent_1 = require("@toddle/core/src/component/isPageComponent");
-const formulaUtils_1 = require("@toddle/core/src/formula/formulaUtils");
-const util_1 = require("@toddle/core/src/utils/util");
 const LegacyToddleApi_1 = require("../api/LegacyToddleApi");
-const formulaUtils_2 = require("../formula/formulaUtils");
+const formulaUtils_1 = require("../formula/formulaUtils");
+const api_1 = require("../src/api/api");
+const ToddleApiV2_1 = require("../src/api/ToddleApiV2");
+const isPageComponent_1 = require("../src/component/isPageComponent");
+const formulaUtils_2 = require("../src/formula/formulaUtils");
+const util_1 = require("../src/utils/util");
 const actionUtils_1 = require("./actionUtils");
 class ToddleComponent {
     component;
@@ -60,24 +60,24 @@ class ToddleComponent {
         function* visitNode(node, path = []) {
             switch (node.type) {
                 case 'text':
-                    yield* (0, formulaUtils_1.getFormulasInFormula)(node.condition, [...path, 'condition']);
-                    yield* (0, formulaUtils_1.getFormulasInFormula)(node.repeat, [...path, 'repeat']);
-                    yield* (0, formulaUtils_1.getFormulasInFormula)(node.repeatKey, [...path, 'repeatKey']);
-                    yield* (0, formulaUtils_1.getFormulasInFormula)(node.value, [...path, 'value']);
+                    yield* (0, formulaUtils_2.getFormulasInFormula)(node.condition, [...path, 'condition']);
+                    yield* (0, formulaUtils_2.getFormulasInFormula)(node.repeat, [...path, 'repeat']);
+                    yield* (0, formulaUtils_2.getFormulasInFormula)(node.repeatKey, [...path, 'repeatKey']);
+                    yield* (0, formulaUtils_2.getFormulasInFormula)(node.value, [...path, 'value']);
                     break;
                 case 'slot':
-                    yield* (0, formulaUtils_1.getFormulasInFormula)(node.condition, [...path, 'condition']);
+                    yield* (0, formulaUtils_2.getFormulasInFormula)(node.condition, [...path, 'condition']);
                     break;
                 case 'component':
-                    yield* (0, formulaUtils_1.getFormulasInFormula)(node.condition, [...path, 'condition']);
-                    yield* (0, formulaUtils_1.getFormulasInFormula)(node.repeat, [...path, 'repeat']);
-                    yield* (0, formulaUtils_1.getFormulasInFormula)(node.repeatKey, [...path, 'repeatKey']);
+                    yield* (0, formulaUtils_2.getFormulasInFormula)(node.condition, [...path, 'condition']);
+                    yield* (0, formulaUtils_2.getFormulasInFormula)(node.repeat, [...path, 'repeat']);
+                    yield* (0, formulaUtils_2.getFormulasInFormula)(node.repeatKey, [...path, 'repeatKey']);
                     for (const [attrKey, attr] of Object.entries(node.attrs ?? {})) {
-                        yield* (0, formulaUtils_1.getFormulasInFormula)(attr, [...path, 'attrs', attrKey]);
+                        yield* (0, formulaUtils_2.getFormulasInFormula)(attr, [...path, 'attrs', attrKey]);
                     }
                     for (const [eventKey, event] of Object.entries(node.events ?? {})) {
                         for (const [actionKey, action] of Object.entries(event?.actions ?? {})) {
-                            yield* (0, formulaUtils_2.getFormulasInAction)(action, [
+                            yield* (0, formulaUtils_1.getFormulasInAction)(action, [
                                 ...path,
                                 'events',
                                 eventKey,
@@ -88,15 +88,15 @@ class ToddleComponent {
                     }
                     break;
                 case 'element':
-                    yield* (0, formulaUtils_1.getFormulasInFormula)(node.condition, [...path, 'condition']);
-                    yield* (0, formulaUtils_1.getFormulasInFormula)(node.repeat, [...path, 'repeat']);
-                    yield* (0, formulaUtils_1.getFormulasInFormula)(node.repeatKey, [...path, 'repeatKey']);
+                    yield* (0, formulaUtils_2.getFormulasInFormula)(node.condition, [...path, 'condition']);
+                    yield* (0, formulaUtils_2.getFormulasInFormula)(node.repeat, [...path, 'repeat']);
+                    yield* (0, formulaUtils_2.getFormulasInFormula)(node.repeatKey, [...path, 'repeatKey']);
                     for (const [attrKey, attr] of Object.entries(node.attrs ?? {})) {
-                        yield* (0, formulaUtils_1.getFormulasInFormula)(attr, [...path, 'attrs', attrKey]);
+                        yield* (0, formulaUtils_2.getFormulasInFormula)(attr, [...path, 'attrs', attrKey]);
                     }
                     for (const [eventKey, event] of Object.entries(node.events ?? {})) {
                         for (const [actionKey, a] of Object.entries(event?.actions ?? {})) {
-                            yield* (0, formulaUtils_2.getFormulasInAction)(a, [
+                            yield* (0, formulaUtils_1.getFormulasInAction)(a, [
                                 ...path,
                                 'events',
                                 eventKey,
@@ -106,7 +106,7 @@ class ToddleComponent {
                         }
                     }
                     for (const [classKey, c] of Object.entries(node.classes ?? {})) {
-                        yield* (0, formulaUtils_1.getFormulasInFormula)(c.formula, [
+                        yield* (0, formulaUtils_2.getFormulasInFormula)(c.formula, [
                             ...path,
                             'classes',
                             classKey,
@@ -114,7 +114,7 @@ class ToddleComponent {
                         ]);
                     }
                     for (const [styleVariableKey, styleVariable] of Object.entries(node['style-variables'] ?? {})) {
-                        yield* (0, formulaUtils_1.getFormulasInFormula)(styleVariable.formula, [
+                        yield* (0, formulaUtils_2.getFormulasInFormula)(styleVariable.formula, [
                             ...path,
                             'style-variables',
                             styleVariableKey,
@@ -124,31 +124,31 @@ class ToddleComponent {
                     break;
             }
         }
-        yield* (0, formulaUtils_1.getFormulasInFormula)(this.route?.info?.language?.formula, [
+        yield* (0, formulaUtils_2.getFormulasInFormula)(this.route?.info?.language?.formula, [
             'route',
             'info',
             'language',
             'formula',
         ]);
-        yield* (0, formulaUtils_1.getFormulasInFormula)(this.route?.info?.title?.formula, [
+        yield* (0, formulaUtils_2.getFormulasInFormula)(this.route?.info?.title?.formula, [
             'route',
             'info',
             'title',
             'formula',
         ]);
-        yield* (0, formulaUtils_1.getFormulasInFormula)(this.route?.info?.description?.formula, [
+        yield* (0, formulaUtils_2.getFormulasInFormula)(this.route?.info?.description?.formula, [
             'route',
             'info',
             'description',
             'formula',
         ]);
-        yield* (0, formulaUtils_1.getFormulasInFormula)(this.route?.info?.icon?.formula, [
+        yield* (0, formulaUtils_2.getFormulasInFormula)(this.route?.info?.icon?.formula, [
             'route',
             'info',
             'icon',
             'formula',
         ]);
-        yield* (0, formulaUtils_1.getFormulasInFormula)(this.route?.info?.charset?.formula, [
+        yield* (0, formulaUtils_2.getFormulasInFormula)(this.route?.info?.charset?.formula, [
             'route',
             'info',
             'charset',
@@ -156,7 +156,7 @@ class ToddleComponent {
         ]);
         for (const [metaKey, meta] of Object.entries(this.route?.info?.meta ?? {})) {
             for (const [attrKey, a] of Object.entries(meta.attrs)) {
-                yield* (0, formulaUtils_1.getFormulasInFormula)(a, [
+                yield* (0, formulaUtils_2.getFormulasInFormula)(a, [
                     'route',
                     'info',
                     'meta',
@@ -167,14 +167,14 @@ class ToddleComponent {
             }
         }
         for (const [formulaKey, formula] of Object.entries(this.formulas ?? {})) {
-            yield* (0, formulaUtils_1.getFormulasInFormula)(formula.formula, [
+            yield* (0, formulaUtils_2.getFormulasInFormula)(formula.formula, [
                 'formulas',
                 formulaKey,
                 'formula',
             ]);
         }
         for (const [variableKey, variable] of Object.entries(this.variables ?? {})) {
-            yield* (0, formulaUtils_1.getFormulasInFormula)(variable.initialValue, [
+            yield* (0, formulaUtils_2.getFormulasInFormula)(variable.initialValue, [
                 'variables',
                 variableKey,
                 'initialValue',
@@ -182,7 +182,7 @@ class ToddleComponent {
         }
         for (const [workflowKey, workflow] of Object.entries(this.workflows ?? {})) {
             for (const [actionKey, action] of workflow.actions.entries()) {
-                yield* (0, formulaUtils_2.getFormulasInAction)(action, [
+                yield* (0, formulaUtils_1.getFormulasInAction)(action, [
                     'workflows',
                     workflowKey,
                     'actions',
@@ -194,10 +194,10 @@ class ToddleComponent {
             yield* api.formulasInApi();
         }
         for (const [actionKey, action] of Object.entries(this.component.onLoad?.actions ?? {})) {
-            yield* (0, formulaUtils_2.getFormulasInAction)(action, ['onLoad', 'actions', actionKey]);
+            yield* (0, formulaUtils_1.getFormulasInAction)(action, ['onLoad', 'actions', actionKey]);
         }
         for (const [actionKey, action] of Object.entries(this.component.onAttributeChange?.actions ?? {})) {
-            yield* (0, formulaUtils_2.getFormulasInAction)(action, [
+            yield* (0, formulaUtils_1.getFormulasInAction)(action, [
                 'onAttributeChange',
                 'actions',
                 actionKey,

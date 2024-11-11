@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals'
-import { deepSortObject } from '@toddle/core/src/utils/collections'
 import crypto from 'crypto'
+import { deepSortObject } from '../src/utils/collections'
 import { sha1, stableStringify } from './sha1'
 ;(global as any).crypto = crypto
 

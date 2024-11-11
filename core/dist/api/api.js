@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createApiEvent = exports.isApiError = exports.requestHash = exports.getBaseUrl = exports.getRequestHeaders = exports.getRequestQueryParams = exports.getRequestPath = exports.applyAbortSignal = exports.createApiRequest = exports.isLegacyApi = exports.NON_BODY_RESPONSE_CODES = void 0;
-const apiTypes_1 = require("@toddle/core/src/api/apiTypes");
-const LegacyToddleApi_1 = require("@toddle/core/src/api/LegacyToddleApi");
-const formula_1 = require("@toddle/core/src/formula/formula");
-const collections_1 = require("@toddle/core/src/utils/collections");
-const sha1_1 = require("@toddle/core/src/utils/sha1");
-const util_1 = require("@toddle/core/src/utils/util");
+const apiTypes_1 = require("../src/api/apiTypes");
+const LegacyToddleApi_1 = require("../src/api/LegacyToddleApi");
+const formula_1 = require("../src/formula/formula");
+const collections_1 = require("../src/utils/collections");
+const sha1_1 = require("../src/utils/sha1");
+const util_1 = require("../src/utils/util");
 exports.NON_BODY_RESPONSE_CODES = [101, 204, 205, 304];
 const isLegacyApi = (api) => api instanceof LegacyToddleApi_1.LegacyToddleApi ? true : !('version' in api);
 exports.isLegacyApi = isLegacyApi;
