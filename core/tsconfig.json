@@ -12,6 +12,8 @@
     "sourceMap": true,
     "strict": true,
     "strictBuiltinIteratorReturn": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "outDir": "dist",
+    "declaration": true
   }
 }

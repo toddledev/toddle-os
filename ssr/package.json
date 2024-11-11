@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "test": "bun test",
+    "build": "tsc",
     "typecheck": "tsc --noEmit --project tsconfig.json",
     "typecheck:watch": "tsc --noEmit -w --project tsconfig.json"
   },

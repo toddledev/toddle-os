@@ -1,0 +1,1 @@
+{"version":3,"file":"ToddleFormula.js","sourceRoot":"","sources":["../../src/formula/ToddleFormula.ts"],"names":[],"mappings":";;;AACA,wEAA4E;AAE5E,MAAa,aAAa;IAChB,OAAO,CAAS;IAExB,YAAY,EAAE,OAAO,EAAwB;QAC3C,IAAI,CAAC,OAAO,GAAG,OAAO,CAAA;IACxB,CAAC;IAED;;;OAGG;IACH,CAAC,iBAAiB;QAChB,KAAK,CAAC,CAAC,IAAA,mCAAoB,EAAC,IAAI,CAAC,OAAO,CAAC,CAAA;IAC3C,CAAC;CACF;AAdD,sCAcC"}
