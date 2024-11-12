@@ -8,6 +8,6 @@
     "typecheck:watch": "tsc --noEmit -w --project tsconfig.json"
   },
   "files": [
-    "dist"
+    "dist/"
   ]
 }
