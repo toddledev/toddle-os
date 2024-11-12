@@ -1,5 +1,5 @@
-import { EventModel } from '../src/component/component.types'
-import { Formula } from '../src/formula/formula'
+import { EventModel } from '../component/component.types'
+import { Formula } from '../formula/formula'
 
 export type ComponentAPI = LegacyComponentAPI | ApiRequest
 

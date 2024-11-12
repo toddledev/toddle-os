@@ -1,5 +1,5 @@
-import { Formula } from '../src/formula/formula'
-import { getFormulasInFormula } from '../src/formula/formulaUtils'
+import { Formula } from '../formula/formula'
+import { getFormulasInFormula } from '../formula/formulaUtils'
 
 export class ToddleFormula {
   private formula: Formula

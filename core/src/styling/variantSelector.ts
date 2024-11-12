@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
-import type { EventModel } from '../src/component/component.types'
-import type { Formula } from '../src/formula/formula'
+import type { EventModel } from '../component/component.types'
+import type { Formula } from '../formula/formula'
 
 export type Shadow = {
   x: number

@@ -1,14 +1,9 @@
 // cSpell:ignore thinn, ABCDEFGHIJKLMNOPQRSTYVWXYZ
-import type { Component } from '../src/component/component.types'
-import { getClassName } from '../src/styling/className'
-import {
-  OldTheme,
-  Theme,
-  ThemeOptions,
-  getThemeCss,
-} from '../src/styling/theme'
-import { isDefined } from '../src/utils/util'
+import type { Component } from '../component/component.types'
+import { getClassName } from '../styling/className'
+import { OldTheme, Theme, ThemeOptions, getThemeCss } from '../styling/theme'
 import { omitKeys } from '../utils/collections'
+import { isDefined } from '../utils/util'
 import {
   ComponentNodeModel,
   ElementNodeModel,

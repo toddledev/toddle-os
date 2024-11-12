@@ -16,7 +16,7 @@
     "typescript": "5.6.3"
   },
   "scripts": {
-    "build": "cd core && bun run build && cd ../ssr && bun run build",
+    "build": "tsc --build",
     "lint": "eslint --quiet .",
     "prettier": "prettier --check '*.{json,js}' '**/*.{js,ts}'",
     "prettier:write": "prettier --write  '*.{json,js}' './**/*.{js,ts}'",

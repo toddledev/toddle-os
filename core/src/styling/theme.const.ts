@@ -1,4 +1,4 @@
-import { OldTheme } from '../src/styling/theme'
+import { OldTheme } from '../styling/theme'
 
 export const RESET_STYLES = `
 @layer reset {

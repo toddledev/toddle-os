@@ -1,7 +1,7 @@
-import { ApiStatus, ComponentAPI, LegacyApiStatus } from '../src/api/apiTypes'
-import { Formula } from '../src/formula/formula'
-import { StyleTokenCategory } from '../src/styling/theme'
-import { RequireFields } from '../src/types'
+import { ApiStatus, ComponentAPI, LegacyApiStatus } from '../api/apiTypes'
+import { Formula } from '../formula/formula'
+import { StyleTokenCategory } from '../styling/theme'
+import { RequireFields } from '../types'
 
 interface ListItem {
   Item: unknown

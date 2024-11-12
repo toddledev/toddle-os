@@ -1,8 +1,10 @@
-import { getFormulasInAction } from '../formula/formulaUtils'
-import { type LegacyComponentAPI } from '../src/api/apiTypes'
-import { isFormula, type Formula } from '../src/formula/formula'
-import { getFormulasInFormula } from '../src/formula/formulaUtils'
-import { isDefined } from '../src/utils/util'
+import { type LegacyComponentAPI } from '../api/apiTypes'
+import { isFormula, type Formula } from '../formula/formula'
+import {
+  getFormulasInAction,
+  getFormulasInFormula,
+} from '../formula/formulaUtils'
+import { isDefined } from '../utils/util'
 
 export class LegacyToddleApi {
   private api: LegacyComponentAPI

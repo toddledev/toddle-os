@@ -1,4 +1,4 @@
-import { isDefined } from '../src/utils/util'
+import { isDefined } from '../utils/util'
 export const isObject = (input: any): input is Record<string, any> =>
   typeof input === 'object' && input !== null
 

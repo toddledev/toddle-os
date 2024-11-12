@@ -1,7 +1,7 @@
-import type { Component, ComponentData } from '../src/component/component.types'
-import { isToddleFormula } from '../src/formula/formulaTypes'
-import type { CustomFormulaHandler, FormulaHandler, Toddle } from '../src/types'
-import { isDefined, toBoolean } from '../src/utils/util'
+import type { Component, ComponentData } from '../component/component.types'
+import { isToddleFormula } from '../formula/formulaTypes'
+import type { CustomFormulaHandler, FormulaHandler, Toddle } from '../types'
+import { isDefined, toBoolean } from '../utils/util'
 
 // Define the some objects types as union of ServerSide and ClientSide runtime types as applyFormula is used in both
 declare const window: Window | undefined

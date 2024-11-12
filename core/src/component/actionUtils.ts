@@ -1,4 +1,4 @@
-import type { ActionModel } from '../src/component/component.types'
+import type { ActionModel } from '../component/component.types'
 import { isDefined } from '../utils/util'
 
 export function* getActionsInAction(

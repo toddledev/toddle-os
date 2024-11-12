@@ -1,5 +1,5 @@
-import { PageRoute } from '../src/component/component.types'
-import { applyFormula, FormulaContext } from '../src/formula/formula'
+import { PageRoute } from '../../../core/src/component/component.types'
+import { applyFormula, FormulaContext } from '../../../core/src/formula/formula'
 
 export const getHtmlLanguage = ({
   pageInfo,
