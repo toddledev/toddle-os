@@ -9,5 +9,8 @@
   },
   "files": [
     "dist/"
-  ]
+  ],
+  "dependencies": {
+    "@toddle/core": "workspace:*"
+  }
 }

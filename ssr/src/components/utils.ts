@@ -1,9 +1,9 @@
-import type { ProjectFiles } from '@toddle/ssr/src/ssr.types'
 import type {
   Component,
   NodeModel,
-} from '../../../core/src/component/component.types'
-import { isDefined } from '../../../core/src/utils/util'
+} from '@toddle/core/src/component/component.types'
+import { isDefined } from '@toddle/core/src/utils/util'
+import type { ProjectFiles } from '@toddle/ssr/src/ssr.types'
 
 export function takeIncludedComponents({
   root,
