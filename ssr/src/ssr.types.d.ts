@@ -1,7 +1,7 @@
-import { Component } from '../core/src/component/component.types'
-import type { Formula } from '../core/src/formula/formula'
-import { PluginFormula } from '../core/src/formula/formulaTypes'
-import type { OldTheme, Theme } from '../core/src/styling/theme'
+import { Component } from '../../core/src/component/component.types'
+import type { Formula } from '../../core/src/formula/formula'
+import { PluginFormula } from '../../core/src/formula/formulaTypes'
+import type { OldTheme, Theme } from '../../core/src/styling/theme'
 
 export interface ToddleProject {
   name: string

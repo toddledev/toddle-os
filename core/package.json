@@ -13,5 +13,8 @@
     "test": "bun test",
     "test:watch": "bun test --watch",
     "test:debug": "bun test --watch --inspect-wait=localhost:6499/toddle"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

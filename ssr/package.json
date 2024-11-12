@@ -6,5 +6,8 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit --project tsconfig.json",
     "typecheck:watch": "tsc --noEmit -w --project tsconfig.json"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

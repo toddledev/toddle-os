@@ -21,9 +21,5 @@
     "prettier": "prettier --check '*.{json,js}' '**/*.{js,ts}'",
     "prettier:write": "prettier --write  '*.{json,js}' './**/*.{js,ts}'",
     "typecheck": "cd core && bun typecheck && cd ../ssr && bun run typecheck"
-  },
-  "files": [
-    "core/build",
-    "ssr/build"
-  ]
+  }
 }

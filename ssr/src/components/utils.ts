@@ -1,4 +1,4 @@
-import type { ProjectFiles } from '@toddle/ssr/ssr.types'
+import type { ProjectFiles } from '@toddle/ssr/src/ssr.types'
 import type {
   Component,
   NodeModel,
