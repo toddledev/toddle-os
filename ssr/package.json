@@ -8,8 +8,9 @@
     "typecheck:watch": "tsc --noEmit -w --project tsconfig.json"
   },
   "files": [
-    "dist/"
+    "dist"
   ],
+  "main": "dist/index.js",
   "dependencies": {
     "@toddle/core": "workspace:*"
   }
