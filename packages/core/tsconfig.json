@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "commonjs",
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictBuiltinIteratorReturn": true,
+    "target": "ESNext",
+    "outDir": "dist",
+    "declaration": true,
+    "noResolve": false
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

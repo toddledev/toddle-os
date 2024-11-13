@@ -1,11 +1,25 @@
 {
-  "files": [
-    "./packages/core/index.ts"
-  ],
-  "name": "toddle-os",
+  "name": "toddle",
   "module": "index.ts",
   "type": "module",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.14.0",
+    "@typescript-eslint/eslint-plugin": "8.14.0",
+    "@typescript-eslint/parser": "8.14.0",
+    "eslint": "9.14.0",
+    "eslint-plugin-inclusive-language": "2.2.1",
+    "prettier": "3.3.3",
+    "prettier-plugin-organize-imports": "4.1.0",
+    "typescript": "5.6.3"
+  },
+  "scripts": {
+    "lint": "eslint --quiet .",
+    "prettier": "prettier --check '*.{json,js}' '**/*.{js,ts}'",
+    "prettier:write": "prettier --write  '*.{json,js}' './**/*.{js,ts}'",
+    "typecheck": "cd packages/core && bun typecheck && cd ../ssr && bun run typecheck"
+  }
 }
