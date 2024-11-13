@@ -35,7 +35,7 @@ export default [
 
       parserOptions: {
         project: ['./tsconfig.eslint.json'],
-        tsconfigRootDir: '/Users/evb/code/toddle',
+        tsconfigRootDir: __dirname,
       },
     },
 
