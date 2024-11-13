@@ -3,8 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "workspaces": [
-    "./core",
-    "./ssr"
+    "packages/*"
   ],
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
@@ -18,10 +17,9 @@
     "typescript": "5.6.3"
   },
   "scripts": {
-    "build": "tsc --build",
     "lint": "eslint --quiet .",
     "prettier": "prettier --check '*.{json,js}' '**/*.{js,ts}'",
     "prettier:write": "prettier --write  '*.{json,js}' './**/*.{js,ts}'",
-    "typecheck": "cd core && bun typecheck && cd ../ssr && bun run typecheck"
+    "typecheck": "cd packages/core && bun typecheck && cd ../ssr && bun run typecheck"
   }
 }
