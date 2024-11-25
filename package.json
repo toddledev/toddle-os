@@ -2,6 +2,9 @@
   "name": "toddle",
   "module": "index.ts",
   "type": "module",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/toddledev/toddle",
+  "private": "false",
   "workspaces": [
     "packages/*"
   ],
