@@ -1,4 +1,3 @@
-import { ApiRequest } from '../api/apiTypes'
 import { getActionsInAction } from '../component/actionUtils'
 import { ActionModel } from '../component/component.types'
 import { type Formula } from '../formula/formula'
@@ -7,6 +6,7 @@ import {
   getFormulasInFormula,
 } from '../formula/formulaUtils'
 import { isDefined } from '../utils/util'
+import { ApiRequest } from './apiTypes'
 
 export class ToddleApiV2 implements ApiRequest {
   private api: ApiRequest
@@ -47,7 +47,9 @@ export class ToddleApiV2 implements ApiRequest {
         case 'and':
         case 'apply':
         case 'object':
-          formula.arguments.forEach((arg) => visitFormulaReference(arg.formula))
+          formula.arguments?.forEach((arg) =>
+            visitFormulaReference(arg.formula),
+          )
           break
         case 'switch':
           formula.cases.forEach((c) => {
@@ -57,11 +59,32 @@ export class ToddleApiV2 implements ApiRequest {
           break
       }
     }
-    // Since formulas for body, headers etc. can only use arguments, we only need to visit the
-    // arguments to know which other APIs this API depends on
+    visitFormulaReference(this.api.autoFetch)
+    visitFormulaReference(this.api.url)
+    Object.values(this.api.path ?? {}).forEach((p) =>
+      visitFormulaReference(p.formula),
+    )
+    Object.values(this.api.headers ?? {}).forEach((h) =>
+      visitFormulaReference(h.formula),
+    )
+    visitFormulaReference(this.api.body)
     Object.values(this.api.inputs).forEach((arg) =>
       visitFormulaReference(arg.formula),
     )
+    Object.values(this.api.queryParams ?? {}).forEach((q) => {
+      visitFormulaReference(q.formula)
+    })
+    visitFormulaReference(this.api.server?.proxy?.enabled?.formula)
+    visitFormulaReference(this.api.server?.ssr?.enabled?.formula)
+    visitFormulaReference(this.api.client?.debounce?.formula)
+    Object.values(this.api.redirectRules ?? {}).forEach((rule) => {
+      visitFormulaReference(rule.formula)
+    })
+    visitFormulaReference(this.api.isError?.formula)
+    visitFormulaReference(this.api.timeout?.formula)
+    // Ensure self references are not included - for instance if an API references its
+    // own response in a redirect rule
+    apis.delete(this.key)
 
     this._apiReferences = apis
     return apis

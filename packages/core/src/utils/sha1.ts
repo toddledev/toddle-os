@@ -1,4 +1,4 @@
-import { deepSortObject } from '../utils/collections'
+import { deepSortObject } from './collections'
 
 export const stableStringify = (obj: any) => JSON.stringify(deepSortObject(obj))
 

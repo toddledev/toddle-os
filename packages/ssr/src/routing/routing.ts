@@ -1,6 +1,6 @@
-import { PageComponent } from '@toddle/core/src/component/component.types'
-import { isDefined } from '@toddle/core/src/utils/util'
-import { ProjectFiles } from '@toddle/ssr/src/ssr.types'
+import { PageComponent } from '@toddledev/core/src/component/component.types'
+import { isDefined } from '@toddledev/core/src/utils/util'
+import { ProjectFiles } from '@toddledev/ssr/src/ssr.types'
 
 export const matchPageForUrl = ({
   url,
@@ -8,21 +8,38 @@ export const matchPageForUrl = ({
 }: {
   url: URL
   components: ProjectFiles['components']
-}) => {
+}): PageComponent | undefined => {
   const pathSegments = getPathSegments(url)
-  return getPages(components)
-    .sort((a, b) => a.route.path.length - b.route.path.length)
-    .find((component) => {
-      return (
-        pathSegments.length <= component.route.path.length &&
-        component.route.path.every(
+  const matches = getPages(components)
+    .filter(
+      (page) =>
+        pathSegments.length <= page.route.path.length &&
+        page.route.path.every(
           (segment, index) =>
             segment.type === 'param' ||
             segment.optional === true ||
             segment.name === pathSegments[index],
-        )
-      )
+        ),
+    )
+    .sort((a, b) => {
+      // Prefer shorter routes
+      const diff = a.route.path.length - b.route.path.length
+      if (diff !== 0) {
+        return diff
+      }
+      for (let i = 0; i < pathSegments.length; i++) {
+        // Prefer static segments over dynamic ones
+        // We don't need to check if the name matches, since we did that in the filter above
+        const aScore = a.route.path[i].type === 'static' ? 1 : 0
+        const bScore = b.route.path[i].type === 'static' ? 1 : 0
+        if (aScore !== bScore) {
+          return bScore - aScore
+        }
+      }
+      // TODO: Before giving up on a tie, we could compare the query params?
+      return 0
     })
+  return matches[0]
 }
 
 export const get404Page = (components: ProjectFiles['components']) =>

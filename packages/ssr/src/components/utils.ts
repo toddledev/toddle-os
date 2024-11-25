@@ -1,18 +1,20 @@
 import type {
   Component,
   NodeModel,
-} from '@toddle/core/src/component/component.types'
-import { isDefined } from '@toddle/core/src/utils/util'
-import type { ProjectFiles } from '@toddle/ssr/src/ssr.types'
+} from '@toddledev/core/src/component/component.types'
+import { isDefined } from '@toddledev/core/src/utils/util'
+import type { ProjectFiles } from '@toddledev/ssr/src/ssr.types'
 
 export function takeIncludedComponents({
   root,
   projectComponents,
   packages = {},
+  includeRoot = true,
 }: {
   projectComponents: ProjectFiles['components']
   packages: ProjectFiles['packages']
   root: Component
+  includeRoot?: boolean
 }) {
   const components = {
     ...projectComponents,
@@ -26,12 +28,12 @@ export function takeIncludedComponents({
       ),
     ),
   }
-
-  return [
-    root,
-    // Traverse all components from the root component
-    ...takeComponentsIncludedInProject(root, components),
-  ]
+  const includedComponents = []
+  if (includeRoot) {
+    includedComponents.push(root)
+  }
+  includedComponents.push(...takeComponentsIncludedInProject(root, components))
+  return includedComponents
 }
 
 function takeComponentsIncludedInProject(

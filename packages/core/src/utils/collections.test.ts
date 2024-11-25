@@ -1,4 +1,4 @@
-import { sortObjectEntries } from '../utils/collections'
+import { omitPaths, sortObjectEntries } from './collections'
 
 describe('sortObjectEntries()', () => {
   test('it sorts entries in an object based on the callback function', () => {
@@ -22,5 +22,36 @@ describe('sortObjectEntries()', () => {
       ['b', 'otherValue'],
       ['a', 'value'],
     ])
+  })
+})
+
+describe('omitPaths()', () => {
+  test('it filters out paths from an object', () => {
+    expect(
+      omitPaths(
+        {
+          a: 'value',
+          b: {
+            c: 'hello',
+            d: 'world',
+          },
+          e: {
+            f: {
+              g: 'foo',
+            },
+            h: 'bar',
+          },
+        },
+        [['a'], ['b', 'c'], ['e', 'f', 'g']],
+      ),
+    ).toEqual({
+      b: {
+        d: 'world',
+      },
+      e: {
+        f: {},
+        h: 'bar',
+      },
+    })
   })
 })

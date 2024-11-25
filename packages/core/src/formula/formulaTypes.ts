@@ -1,4 +1,4 @@
-import type { Formula } from '../formula/formula'
+import type { Formula } from './formula'
 
 export interface BaseFormula {
   name: string

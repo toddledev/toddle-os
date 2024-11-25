@@ -1,5 +1,5 @@
-import type { ActionModel } from '../component/component.types'
 import { isDefined } from '../utils/util'
+import type { ActionModel } from './component.types'
 
 export function* getActionsInAction(
   action: ActionModel | null,

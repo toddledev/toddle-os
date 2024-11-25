@@ -1,5 +1,5 @@
 {
-  "name": "@toddle/ssr",
+  "name": "@toddledev/ssr",
   "version": "0.0.1",
   "scripts": {
     "test": "bun test",
@@ -11,7 +11,8 @@
     "dist"
   ],
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
-    "@toddle/core": "workspace:*"
+    "@toddledev/core": "*"
   }
 }

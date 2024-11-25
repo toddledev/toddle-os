@@ -1,3 +1,7 @@
+import { applyFormula, Formula, FormulaContext } from '../formula/formula'
+import { omitKeys, sortObjectEntries } from '../utils/collections'
+import { sha1 } from '../utils/sha1'
+import { isDefined, isObject, toBoolean } from '../utils/util'
 import {
   ApiMethod,
   ApiPerformance,
@@ -5,13 +9,9 @@ import {
   ComponentAPI,
   LegacyComponentAPI,
   ToddleRequestInit,
-} from '../api/apiTypes'
-import { LegacyToddleApi } from '../api/LegacyToddleApi'
-import { ToddleApiV2 } from '../api/ToddleApiV2'
-import { applyFormula, Formula, FormulaContext } from '../formula/formula'
-import { omitKeys, sortObjectEntries } from '../utils/collections'
-import { sha1 } from '../utils/sha1'
-import { isDefined, isObject, toBoolean } from '../utils/util'
+} from './apiTypes'
+import { LegacyToddleApi } from './LegacyToddleApi'
+import { ToddleApiV2 } from './ToddleApiV2'
 
 export const NON_BODY_RESPONSE_CODES = [101, 204, 205, 304]
 
@@ -41,7 +41,7 @@ export const createApiRequest = ({
   return { url, requestSettings }
 }
 
-const getUrl = (
+export const getUrl = (
   api: ApiRequest | ToddleApiV2,
   formulaContext: FormulaContext,
   baseUrl?: string,
@@ -178,10 +178,13 @@ export const getRequestHeaders = ({
     if (enabled) {
       const value = applyFormula(param.formula, formulaContext)
       if (isDefined(value)) {
-        headers.set(
-          key.trim(),
-          (typeof value === 'string' ? value : String(value)).trim(),
-        )
+        try {
+          headers.set(
+            key.trim(),
+            (typeof value === 'string' ? value : String(value)).trim(),
+          )
+          // eslint-disable-next-line no-empty
+        } catch {}
       }
     }
   })

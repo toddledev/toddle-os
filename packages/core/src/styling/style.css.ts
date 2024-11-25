@@ -1,9 +1,9 @@
 // cSpell:ignore thinn, ABCDEFGHIJKLMNOPQRSTYVWXYZ
 import type { Component } from '../component/component.types'
-import { getClassName } from '../styling/className'
-import { OldTheme, Theme, ThemeOptions, getThemeCss } from '../styling/theme'
 import { omitKeys } from '../utils/collections'
 import { isDefined } from '../utils/util'
+import { getClassName, toValidClassName } from './className'
+import { OldTheme, Theme, ThemeOptions, getThemeCss } from './theme'
 import {
   ComponentNodeModel,
   ElementNodeModel,
@@ -97,6 +97,10 @@ export const createStylesheet = (
   const styleToCss = (style: StyleDeclarationBlock) => {
     return Object.entries(style)
       .map(([property, value]) => {
+        if (!isDefined(value)) {
+          // ignore undefined/null values
+          return
+        }
         const propertyName = kebabCase(property)
         const propertyValue =
           String(Number(value)) === String(value) &&
@@ -105,6 +109,7 @@ export const createStylesheet = (
             : value
         return `${propertyName}:${propertyValue};`
       })
+      .filter(Boolean)
       .join('\n  ')
   }
   const getNodeStyles = (
@@ -231,7 +236,12 @@ ${selector}::-webkit-scrollbar {
         )
         if (childComponent) {
           insertComponentStyles(childComponent, node.package ?? package_name)
-          stylesheet += '\n' + getNodeStyles(node as any, `instance\\:${id}`)
+          stylesheet +=
+            '\n' +
+            getNodeStyles(
+              node as any,
+              toValidClassName(`${component.name}:${id}`, true),
+            )
 
           return
         }

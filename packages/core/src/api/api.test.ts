@@ -1,5 +1,4 @@
 import { describe, expect, it, test } from '@jest/globals'
-import { ApiMethod, ApiRequest } from '../api/apiTypes'
 import { valueFormula } from '../formula/formulaUtils'
 import {
   createApiRequest,
@@ -7,6 +6,7 @@ import {
   getRequestPath,
   getRequestQueryParams,
 } from './api'
+import { ApiMethod, ApiRequest } from './apiTypes'
 
 describe('getApiPath()', () => {
   test('it returns a valid url path string', () => {

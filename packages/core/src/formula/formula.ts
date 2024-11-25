@@ -1,7 +1,7 @@
 import type { Component, ComponentData } from '../component/component.types'
-import { isToddleFormula } from '../formula/formulaTypes'
 import type { CustomFormulaHandler, FormulaHandler, Toddle } from '../types'
 import { isDefined, toBoolean } from '../utils/util'
+import { isToddleFormula } from './formulaTypes'
 
 // Define the some objects types as union of ServerSide and ClientSide runtime types as applyFormula is used in both
 declare const window: Window | undefined
@@ -34,7 +34,7 @@ export type RecordOperation = {
 
 export type ObjectOperation = {
   type: 'object'
-  arguments: FunctionArgument[]
+  arguments?: FunctionArgument[]
 }
 
 export type ArrayOperation = {
@@ -265,10 +265,10 @@ export function applyFormula(
       }
       case 'object':
         return Object.fromEntries(
-          formula.arguments.map((entry) => [
+          formula.arguments?.map((entry) => [
             entry.name,
             applyFormula(entry.formula, ctx),
-          ]),
+          ]) ?? [],
         )
       case 'record': // object used to be called record, there are still examples in the wild.
         return Object.fromEntries(

@@ -1,4 +1,5 @@
-import { isDefined } from '../utils/util'
+import { isDefined } from './util'
+
 export const isObject = (input: any): input is Record<string, any> =>
   typeof input === 'object' && input !== null
 
@@ -31,6 +32,9 @@ export const omit = <T = unknown>(collection: T, key: string[]): T => {
 
 export const omitKeys = (object: Record<string, any>, keys: string[]) =>
   Object.fromEntries(Object.entries(object).filter(([k]) => !keys.includes(k)))
+
+export const omitPaths = (object: Record<string, any>, keys: string[][]) =>
+  keys.reduce((acc, key) => omit(acc, key), { ...object })
 
 export const groupBy = <T>(items: T[], f: (t: T) => string) =>
   items.reduce<Record<string, T[]>>((acc, item) => {

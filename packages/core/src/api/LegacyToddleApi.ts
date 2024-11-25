@@ -1,10 +1,10 @@
-import { type LegacyComponentAPI } from '../api/apiTypes'
 import { isFormula, type Formula } from '../formula/formula'
 import {
   getFormulasInAction,
   getFormulasInFormula,
 } from '../formula/formulaUtils'
 import { isDefined } from '../utils/util'
+import { type LegacyComponentAPI } from './apiTypes'
 
 export class LegacyToddleApi {
   private api: LegacyComponentAPI
@@ -45,7 +45,9 @@ export class LegacyToddleApi {
         case 'and':
         case 'apply':
         case 'object':
-          formula.arguments.forEach((arg) => visitFormulaReference(arg.formula))
+          formula.arguments?.forEach((arg) =>
+            visitFormulaReference(arg.formula),
+          )
           break
         case 'switch':
           formula.cases.forEach((c) => {

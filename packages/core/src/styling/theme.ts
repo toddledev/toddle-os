@@ -1,4 +1,4 @@
-import { RESET_STYLES } from '../styling/theme.const'
+import { RESET_STYLES } from './theme.const'
 
 export interface ThemeOptions {
   includeResetStyle: boolean

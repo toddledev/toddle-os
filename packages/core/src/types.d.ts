@@ -131,3 +131,16 @@ export interface ToddleInternals {
 export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
   [P in K]-?: NonNullable<T[P]>
 }
+
+export type NestedOmit<
+  Schema,
+  Path extends string,
+> = Path extends `${infer Head}.${infer Tail}`
+  ? Head extends keyof Schema
+    ? {
+        [K in keyof Schema]: K extends Head
+          ? NestedOmit<Schema[K], Tail>
+          : Schema[K]
+      }
+    : Schema
+  : Omit<Schema, Path>

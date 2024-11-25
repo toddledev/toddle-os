@@ -10,8 +10,15 @@ export const validateUrl = (url?: string | null, base?: string) => {
   if (typeof url !== 'string') {
     return false
   }
+
   try {
-    return new URL(url, base)
+    const urlObject = new URL(url, base)
+    // Creating a new URL object will not correctly encode the search params
+    // So we need to iterate over them to make sure they are encoded as that happens when setting them explicitly
+    urlObject.searchParams.forEach((value, key) => {
+      urlObject.searchParams.set(key, value)
+    })
+    return urlObject
   } catch {
     return false
   }

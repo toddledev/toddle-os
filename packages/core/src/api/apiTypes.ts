@@ -56,6 +56,7 @@ export interface ApiRequest {
   // inputs for an API request - the server will only accept listed arguments
   inputs: Record<string, { formula: Formula }>
   service?: string | null
+  servicePath?: string | null
   queryParams?: Record<
     string,
     // The enabled formula is used to determine if the query parameter should be included in the request or not
