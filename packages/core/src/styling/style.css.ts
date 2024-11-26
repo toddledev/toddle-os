@@ -117,11 +117,12 @@ export const createStylesheet = (
     classHash: string,
   ) => {
     try {
-      if (!node.style) {
-        return ''
-      }
-      const style = omitKeys(node.style, ['variants', 'breakpoints', 'shadows'])
-      const styleVariants = node.variants ?? node.style.variants
+      const style = omitKeys(node.style ?? {}, [
+        'variants',
+        'breakpoints',
+        'shadows',
+      ])
+      const styleVariants = node.variants ?? node.style?.variants
       const renderVariant = (
         selector: string,
         style: StyleDeclarationBlock,

@@ -1,8 +1,8 @@
-import { PageRoute } from '@toddledev/core/src/component/component.types'
+import { PageRoute } from '@toddledev/core/dist/component/component.types'
 import {
   applyFormula,
   FormulaContext,
-} from '@toddledev/core/src/formula/formula'
+} from '@toddledev/core/dist/formula/formula'
 
 export const getHtmlLanguage = ({
   pageInfo,

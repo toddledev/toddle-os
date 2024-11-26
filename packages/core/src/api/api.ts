@@ -1,6 +1,6 @@
 import { applyFormula, Formula, FormulaContext } from '../formula/formula'
 import { omitKeys, sortObjectEntries } from '../utils/collections'
-import { sha1 } from '../utils/sha1'
+import { hash } from '../utils/hash'
 import { isDefined, isObject, toBoolean } from '../utils/util'
 import {
   ApiMethod,
@@ -204,7 +204,7 @@ export const getBaseUrl = ({
  * Calculate the hash of a Request object based on its properties
  */
 export const requestHash = (url: URL, request: RequestInit) =>
-  sha1(
+  hash(
     JSON.stringify({
       url: url.href,
       method: request.method,
@@ -330,3 +330,40 @@ export const createApiEvent = (
     detail,
   })
 }
+
+const compareApiDependencies = (
+  a: LegacyToddleApi | ToddleApiV2,
+  b: LegacyToddleApi | ToddleApiV2,
+) => {
+  const isADependentOnB = a.apiReferences.has(b.name)
+  const isBDependentOnA = b.apiReferences.has(a.name)
+  if (isADependentOnB === isBDependentOnA) {
+    return 0
+  }
+  // 1 means A goes last - hence B is evaluated before A
+  return isADependentOnB ? 1 : -1
+}
+
+export const sortApiObjects = (apis: Array<[string, ComponentAPI]>) => {
+  const apiMap = new Map<string, LegacyToddleApi | ToddleApiV2>()
+  const getApi = (apiObj: ComponentAPI, key: string) => {
+    let api = apiMap.get(key)
+    if (!api) {
+      api =
+        apiObj.version === 2
+          ? new ToddleApiV2(apiObj, key)
+          : new LegacyToddleApi(apiObj, key)
+      apiMap.set(key, api)
+    }
+    return api
+  }
+  return apis.toSorted(([aKey, aObj], [bKey, bObj]) => {
+    const a = getApi(aObj, aKey)
+    const b = getApi(bObj, bKey)
+    return compareApiDependencies(a, b)
+  })
+}
+
+export const sortApiEntries = (
+  apis: Array<[string, LegacyToddleApi | ToddleApiV2]>,
+) => apis.toSorted(([_, a], [__, b]) => compareApiDependencies(a, b))

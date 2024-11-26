@@ -2,7 +2,7 @@ import { describe, expect, test } from '@jest/globals'
 import {
   PageComponent,
   PageRoute,
-} from '@toddledev/core/src/component/component.types'
+} from '@toddledev/core/dist/component/component.types'
 import { ProjectFiles } from '@toddledev/ssr/src/ssr.types'
 import { matchPageForUrl } from './routing'
 

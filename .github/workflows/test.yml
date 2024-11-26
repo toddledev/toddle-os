@@ -22,6 +22,8 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
         run: bun install --frozen-lockfile
+      - name: Build
+        run: bun run build
       - name: ESLint
         run: bun lint
       - name: Prettier
@@ -37,6 +39,8 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
         run: bun install --frozen-lockfile
+      - name: Build
+        run: bun run build
       - name: Run core tests
         run: |
           cd packages/core
@@ -50,6 +54,8 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
         run: bun install --frozen-lockfile
+      - name: Build
+        run: bun run build
       - name: Test ssr
         run: |
           cd packages/ssr
