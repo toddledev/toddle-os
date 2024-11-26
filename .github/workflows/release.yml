@@ -25,6 +25,10 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
         run: bun install --frozen-lockfile
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
       - name: Release
