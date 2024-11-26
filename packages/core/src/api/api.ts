@@ -1,7 +1,7 @@
-import { omitKeys, sortObjectEntries } from '@toddle/core/src/utils/collections'
-import { isDefined, isObject, toBoolean } from '@toddle/core/src/utils/util'
 import { applyFormula, Formula, FormulaContext } from '../formula/formula'
+import { omitKeys, sortObjectEntries } from '../utils/collections'
 import { hash } from '../utils/hash'
+import { isDefined, isObject, toBoolean } from '../utils/util'
 import {
   ApiMethod,
   ApiPerformance,

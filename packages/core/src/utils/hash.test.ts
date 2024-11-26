@@ -1,4 +1,4 @@
-import { hash } from '@toddle/core/src/utils/hash'
+import { hash } from './hash'
 
 describe('hash', () => {
   test('identical strings should lead to the same hash', () => {
