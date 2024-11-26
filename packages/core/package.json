@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "publish": "bun publish --access public",
     "typecheck": "tsc --noEmit --project tsconfig.json",
     "typecheck:watch": "tsc --noEmit -w --project tsconfig.json",
     "test": "bun test",

@@ -5,8 +5,9 @@
   "homepage": "https://github.com/toddledev/toddle",
   "private": "false",
   "scripts": {
-    "test": "bun test",
     "build": "tsc",
+    "publish": "bun publish --access public",
+    "test": "bun test",
     "typecheck": "tsc --noEmit --project tsconfig.json",
     "typecheck:watch": "tsc --noEmit -w --project tsconfig.json"
   },
