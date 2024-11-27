@@ -199,6 +199,13 @@ export class ToddleComponent {
     for (const [metaKey, meta] of Object.entries(
       this.route?.info?.meta ?? {},
     )) {
+      yield* getFormulasInFormula(meta.content, [
+        'route',
+        'info',
+        'meta',
+        metaKey,
+        'content',
+      ])
       for (const [attrKey, a] of Object.entries(meta.attrs)) {
         yield* getFormulasInFormula(a, [
           'route',
