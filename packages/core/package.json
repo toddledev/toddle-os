@@ -14,11 +14,11 @@
   "scripts": {
     "build": "tsc",
     "publish": "bun publish --access public",
-    "typecheck": "tsc --noEmit --project tsconfig.json",
-    "typecheck:watch": "tsc --noEmit -w --project tsconfig.json",
     "test": "bun test",
     "test:watch": "bun test --watch",
-    "test:debug": "bun test --watch --inspect-wait=localhost:6499/toddle"
+    "test:debug": "bun test --watch --inspect-wait=localhost:6499/toddle",
+    "typecheck": "tsc --noEmit",
+    "watch": "tsc -w"
   },
   "files": [
     "dist"
