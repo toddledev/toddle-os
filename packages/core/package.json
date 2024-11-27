@@ -1,6 +1,6 @@
 {
   "name": "@toddledev/core",
-  "version": "0.0.2-alpha.3",
+  "version": "0.0.2-alpha.5",
   "license": "Apache-2.0",
   "homepage": "https://github.com/toddledev/toddle",
   "private": "false",
@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "publish": "bun publish --access public",
+    "npm-publish": "bun publish --access public",
     "test": "bun test",
     "test:watch": "bun test --watch",
     "test:debug": "bun test --watch --inspect-wait=localhost:6499/toddle",
@@ -21,7 +21,8 @@
     "watch": "tsc -w"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "main": "dist/index.js"
 }
