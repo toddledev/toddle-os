@@ -1,4 +1,5 @@
 import { isFormula, type Formula } from '../formula/formula'
+import { GlobalFormulas } from '../formula/formulaTypes'
 import {
   getFormulasInAction,
   getFormulasInFormula,
@@ -6,14 +7,20 @@ import {
 import { isDefined } from '../utils/util'
 import { type LegacyComponentAPI } from './apiTypes'
 
-export class LegacyToddleApi {
+export class LegacyToddleApi<Handler> {
   private api: LegacyComponentAPI
   private key: string
+  private globalFormulas: GlobalFormulas<Handler>
   private _apiReferences?: Set<string>
 
-  constructor(api: LegacyComponentAPI, key: string) {
+  constructor(
+    api: LegacyComponentAPI,
+    key: string,
+    globalFormulas: GlobalFormulas<Handler>,
+  ) {
     this.api = api
     this.key = key
+    this.globalFormulas = globalFormulas
   }
 
   get apiReferences(): Set<string> {
@@ -127,10 +134,18 @@ export class LegacyToddleApi {
   *formulasInApi(): Generator<[(string | number)[], Formula]> {
     const api = this.api
     const apiKey = this.key
-    yield* getFormulasInFormula(api.autoFetch, ['apis', apiKey, 'autoFetch'])
-    yield* getFormulasInFormula(api.url, ['apis', apiKey, 'url'])
+    yield* getFormulasInFormula(api.autoFetch, this.globalFormulas, [
+      'apis',
+      apiKey,
+      'autoFetch',
+    ])
+    yield* getFormulasInFormula(api.url, this.globalFormulas, [
+      'apis',
+      apiKey,
+      'url',
+    ])
     for (const [pathKey, path] of Object.entries(api.path ?? {})) {
-      yield* getFormulasInFormula(path.formula, [
+      yield* getFormulasInFormula(path.formula, this.globalFormulas, [
         'apis',
         apiKey,
         'path',
@@ -141,7 +156,7 @@ export class LegacyToddleApi {
     for (const [queryParamKey, queryParam] of Object.entries(
       api.queryParams ?? {},
     )) {
-      yield* getFormulasInFormula(queryParam.formula, [
+      yield* getFormulasInFormula(queryParam.formula, this.globalFormulas, [
         'apis',
         apiKey,
         'queryParams',
@@ -152,10 +167,14 @@ export class LegacyToddleApi {
 
     // this is supporting a few legacy cases where the whole header object was set as a formula. This is no longer possible
     if (isFormula(api.headers)) {
-      yield* getFormulasInFormula(api.headers, ['apis', apiKey, 'headers'])
+      yield* getFormulasInFormula(api.headers, this.globalFormulas, [
+        'apis',
+        apiKey,
+        'headers',
+      ])
     } else {
       for (const [headerKey, header] of Object.entries(api.headers ?? {})) {
-        yield* getFormulasInFormula(header, [
+        yield* getFormulasInFormula(header, this.globalFormulas, [
           'apis',
           apiKey,
           'headers',
@@ -164,11 +183,15 @@ export class LegacyToddleApi {
       }
     }
 
-    yield* getFormulasInFormula(api.body, ['apis', apiKey, 'body'])
+    yield* getFormulasInFormula(api.body, this.globalFormulas, [
+      'apis',
+      apiKey,
+      'body',
+    ])
     for (const [actionKey, action] of Object.entries(
       api.onCompleted?.actions ?? {},
     )) {
-      yield* getFormulasInAction(action, [
+      yield* getFormulasInAction(action, this.globalFormulas, [
         'apis',
         apiKey,
         'onCompleted',
@@ -179,7 +202,7 @@ export class LegacyToddleApi {
     for (const [actionKey, action] of Object.entries(
       api.onFailed?.actions ?? {},
     )) {
-      yield* getFormulasInAction(action, [
+      yield* getFormulasInAction(action, this.globalFormulas, [
         'apis',
         apiKey,
         'onFailed',

@@ -34,6 +34,7 @@ describe('ToddleComponent.formulasInComponent', () => {
       },
       getComponent: () => undefined,
       packageName: 'demo',
+      globalFormulas: { formulas: {}, packages: {} },
     })
     const formulas = Array.from(demo.formulasInComponent()).map(
       ([, formula]) => formula,
@@ -86,6 +87,7 @@ describe('ToddleComponent.formulasInComponent', () => {
       },
       getComponent: () => undefined,
       packageName: undefined,
+      globalFormulas: { formulas: {}, packages: {} },
     })
     const formulas = Array.from(demo.formulasInComponent()).map(
       ([, formula]) => formula,
