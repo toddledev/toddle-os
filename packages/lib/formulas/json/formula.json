@@ -1,0 +1,22 @@
+{
+  "name": "JSON",
+  "description": "Turn a value into a JSON string",
+  "arguments": [
+    {
+      "name": "Input",
+      "formula": { "type": "value", "value": null },
+      "description": "The input value to be turned into a JSON string",
+      "type": { "type": "Any" }
+    },
+    {
+      "name": "Indentation",
+      "formula": { "type": "value", "value": 0 },
+      "description": "The number of spaces used for indentation in the JSON string",
+      "type": { "type": "Number" }
+    }
+  ],
+  "output": {
+    "description": "The JSON string",
+    "type": { "type": "String" }
+  }
+}

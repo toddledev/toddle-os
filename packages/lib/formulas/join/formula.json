@@ -1,0 +1,22 @@
+{
+  "name": "Join",
+  "description": "Combine an array of strings in to a single string",
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": null },
+      "description": "An array of strings",
+      "type": { "type": "Array" }
+    },
+    {
+      "name": "Separator",
+      "formula": { "type": "value", "value": ", " },
+      "description": "A saparator that is inserted in between each item in the retuned string",
+      "type": { "type": "String" }
+    }
+  ],
+  "output": {
+    "description": "A string combining each item in the input array separated by the separator string.",
+    "type": { "type": "String" }
+  }
+}

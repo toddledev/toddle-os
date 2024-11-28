@@ -1,0 +1,25 @@
+{
+  "name": "Delete",
+  "description": "Returns a copy of the input object or array without the specified key.",
+  "arguments": [
+    {
+      "name": "Object",
+      "formula": { "type": "value", "value": null },
+      "description": "The input record",
+      "type": { "type": "Object" }
+    },
+    {
+      "name": "Path",
+      "formula": { "type": "value", "value": "Item" },
+      "description": "The path can be either a number (if the first argument is an array), a string or an array of strings.\nIf an array is given then the property at that path will be removed.",
+      "type": {
+        "type": "Union",
+        "types": [{ "type": "Array" }, { "type": "String" }]
+      }
+    }
+  ],
+  "output": {
+    "description": "A copy of the record without the property specified in the Path.",
+    "type": { "type": "Object" }
+  }
+}

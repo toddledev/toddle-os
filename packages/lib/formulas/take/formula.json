@@ -1,0 +1,38 @@
+{
+  "name": "Take",
+  "description": "Take items from the start of an array or string.",
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": null },
+      "description": "Input array or string",
+      "type": {
+        "type": "Union",
+        "types": [
+          {
+            "type": "String"
+          },
+          { "type": "Array" }
+        ]
+      }
+    },
+    {
+      "name": "Count",
+      "formula": { "type": "value", "value": 1 },
+      "type": { "type": "Number" },
+      "description": "Number of items to take"
+    }
+  ],
+  "output": {
+    "description": "The first items from the array or string",
+    "type": {
+      "type": "Union",
+      "types": [
+        {
+          "type": "String"
+        },
+        { "type": "Array" }
+      ]
+    }
+  }
+}

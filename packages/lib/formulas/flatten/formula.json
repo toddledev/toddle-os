@@ -1,0 +1,21 @@
+{
+  "name": "Flatten",
+  "description": "Flattens a nested array",
+  "arguments": [
+    {
+      "name": "Array",
+      "description": "An array containing one or more arrays",
+      "type": { "type": "Array" },
+      "formula": {
+        "type": "function",
+        "name": "@toddle/list",
+        "arguments": [],
+        "variableArguments": true
+      }
+    }
+  ],
+  "output": {
+    "description": "The flattened array where all items in the original array are concatenated",
+    "type": { "type": "Array" }
+  }
+}

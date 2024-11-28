@@ -1,0 +1,28 @@
+{
+  "name": "Format Date",
+  "arguments": [
+    {
+      "name": "Date",
+      "description": "Date to format",
+      "type": { "type": "Date" },
+      "formula": { "type": "Date", "value": null }
+    },
+    {
+      "name": "Locale(s)",
+      "description": "Optional locale to use for formatting the Date - \"en\" or \"fr\" for instance. Multiple locales can be provided (as an Array of Strings) to provide a fallback locale. It defaults to the runtime's locale.",
+      "type": { "type": "String | Array" },
+      "formula": { "type": "value", "value": null }
+    },
+    {
+      "name": "Options",
+      "description": "Optional object for configuring formatting. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#syntax for all options",
+      "type": { "type": "Object" },
+      "formula": { "type": "value", "value": null }
+    }
+  ],
+  "description": "Format a date using the Intl.DateTimeFormat API. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat for more information.",
+  "output": {
+    "description": "The Date input formatted as a string",
+    "type": { "type": "String" }
+  }
+}

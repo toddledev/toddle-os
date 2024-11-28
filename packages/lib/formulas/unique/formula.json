@@ -1,0 +1,16 @@
+{
+  "name": "Unique",
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": [] },
+      "type": { "type": "Array" },
+      "description": "The input array"
+    }
+  ],
+  "description": "Remove duplicate values from an array",
+  "output": {
+    "description": "The input array with all duplicate values removed",
+    "type": { "type": "Array" }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Every",
+  "description": "Returns TRUE if the Predicate formula returns true for all items in the array.",
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": null },
+      "description": "The array of items to evaluate",
+      "type": { "type": "Array" }
+    },
+    {
+      "name": "Formula",
+      "isFunction": true,
+      "formula": { "type": "path", "path": ["Args", "item"] },
+      "description": "Predicate formula for evaluating each item",
+      "type": { "type": "Formula" }
+    }
+  ],
+  "output": {
+    "description": "TRUE if the Predicate formula returns true for all items in the array, otherwise FALSE",
+    "type": { "type": "Array" }
+  }
+}

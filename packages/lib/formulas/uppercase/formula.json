@@ -1,0 +1,16 @@
+{
+  "name": "Uppercase",
+  "description": "Convert a string to upper case",
+  "arguments": [
+    {
+      "name": "String",
+      "formula": { "type": "value", "value": "string" },
+      "description": "Input string",
+      "type": { "type": "String" }
+    }
+  ],
+  "output": {
+    "description": "The input string with all characters converted to uppercase",
+    "type": { "type": "String" }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Interval",
+  "description": "Run an action every \"delay\" milliseconds",
+  "arguments": [
+    {
+      "name": "Interval in milliseconds",
+      "type": { "type": "Number" },
+      "formula": { "type": "value", "value": 1000 }
+    }
+  ],
+  "events": {
+    "tick": {"actions": []}
+  }
+}

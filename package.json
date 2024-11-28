@@ -24,6 +24,6 @@
     "lint": "eslint --quiet .",
     "prettier": "prettier --check '*.{json,js}' '**/*.{js,ts}'",
     "prettier:write": "prettier --write  '*.{json,js}' './**/*.{js,ts}'",
-    "typecheck": "cd packages/core && bun typecheck && cd ../ssr && bun run typecheck"
+    "typecheck": "cd packages/core && bun typecheck && cd ../ssr && bun run typecheck && cd ../lib && bun run typecheck"
   }
 }

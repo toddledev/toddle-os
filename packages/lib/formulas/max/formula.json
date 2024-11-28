@@ -1,0 +1,23 @@
+{
+  "name": "Max",
+  "description": "Find the largest number",
+  "arguments": [
+    {
+      "name": "0",
+      "formula": { "type": "value", "value": null },
+      "description": "Input number",
+      "type": { "type": "Number" }
+    },
+    {
+      "name": "1",
+      "formula": { "type": "value", "value": null },
+      "description": "Input number",
+      "type": { "type": "Number" }
+    }
+  ],
+  "variableArguments": true,
+  "output": {
+    "description": "The largest of all the input numbers",
+    "type": { "type": "Number" }
+  }
+}

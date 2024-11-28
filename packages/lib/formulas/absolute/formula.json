@@ -1,0 +1,16 @@
+{
+  "name": "Absolute",
+  "arguments": [
+    {
+      "name": "Value",
+      "formula": { "type": "value", "value": -1 },
+      "type": { "type": "Number" },
+      "description": "The input number"
+    }
+  ],
+  "description": "Get the absolute value of a number",
+  "output": {
+    "description": "The absolute value of the input",
+    "type": { "type": "Number" }
+  }
+}

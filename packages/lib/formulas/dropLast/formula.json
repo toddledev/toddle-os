@@ -1,0 +1,40 @@
+{
+  "name": "Drop last",
+  "description": "Remove items from the end of an array or String.",
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": null },
+      "description": "Input array",
+      "type": {
+        "type": "Union",
+        "types": [
+          {
+            "type": "String"
+          },
+          { "type": "Array" }
+        ]
+      }
+    },
+    {
+      "name": "Count",
+      "formula": { "type": "value", "value": 1 },
+      "type": {
+        "type": "Number"
+      },
+      "description": "Number of items to remove"
+    }
+  ],
+  "output": {
+    "description": "A copy of the list without the last items",
+    "type": {
+      "type": "Union",
+      "types": [
+        {
+          "type": "String"
+        },
+        { "type": "Array" }
+      ]
+    }
+  }
+}

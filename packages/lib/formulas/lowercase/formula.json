@@ -1,0 +1,16 @@
+{
+  "name": "Lower case",
+  "description": "Convert a string to lowercase",
+  "arguments": [
+    {
+      "name": "String",
+      "formula": { "type": "value", "value": "string" },
+      "description": "Input string",
+      "type": { "type": "String" }
+    }
+  ],
+  "output": {
+    "description": "The input string with all characters converted to lowercase",
+    "type": { "type": "String" }
+  }
+}

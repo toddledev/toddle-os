@@ -1,0 +1,16 @@
+{
+  "name": "Trim",
+  "description": "Removes any leading and trailing white spaces from a string",
+  "arguments": [
+    {
+      "name": "String",
+      "formula": { "type": "value", "value": "" },
+      "description": "The string to trim",
+      "type": { "type": "String" }
+    }
+  ],
+  "output": {
+    "description": "The trimmed string",
+    "type": { "type": "String" }
+  }
+}

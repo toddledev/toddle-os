@@ -1,0 +1,20 @@
+{
+  "name": "Log to console",
+  "description": "Log a message to the browser console",
+  "arguments": [
+    {
+      "name": "Label",
+      "formula": {
+        "type": "value",
+        "value": ""
+      }
+    },
+    {
+      "name": "Data",
+      "formula": {
+        "type": "value",
+        "value": "<Data>"
+      }
+    }
+  ]
+}

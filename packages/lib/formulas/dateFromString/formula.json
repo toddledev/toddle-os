@@ -1,0 +1,16 @@
+{
+  "name": "Date From String",
+  "arguments": [
+    {
+      "name": "Date string",
+      "description": "String representing a date - \"August 18, 1986\" for instance.",
+      "type": { "type": "String" },
+      "formula": { "type": "value", "value": "August 18, 1986" }
+    }
+  ],
+  "description": "Convert a string to a Date.",
+  "output": {
+    "description": "The input value converted to a Date",
+    "type": { "type": "Date" }
+  }
+}

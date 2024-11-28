@@ -1,0 +1,22 @@
+{
+  "name": "Divide",
+  "description": "Divide to numbers",
+  "arguments": [
+    {
+      "name": "Dividend",
+      "description": "The number to be divided",
+      "type": { "type": "Number" },
+      "formula": { "type": "value", "value": 1 }
+    },
+    {
+      "name": "Divisor",
+      "description": "The number divide by",
+      "type": { "type": "Number" },
+      "formula": { "type": "value", "value": 1 }
+    }
+  ],
+  "output": {
+    "description": "The result of dividing the dividend with the divisor",
+    "type": { "type": "Number" }
+  }
+}

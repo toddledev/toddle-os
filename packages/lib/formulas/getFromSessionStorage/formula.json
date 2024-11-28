@@ -1,0 +1,19 @@
+{
+  "name": "Get from Session Storage",
+  "description": "Read a value from Session Storage with the provided key. It tries to JSON decode the value",
+  "cache": false,
+  "arguments": [
+    {
+      "name": "Key",
+      "formula": { "type": "value", "value": null },
+      "description": "The key to read from Session Storage",
+      "type": {
+        "type": "String"
+      }
+    }
+  ],
+  "output": {
+    "description": "The value found in Session Storage",
+    "type": { "type": "Any" }
+  }
+}

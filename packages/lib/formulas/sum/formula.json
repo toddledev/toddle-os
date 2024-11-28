@@ -1,0 +1,21 @@
+{
+  "name": "Sum",
+  "arguments": [
+    {
+      "name": "Array",
+      "type": { "type": "Array" },
+      "description": "The array of numbers to sum",
+      "formula": {
+        "type": "function",
+        "name": "@toddle/list",
+        "arguments": [],
+        "variableArguments": true
+      }
+    }
+  ],
+  "description": "Return the sum of an array of numbers",
+  "output": {
+    "description": "The total sum from adding all the numbers in the array",
+    "type": { "type": "Number" }
+  }
+}

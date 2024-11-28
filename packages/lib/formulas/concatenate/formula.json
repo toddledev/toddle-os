@@ -1,0 +1,28 @@
+{
+  "name": "Concatenate",
+  "description": "Concatenate 2 or more values. ",
+  "arguments": [
+    {
+      "name": "0",
+      "formula": { "type": "value", "value": "" },
+      "type": {
+        "type": "Union",
+        "types": [
+          { "type": "String" },
+          { "type": "Array", "ofType": { "type": "Any" } }
+        ]
+      }
+    }
+  ],
+  "variableArguments": true,
+  "output": {
+    "type": {
+      "type": "Union",
+      "types": [
+        { "type": "String" },
+        { "type": "Array", "ofType": { "type": "Any" } }
+      ]
+    },
+    "description": "String or array containing all the input values."
+  }
+}

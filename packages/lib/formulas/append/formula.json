@@ -1,0 +1,36 @@
+{
+  "name": "Append",
+  "arguments": [
+    {
+      "name": "Array",
+      "type": {
+        "type": "Array"
+      },
+      "description": "The array to append to",
+      "formula": {
+        "type": "function",
+        "name": "@toddle/list",
+        "arguments": [],
+        "variableArguments": true
+      }
+    },
+    {
+      "name": "Item",
+      "type": {
+        "type": "Any"
+      },
+      "description": "The item to append to the array",
+      "formula": {
+        "type": "value",
+        "value": "Item"
+      }
+    }
+  ],
+  "description": "Add an element to the end of an array",
+  "output": {
+    "description": "A new array containing all the elements from the input array and the new item ",
+    "type": {
+      "type": "Array"
+    }
+  }
+}

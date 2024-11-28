@@ -1,0 +1,16 @@
+{
+  "name": "Reverse",
+  "description": "Reverse the order of an array",
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": null },
+      "description": "The array to be reversed",
+      "type": { "type": "Array" }
+    }
+  ],
+  "output": {
+    "type": { "type": "Array" },
+    "description": "The reversed list"
+  }
+}

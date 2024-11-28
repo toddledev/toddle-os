@@ -1,0 +1,18 @@
+{
+  "name": "Get Http-Only Cookie",
+  "description": "Get the value of a http-only cookie by name. This formula will only output anything meaningful server-side, and is intended to be used for SSR/proxied API requests to read http-only cookies.",
+  "arguments": [
+    {
+      "name": "Cookie name",
+      "formula": { "type": "value", "value": null },
+      "description": "The name of the http-only cookie you want to get the value of.",
+      "type": {
+        "type": "String"
+      }
+    }
+  ],
+  "output": {
+    "description": "Server-side: the value of the cookie if found or null if not found. Client-side: a placeholder template string.",
+    "type": { "type": "String" }
+  }
+}

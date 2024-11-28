@@ -1,0 +1,10 @@
+{
+  "name": "Now",
+  "description": "Get a Date representing \"now\"",
+  "arguments": [],
+  "cache": false,
+  "output": {
+    "description": "A Date object initialised at the current date/time",
+    "type": { "type": "Date" }
+  }
+}
