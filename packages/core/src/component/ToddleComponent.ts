@@ -2,6 +2,7 @@ import { isLegacyApi } from '../api/api'
 import { LegacyToddleApi } from '../api/LegacyToddleApi'
 import { ToddleApiV2 } from '../api/ToddleApiV2'
 import { Formula, FunctionOperation } from '../formula/formula'
+import { GlobalFormulas } from '../formula/formulaTypes'
 import {
   getFormulasInAction,
   getFormulasInFormula,
@@ -11,8 +12,9 @@ import { getActionsInAction } from './actionUtils'
 import type { ActionModel, Component, NodeModel } from './component.types'
 import { isPageComponent } from './isPageComponent'
 
-export class ToddleComponent {
+export class ToddleComponent<Handler> {
   private component: Component
+  private globalFormulas: GlobalFormulas<Handler>
   private getComponent: (
     name: string,
     packageName?: string,
@@ -23,18 +25,21 @@ export class ToddleComponent {
     component,
     getComponent,
     packageName,
+    globalFormulas,
   }: {
     component: Component
     getComponent: (name: string, packageName?: string) => Component | undefined
     packageName: string | undefined
+    globalFormulas: GlobalFormulas<Handler>
   }) {
     this.component = component
     this.getComponent = getComponent
     this.packageName = packageName
+    this.globalFormulas = globalFormulas
   }
 
-  get uniqueSubComponents(): ToddleComponent[] {
-    const components = new Map<string, ToddleComponent>()
+  get uniqueSubComponents(): ToddleComponent<Handler>[] {
+    const components = new Map<string, ToddleComponent<Handler>>()
 
     const visitNode = (packageName?: string) => (node: NodeModel) => {
       if (node.type !== 'component') {
@@ -56,6 +61,7 @@ export class ToddleComponent {
           component,
           getComponent: this.getComponent,
           packageName: node.package ?? packageName,
+          globalFormulas: this.globalFormulas,
         }),
       )
       Object.values(component.nodes).forEach(
@@ -90,159 +96,195 @@ export class ToddleComponent {
    * @returns An iterable that yields the path and formula.
    */
   *formulasInComponent(): Generator<[(string | number)[], Formula]> {
+    const globalFormulas = this.globalFormulas
     function* visitNode(
       node: NodeModel,
       path: (string | number)[] = [],
     ): Generator<[(string | number)[], Formula]> {
       switch (node.type) {
         case 'text':
-          yield* getFormulasInFormula(node.condition, [...path, 'condition'])
-          yield* getFormulasInFormula(node.repeat, [...path, 'repeat'])
-          yield* getFormulasInFormula(node.repeatKey, [...path, 'repeatKey'])
-          yield* getFormulasInFormula(node.value, [...path, 'value'])
+          yield* getFormulasInFormula({
+            formula: node.condition,
+            globalFormulas,
+            path: [...path, 'condition'],
+          })
+          yield* getFormulasInFormula({
+            formula: node.repeat,
+            globalFormulas,
+            path: [...path, 'repeat'],
+          })
+          yield* getFormulasInFormula({
+            formula: node.repeatKey,
+            globalFormulas,
+            path: [...path, 'repeatKey'],
+          })
+          yield* getFormulasInFormula({
+            formula: node.value,
+            globalFormulas,
+            path: [...path, 'value'],
+          })
           break
         case 'slot':
-          yield* getFormulasInFormula(node.condition, [...path, 'condition'])
+          yield* getFormulasInFormula({
+            formula: node.condition,
+            globalFormulas,
+            path: [...path, 'condition'],
+          })
           break
         case 'component':
-          yield* getFormulasInFormula(node.condition, [...path, 'condition'])
-          yield* getFormulasInFormula(node.repeat, [...path, 'repeat'])
-          yield* getFormulasInFormula(node.repeatKey, [...path, 'repeatKey'])
+          yield* getFormulasInFormula({
+            formula: node.condition,
+            globalFormulas,
+            path: [...path, 'condition'],
+          })
+          yield* getFormulasInFormula({
+            formula: node.repeat,
+            globalFormulas,
+            path: [...path, 'repeat'],
+          })
+          yield* getFormulasInFormula({
+            formula: node.repeatKey,
+            globalFormulas,
+            path: [...path, 'repeatKey'],
+          })
           for (const [attrKey, attr] of Object.entries(node.attrs ?? {})) {
-            yield* getFormulasInFormula(attr, [...path, 'attrs', attrKey])
+            yield* getFormulasInFormula({
+              formula: attr,
+              globalFormulas,
+              path: [...path, 'attrs', attrKey],
+            })
           }
           for (const [eventKey, event] of Object.entries(node.events ?? {})) {
             for (const [actionKey, action] of Object.entries(
               event?.actions ?? {},
             )) {
-              yield* getFormulasInAction(action, [
-                ...path,
-                'events',
-                eventKey,
-                'actions',
-                actionKey,
-              ])
+              yield* getFormulasInAction({
+                action,
+                globalFormulas,
+                path: [...path, 'events', eventKey, 'actions', actionKey],
+              })
             }
           }
           break
         case 'element':
-          yield* getFormulasInFormula(node.condition, [...path, 'condition'])
-          yield* getFormulasInFormula(node.repeat, [...path, 'repeat'])
-          yield* getFormulasInFormula(node.repeatKey, [...path, 'repeatKey'])
+          yield* getFormulasInFormula({
+            formula: node.condition,
+            globalFormulas,
+            path: [...path, 'condition'],
+          })
+          yield* getFormulasInFormula({
+            formula: node.repeat,
+            globalFormulas,
+            path: [...path, 'repeat'],
+          })
+          yield* getFormulasInFormula({
+            formula: node.repeatKey,
+            globalFormulas,
+            path: [...path, 'repeatKey'],
+          })
           for (const [attrKey, attr] of Object.entries(node.attrs ?? {})) {
-            yield* getFormulasInFormula(attr, [...path, 'attrs', attrKey])
+            yield* getFormulasInFormula({
+              formula: attr,
+              globalFormulas,
+              path: [...path, 'attrs', attrKey],
+            })
           }
           for (const [eventKey, event] of Object.entries(node.events ?? {})) {
             for (const [actionKey, a] of Object.entries(event?.actions ?? {})) {
-              yield* getFormulasInAction(a, [
-                ...path,
-                'events',
-                eventKey,
-                'actions',
-                actionKey,
-              ])
+              yield* getFormulasInAction({
+                action: a,
+                globalFormulas,
+                path: [...path, 'events', eventKey, 'actions', actionKey],
+              })
             }
           }
           for (const [classKey, c] of Object.entries(node.classes ?? {})) {
-            yield* getFormulasInFormula(c.formula, [
-              ...path,
-              'classes',
-              classKey,
-              'formula',
-            ])
+            yield* getFormulasInFormula({
+              formula: c.formula,
+              globalFormulas,
+              path: [...path, 'classes', classKey, 'formula'],
+            })
           }
 
           for (const [styleVariableKey, styleVariable] of Object.entries(
             node['style-variables'] ?? {},
           )) {
-            yield* getFormulasInFormula(styleVariable.formula, [
-              ...path,
-              'style-variables',
-              styleVariableKey,
-              'formula',
-            ])
+            yield* getFormulasInFormula({
+              formula: styleVariable.formula,
+              globalFormulas,
+              path: [...path, 'style-variables', styleVariableKey, 'formula'],
+            })
           }
           break
       }
     }
 
-    yield* getFormulasInFormula(this.route?.info?.language?.formula, [
-      'route',
-      'info',
-      'language',
-      'formula',
-    ])
-    yield* getFormulasInFormula(this.route?.info?.title?.formula, [
-      'route',
-      'info',
-      'title',
-      'formula',
-    ])
-    yield* getFormulasInFormula(this.route?.info?.description?.formula, [
-      'route',
-      'info',
-      'description',
-      'formula',
-    ])
-    yield* getFormulasInFormula(this.route?.info?.icon?.formula, [
-      'route',
-      'info',
-      'icon',
-      'formula',
-    ])
-    yield* getFormulasInFormula(this.route?.info?.charset?.formula, [
-      'route',
-      'info',
-      'charset',
-      'formula',
-    ])
+    yield* getFormulasInFormula({
+      formula: this.route?.info?.language?.formula,
+      globalFormulas,
+      path: ['route', 'info', 'language', 'formula'],
+    })
+    yield* getFormulasInFormula({
+      formula: this.route?.info?.title?.formula,
+      globalFormulas,
+      path: ['route', 'info', 'title', 'formula'],
+    })
+    yield* getFormulasInFormula({
+      formula: this.route?.info?.description?.formula,
+      globalFormulas,
+      path: ['route', 'info', 'description', 'formula'],
+    })
+    yield* getFormulasInFormula({
+      formula: this.route?.info?.icon?.formula,
+      globalFormulas,
+      path: ['route', 'info', 'icon', 'formula'],
+    })
+    yield* getFormulasInFormula({
+      formula: this.route?.info?.charset?.formula,
+      globalFormulas,
+      path: ['route', 'info', 'charset', 'formula'],
+    })
     for (const [metaKey, meta] of Object.entries(
       this.route?.info?.meta ?? {},
     )) {
-      yield* getFormulasInFormula(meta.content, [
-        'route',
-        'info',
-        'meta',
-        metaKey,
-        'content',
-      ])
+      yield* getFormulasInFormula({
+        formula: meta.content,
+        globalFormulas,
+        path: ['route', 'info', 'meta', metaKey, 'content'],
+      })
       for (const [attrKey, a] of Object.entries(meta.attrs)) {
-        yield* getFormulasInFormula(a, [
-          'route',
-          'info',
-          'meta',
-          metaKey,
-          'attrs',
-          attrKey,
-        ])
+        yield* getFormulasInFormula({
+          formula: a,
+          globalFormulas,
+          path: ['route', 'info', 'meta', metaKey, 'attrs', attrKey],
+        })
       }
     }
     for (const [formulaKey, formula] of Object.entries(this.formulas ?? {})) {
-      yield* getFormulasInFormula(formula.formula, [
-        'formulas',
-        formulaKey,
-        'formula',
-      ])
+      yield* getFormulasInFormula({
+        formula: formula.formula,
+        globalFormulas,
+        path: ['formulas', formulaKey, 'formula'],
+      })
     }
     for (const [variableKey, variable] of Object.entries(
       this.variables ?? {},
     )) {
-      yield* getFormulasInFormula(variable.initialValue, [
-        'variables',
-        variableKey,
-        'initialValue',
-      ])
+      yield* getFormulasInFormula({
+        formula: variable.initialValue,
+        globalFormulas,
+        path: ['variables', variableKey, 'initialValue'],
+      })
     }
     for (const [workflowKey, workflow] of Object.entries(
       this.workflows ?? {},
     )) {
       for (const [actionKey, action] of workflow.actions.entries()) {
-        yield* getFormulasInAction(action, [
-          'workflows',
-          workflowKey,
-          'actions',
-          actionKey,
-        ])
+        yield* getFormulasInAction({
+          action,
+          globalFormulas,
+          path: ['workflows', workflowKey, 'actions', actionKey],
+        })
       }
     }
     for (const [, api] of Object.entries(this.apis)) {
@@ -251,16 +293,30 @@ export class ToddleComponent {
     for (const [actionKey, action] of Object.entries(
       this.component.onLoad?.actions ?? {},
     )) {
-      yield* getFormulasInAction(action, ['onLoad', 'actions', actionKey])
+      yield* getFormulasInAction({
+        action,
+        globalFormulas,
+        path: ['onLoad', 'actions', actionKey],
+      })
     }
     for (const [actionKey, action] of Object.entries(
       this.component.onAttributeChange?.actions ?? {},
     )) {
-      yield* getFormulasInAction(action, [
-        'onAttributeChange',
-        'actions',
-        actionKey,
-      ])
+      yield* getFormulasInAction({
+        action,
+        globalFormulas,
+        path: ['onAttributeChange', 'actions', actionKey],
+      })
+    }
+    // Visit all component formulas in case they reference other formulas
+    for (const [key, componentFormula] of Object.entries(
+      this.component.formulas ?? {},
+    )) {
+      yield* getFormulasInFormula({
+        formula: componentFormula.formula,
+        globalFormulas,
+        path: ['formulas', key, 'formula'],
+      })
     }
     for (const [nodeKey, node] of Object.entries(this.nodes ?? {})) {
       yield* visitNode(node, ['nodes', nodeKey])
@@ -384,8 +440,8 @@ export class ToddleComponent {
       Object.entries(this.component.apis ?? {}).map(([key, api]) => [
         key,
         isLegacyApi(api)
-          ? new LegacyToddleApi(api, key)
-          : new ToddleApiV2(api, key),
+          ? new LegacyToddleApi(api, key, this.globalFormulas)
+          : new ToddleApiV2(api, key, this.globalFormulas),
       ]),
     )
   }

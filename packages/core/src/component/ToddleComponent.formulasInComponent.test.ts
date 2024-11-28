@@ -1,4 +1,4 @@
-import { valueFormula } from '../formula/formulaUtils'
+import { functionFormula, valueFormula } from '../formula/formulaUtils'
 import { ToddleComponent } from './ToddleComponent'
 
 describe('ToddleComponent.formulasInComponent', () => {
@@ -34,6 +34,7 @@ describe('ToddleComponent.formulasInComponent', () => {
       },
       getComponent: () => undefined,
       packageName: 'demo',
+      globalFormulas: { formulas: {}, packages: {} },
     })
     const formulas = Array.from(demo.formulasInComponent()).map(
       ([, formula]) => formula,
@@ -44,7 +45,7 @@ describe('ToddleComponent.formulasInComponent', () => {
       arguments: [],
     })
   })
-  test('it return formulas used in APIs', () => {
+  test('it returns formulas used in APIs', () => {
     const demo = new ToddleComponent({
       component: {
         name: 'demo',
@@ -86,6 +87,7 @@ describe('ToddleComponent.formulasInComponent', () => {
       },
       getComponent: () => undefined,
       packageName: undefined,
+      globalFormulas: { formulas: {}, packages: {} },
     })
     const formulas = Array.from(demo.formulasInComponent()).map(
       ([, formula]) => formula,
@@ -97,6 +99,134 @@ describe('ToddleComponent.formulasInComponent', () => {
     })
     expect(formulas).toContainEqual({
       name: 'otherFunction',
+      type: 'function',
+      arguments: [],
+    })
+  })
+  test('it returns global formulas', () => {
+    const demo = new ToddleComponent({
+      component: {
+        name: 'demo',
+        apis: {},
+        attributes: {},
+        nodes: {},
+        variables: {
+          x: {
+            initialValue: functionFormula('globalFunction'),
+          },
+        },
+        workflows: {},
+      },
+      getComponent: () => undefined,
+      packageName: undefined,
+      globalFormulas: {
+        formulas: {
+          globalFunction: {
+            name: 'globalFunction',
+            arguments: [],
+            formula: valueFormula(4),
+          },
+        },
+        packages: {},
+      },
+    })
+    const formulas = Array.from(demo.formulasInComponent()).map(
+      ([, formula]) => formula,
+    )
+    expect(formulas).toContainEqual({
+      name: 'globalFunction',
+      type: 'function',
+      arguments: [],
+    })
+  })
+  test('it returns global formulas that are referenced through global formulas', () => {
+    const demo = new ToddleComponent({
+      component: {
+        name: 'demo',
+        apis: {},
+        attributes: {},
+        nodes: {},
+        variables: {
+          x: {
+            initialValue: functionFormula('globalFunction'),
+          },
+        },
+        workflows: {},
+      },
+      getComponent: () => undefined,
+      packageName: undefined,
+      globalFormulas: {
+        formulas: {
+          globalFunction: {
+            name: 'globalFunction',
+            arguments: [],
+            formula: functionFormula('otherGlobalFunction'),
+          },
+          otherGlobalFunction: {
+            name: 'otherGlobalFunction',
+            arguments: [],
+            formula: valueFormula(4),
+          },
+        },
+        packages: {},
+      },
+    })
+    const formulas = Array.from(demo.formulasInComponent()).map(
+      ([, formula]) => formula,
+    )
+    expect(formulas).toContainEqual({
+      name: 'globalFunction',
+      type: 'function',
+      arguments: [],
+    })
+    expect(formulas).toContainEqual({
+      name: 'otherGlobalFunction',
+      type: 'function',
+      arguments: [],
+    })
+  })
+  test("it stops following function refs after they've been visited once (no infinite loops)", () => {
+    const demo = new ToddleComponent({
+      component: {
+        name: 'demo',
+        apis: {},
+        attributes: {},
+        nodes: {},
+        variables: {
+          x: {
+            initialValue: functionFormula('globalFunction'),
+          },
+        },
+        workflows: {},
+      },
+      getComponent: () => undefined,
+      packageName: undefined,
+      globalFormulas: {
+        formulas: {
+          globalFunction: {
+            name: 'globalFunction',
+            arguments: [],
+            formula: functionFormula('otherGlobalFunction'),
+          },
+          otherGlobalFunction: {
+            name: 'otherGlobalFunction',
+            arguments: [],
+            formula: functionFormula('globalFunction'),
+          },
+        },
+        packages: {},
+      },
+    })
+    const formulas = Array.from(demo.formulasInComponent()).map(
+      ([, formula]) => formula,
+    )
+    expect(formulas).toContainEqual({
+      name: 'globalFunction',
+      type: 'function',
+      arguments: [],
+    })
+    expect(formulas).toContainEqual({
+      name: 'otherGlobalFunction',
       type: 'function',
       arguments: [],
     })

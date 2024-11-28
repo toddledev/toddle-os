@@ -1,11 +1,20 @@
 import { Formula } from './formula'
+import { GlobalFormulas } from './formulaTypes'
 import { getFormulasInFormula } from './formulaUtils'
 
-export class ToddleFormula {
+export class ToddleFormula<Handler> {
   private formula: Formula
+  private globalFormulas: GlobalFormulas<Handler>
 
-  constructor({ formula }: { formula: Formula }) {
+  constructor({
+    formula,
+    globalFormulas,
+  }: {
+    formula: Formula
+    globalFormulas: GlobalFormulas<Handler>
+  }) {
     this.formula = formula
+    this.globalFormulas = globalFormulas
   }
 
   /**
@@ -13,6 +22,9 @@ export class ToddleFormula {
    * @returns An iterable that yields the path and formula.
    */
   *formulasInFormula(): Generator<[(string | number)[], Formula]> {
-    yield* getFormulasInFormula(this.formula)
+    yield* getFormulasInFormula({
+      formula: this.formula,
+      globalFormulas: this.globalFormulas,
+    })
   }
 }

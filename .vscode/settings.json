@@ -1,0 +1,70 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "cSpell.words": [
+    "classname",
+    "codegen",
+    "crossorigin",
+    "ctx",
+    "datasignal",
+    "dryrun",
+    "fastly",
+    "fetchpriority",
+    "Fira",
+    "fkey",
+    "happydom",
+    "hono",
+    "imagedelivery",
+    "importmap",
+    "isnt",
+    "livemode",
+    "LOCALHOSTS",
+    "MAILERSEND",
+    "maxage",
+    "pako",
+    "plpgsql",
+    "postgrest",
+    "POSTHOG",
+    "predev",
+    "proxied",
+    "proxying",
+    "rebeccapurple",
+    "registrator",
+    "ROWTYPE",
+    "serviceworker",
+    "signup",
+    "signups",
+    "speculationrules",
+    "supabase",
+    "tilecolor",
+    "toddle",
+    "tsndr",
+    "ttl",
+    "typecheck",
+    "typeof",
+    "urlset",
+    "valibot"
+  ],
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/*.js.map": true,
+    ".vscode/*": true
+  },
+  "prettier.configPath": "./.prettierrc",
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.hg/store/**": true,
+    "**/node_modules/**": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "typescript.preferences.autoImportSpecifierExcludeRegexes": ["^lodash$"]
+}

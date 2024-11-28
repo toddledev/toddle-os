@@ -1,6 +1,7 @@
 import { getActionsInAction } from '../component/actionUtils'
 import { ActionModel } from '../component/component.types'
 import { type Formula } from '../formula/formula'
+import { GlobalFormulas } from '../formula/formulaTypes'
 import {
   getFormulasInAction,
   getFormulasInFormula,
@@ -8,14 +9,20 @@ import {
 import { isDefined } from '../utils/util'
 import { ApiRequest } from './apiTypes'
 
-export class ToddleApiV2 implements ApiRequest {
+export class ToddleApiV2<Handler> implements ApiRequest {
   private api: ApiRequest
   private _apiReferences?: Set<string>
   private key: string
+  private globalFormulas: GlobalFormulas<Handler>
 
-  constructor(api: ApiRequest, apiKey: string) {
+  constructor(
+    api: ApiRequest,
+    apiKey: string,
+    globalFormulas: GlobalFormulas<Handler>,
+  ) {
     this.api = api
     this.key = apiKey
+    this.globalFormulas = globalFormulas
   }
 
   get apiReferences(): Set<string> {
@@ -162,142 +169,121 @@ export class ToddleApiV2 implements ApiRequest {
     const api = this.api
     const apiKey = this.key
     for (const [input, value] of Object.entries(this.api.inputs)) {
-      yield* getFormulasInFormula(value.formula, [
-        'apis',
-        apiKey,
-        'inputs',
-        input,
-        'formula',
-      ])
+      yield* getFormulasInFormula({
+        formula: value.formula,
+        globalFormulas: this.globalFormulas,
+        path: ['apis', apiKey, 'inputs', input, 'formula'],
+      })
     }
-    yield* getFormulasInFormula(api.autoFetch, ['apis', apiKey, 'autoFetch'])
-    yield* getFormulasInFormula(api.url, ['apis', apiKey, 'url'])
+    yield* getFormulasInFormula({
+      formula: api.autoFetch,
+      globalFormulas: this.globalFormulas,
+      path: ['apis', apiKey, 'autoFetch'],
+    })
+    yield* getFormulasInFormula({
+      formula: api.url,
+      globalFormulas: this.globalFormulas,
+      path: ['apis', apiKey, 'url'],
+    })
     for (const [pathKey, path] of Object.entries(api.path ?? {})) {
-      yield* getFormulasInFormula(path.formula, [
-        'apis',
-        apiKey,
-        'path',
-        pathKey,
-        'formula',
-      ])
+      yield* getFormulasInFormula({
+        formula: path.formula,
+        globalFormulas: this.globalFormulas,
+        path: ['apis', apiKey, 'path', pathKey, 'formula'],
+      })
     }
     for (const [queryParamKey, queryParam] of Object.entries(
       api.queryParams ?? {},
     )) {
-      yield* getFormulasInFormula(queryParam.formula, [
-        'apis',
-        apiKey,
-        'queryParams',
-        queryParamKey,
-        'formula',
-      ])
-      yield* getFormulasInFormula(queryParam.enabled, [
-        'apis',
-        apiKey,
-        'queryParams',
-        queryParamKey,
-        'enabled',
-      ])
+      yield* getFormulasInFormula({
+        formula: queryParam.formula,
+        globalFormulas: this.globalFormulas,
+        path: ['apis', apiKey, 'queryParams', queryParamKey, 'formula'],
+      })
+      yield* getFormulasInFormula({
+        formula: queryParam.enabled,
+        globalFormulas: this.globalFormulas,
+        path: ['apis', apiKey, 'queryParams', queryParamKey, 'enabled'],
+      })
     }
 
     for (const [headerKey, header] of Object.entries(api.headers ?? {})) {
-      yield* getFormulasInFormula(header.formula, [
-        'apis',
-        apiKey,
-        'headers',
-        headerKey,
-        'formula',
-      ])
-      yield* getFormulasInFormula(header.enabled, [
-        'apis',
-        apiKey,
-        'headers',
-        headerKey,
-        'enabled',
-      ])
+      yield* getFormulasInFormula({
+        formula: header.formula,
+        globalFormulas: this.globalFormulas,
+        path: ['apis', apiKey, 'headers', headerKey, 'formula'],
+      })
+      yield* getFormulasInFormula({
+        formula: header.enabled,
+        globalFormulas: this.globalFormulas,
+        path: ['apis', apiKey, 'headers', headerKey, 'enabled'],
+      })
     }
 
-    yield* getFormulasInFormula(api.body, ['apis', apiKey, 'body'])
+    yield* getFormulasInFormula({
+      formula: api.body,
+      globalFormulas: this.globalFormulas,
+      path: ['apis', apiKey, 'body'],
+    })
     for (const [actionKey, action] of Object.entries(
       api.client?.onCompleted?.actions ?? {},
     )) {
-      yield* getFormulasInAction(action, [
-        'apis',
-        apiKey,
-        'client',
-        'onCompleted',
-        'actions',
-        actionKey,
-      ])
+      yield* getFormulasInAction({
+        action,
+        globalFormulas: this.globalFormulas,
+        path: ['apis', apiKey, 'client', 'onCompleted', 'actions', actionKey],
+      })
     }
     for (const [actionKey, action] of Object.entries(
       api.client?.onFailed?.actions ?? {},
     )) {
-      yield* getFormulasInAction(action, [
-        'apis',
-        apiKey,
-        'client',
-        'onFailed',
-        'actions',
-        actionKey,
-      ])
+      yield* getFormulasInAction({
+        action,
+        globalFormulas: this.globalFormulas,
+        path: ['apis', apiKey, 'client', 'onFailed', 'actions', actionKey],
+      })
     }
-    yield* getFormulasInFormula(api.client?.debounce?.formula, [
-      'apis',
-      apiKey,
-      'client',
-      'debounce',
-      'formula',
-    ])
+    yield* getFormulasInFormula({
+      formula: api.client?.debounce?.formula,
+      globalFormulas: this.globalFormulas,
+      path: ['apis', apiKey, 'client', 'debounce', 'formula'],
+    })
     for (const [actionKey, action] of Object.entries(
       api.client?.onMessage?.actions ?? {},
     )) {
-      yield* getFormulasInAction(action, [
-        'apis',
-        apiKey,
-        'client',
-        'onData',
-        'actions',
-        actionKey,
-      ])
+      yield* getFormulasInAction({
+        action,
+        globalFormulas: this.globalFormulas,
+        path: ['apis', apiKey, 'client', 'onData', 'actions', actionKey],
+      })
     }
     for (const [rule, value] of Object.entries(api.redirectRules ?? {})) {
-      yield* getFormulasInFormula(value.formula, [
-        'apis',
-        apiKey,
-        'redirectRules',
-        rule,
-        'formula',
-      ])
+      yield* getFormulasInFormula({
+        formula: value.formula,
+        globalFormulas: this.globalFormulas,
+        path: ['apis', apiKey, 'redirectRules', rule, 'formula'],
+      })
     }
-    yield* getFormulasInFormula(api.isError?.formula, [
-      'apis',
-      apiKey,
-      'isError',
-      'formula',
-    ])
-    yield* getFormulasInFormula(api.timeout?.formula, [
-      'apis',
-      apiKey,
-      'timeout',
-      'formula',
-    ])
-    yield* getFormulasInFormula(api.server?.proxy?.enabled.formula, [
-      'apis',
-      apiKey,
-      'server',
-      'proxy',
-      'enabled',
-      'formula',
-    ])
-    yield* getFormulasInFormula(api.server?.ssr?.enabled?.formula, [
-      'apis',
-      apiKey,
-      'server',
-      'ssr',
-      'enabled',
-      'formula',
-    ])
+    yield* getFormulasInFormula({
+      formula: api.isError?.formula,
+      globalFormulas: this.globalFormulas,
+      path: ['apis', apiKey, 'isError', 'formula'],
+    })
+    yield* getFormulasInFormula({
+      formula: api.timeout?.formula,
+      globalFormulas: this.globalFormulas,
+      path: ['apis', apiKey, 'timeout', 'formula'],
+    })
+    yield* getFormulasInFormula({
+      formula: api.server?.proxy?.enabled.formula,
+      globalFormulas: this.globalFormulas,
+      path: ['apis', apiKey, 'server', 'proxy', 'enabled', 'formula'],
+    })
+    yield* getFormulasInFormula({
+      formula: api.server?.ssr?.enabled?.formula,
+      globalFormulas: this.globalFormulas,
+      path: ['apis', apiKey, 'server', 'ssr', 'enabled', 'formula'],
+    })
   }
 
   *actionModelsInApi(): Generator<[(string | number)[], ActionModel]> {
