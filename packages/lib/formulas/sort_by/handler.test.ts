@@ -26,7 +26,7 @@ describe('Formula: Sort by', () => {
         [
           [
             { name: 'Andreas' },
-            { name: 'Sean' },
+            { name: 'Jacob' },
             { name: 'Kasper' },
             { name: 'Erik' },
           ],
@@ -39,29 +39,29 @@ describe('Formula: Sort by', () => {
       { name: 'Andreas' },
       { name: 'Erik' },
       { name: 'Kasper' },
-      { name: 'Sean' },
+      { name: 'Jacob' },
     ])
-  }),
-    test('should sort by priority when formula returns an array', () => {
-      expect(
-        handler(
+  })
+  test('should sort by priority when formula returns an array', () => {
+    expect(
+      handler(
+        [
           [
-            [
-              { name: 'Andreas', role: 'Engineer' },
-              { name: 'Sean', role: 'Marketing' },
-              { name: 'Kasper', role: 'Designer' },
-              { name: 'Erik', role: 'Engineer' },
-            ],
-            (a: any) => [a.item.role, a.item.name],
-            true,
+            { name: 'Andreas', role: 'Engineer' },
+            { name: 'Jacob', role: 'Marketing' },
+            { name: 'Kasper', role: 'Designer' },
+            { name: 'Erik', role: 'Engineer' },
           ],
-          undefined as any,
-        ),
-      ).toEqual([
-        { name: 'Kasper', role: 'Designer' },
-        { name: 'Andreas', role: 'Engineer' },
-        { name: 'Erik', role: 'Engineer' },
-        { name: 'Sean', role: 'Marketing' },
-      ])
-    })
+          (a: any) => [a.item.role, a.item.name],
+          true,
+        ],
+        undefined as any,
+      ),
+    ).toEqual([
+      { name: 'Kasper', role: 'Designer' },
+      { name: 'Andreas', role: 'Engineer' },
+      { name: 'Erik', role: 'Engineer' },
+      { name: 'Jacob', role: 'Marketing' },
+    ])
+  })
 })
