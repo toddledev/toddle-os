@@ -308,16 +308,6 @@ export class ToddleComponent<Handler> {
         path: ['onAttributeChange', 'actions', actionKey],
       })
     }
-    // Visit all component formulas in case they reference other formulas
-    for (const [key, componentFormula] of Object.entries(
-      this.component.formulas ?? {},
-    )) {
-      yield* getFormulasInFormula({
-        formula: componentFormula.formula,
-        globalFormulas,
-        path: ['formulas', key, 'formula'],
-      })
-    }
     for (const [nodeKey, node] of Object.entries(this.nodes ?? {})) {
       yield* visitNode(node, ['nodes', nodeKey])
     }
