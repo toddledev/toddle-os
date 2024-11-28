@@ -9,8 +9,8 @@ const handler: FormulaHandler<string> = ([date, loc, opt]) => {
     typeof loc === 'string' && loc.length > 0
       ? loc
       : Array.isArray(loc) && loc.every((l) => typeof l === 'string')
-      ? (loc as string[])
-      : undefined
+        ? (loc as string[])
+        : undefined
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!opt || typeof opt !== 'object') {
     return Intl.DateTimeFormat(locales).format(date)
@@ -85,8 +85,8 @@ const handler: FormulaHandler<string> = ([date, loc, opt]) => {
     options.hour12 === true
       ? true
       : options.hour12 === false
-      ? false
-      : undefined
+        ? false
+        : undefined
 
   return Intl.DateTimeFormat(locales, {
     dateStyle,

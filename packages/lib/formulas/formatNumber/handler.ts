@@ -8,8 +8,8 @@ const handler: FormulaHandler<string> = ([input, loc, opt]) => {
     typeof loc === 'string' && loc.length > 0
       ? loc
       : Array.isArray(loc) && loc.every((l) => typeof l === 'string')
-      ? (loc as string[])
-      : undefined
+        ? (loc as string[])
+        : undefined
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!opt || typeof opt !== 'object') {
     return Intl.NumberFormat(locales).format(input)

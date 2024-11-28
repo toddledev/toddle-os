@@ -38,8 +38,8 @@ describe('Formula: Sort by', () => {
     ).toEqual([
       { name: 'Andreas' },
       { name: 'Erik' },
-      { name: 'Kasper' },
       { name: 'Jacob' },
+      { name: 'Kasper' },
     ])
   })
   test('should sort by priority when formula returns an array', () => {
@@ -48,7 +48,7 @@ describe('Formula: Sort by', () => {
         [
           [
             { name: 'Andreas', role: 'Engineer' },
-            { name: 'Jacob', role: 'Marketing' },
+            { name: 'Vakis', role: 'Marketing' },
             { name: 'Kasper', role: 'Designer' },
             { name: 'Erik', role: 'Engineer' },
           ],
@@ -61,7 +61,7 @@ describe('Formula: Sort by', () => {
       { name: 'Kasper', role: 'Designer' },
       { name: 'Andreas', role: 'Engineer' },
       { name: 'Erik', role: 'Engineer' },
-      { name: 'Jacob', role: 'Marketing' },
+      { name: 'Vakis', role: 'Marketing' },
     ])
   })
 })
