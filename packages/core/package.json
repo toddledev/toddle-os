@@ -14,9 +14,6 @@
   "scripts": {
     "build": "tsc",
     "npm-publish": "bun run build && bun publish --access public",
-    "test": "bun test",
-    "test:watch": "bun test --watch",
-    "test:debug": "bun test --watch --inspect-wait=localhost:6499/toddle",
     "typecheck": "tsc --noEmit",
     "watch": "tsc -w"
   },
