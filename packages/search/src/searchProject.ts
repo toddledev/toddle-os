@@ -129,7 +129,7 @@ function* visitNode(
     return
   }
 
-  let results: Result[] = []
+  const results: Result[] = []
   for (const rule of rules) {
     rule.visit(
       (path, details) => {
@@ -151,8 +151,9 @@ function* visitNode(
   }
 
   switch (nodeType) {
-    case 'component':
-      const component = new ToddleComponent({
+    case 'component': {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+      const component = new ToddleComponent<string>({
         component: value,
         packageName: undefined,
         getComponent: (name) => files.components[name],
@@ -322,6 +323,7 @@ function* visitNode(
         )
       }
       break
+    }
 
     case 'project-formula':
       if (isToddleFormula(value)) {

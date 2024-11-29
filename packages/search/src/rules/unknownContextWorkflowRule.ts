@@ -18,10 +18,7 @@ export const unknownContextWorkflowRule: Rule<{
     }
 
     const contexts = files.components[path[1]]?.contexts ?? {}
-    if (
-      contexts[value.contextProvider] &&
-      contexts[value.contextProvider].workflows.includes(value.workflow)
-    ) {
+    if (contexts[value.contextProvider]?.workflows.includes(value.workflow)) {
       return
     }
 

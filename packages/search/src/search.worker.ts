@@ -39,7 +39,7 @@ export type Options = {
  * Great for finding freeform text anywhere in a project, or references, dependencies etc.
  */
 onmessage = (
-  event: MessageEvent<{
+  _event: MessageEvent<{
     files: ProjectFiles
     query: Query
     options?: unknown

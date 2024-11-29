@@ -9,7 +9,7 @@ export const noReferenceApiInputRule: Rule<{ inputName: string }> = {
     if (args.nodeType !== 'component-api-input') {
       return
     }
-    const { path, value, memo, component, api } = args
+    const { path, memo, component, api } = args
     if (!component) {
       return
     }

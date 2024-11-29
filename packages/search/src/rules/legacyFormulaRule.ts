@@ -10,7 +10,7 @@ export const legacyFormulaRule: Rule<{
   code: 'legacy formula',
   level: 'warning',
   category: 'Deprecation',
-  visit: (report, { path, files, value, nodeType, memo }) => {
+  visit: (report, { path, files, value, nodeType }) => {
     if (
       nodeType !== 'formula' ||
       value.type !== 'function' ||

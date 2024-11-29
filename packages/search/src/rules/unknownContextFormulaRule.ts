@@ -18,10 +18,7 @@ export const unknownContextFormulaRule: Rule<{
     }
 
     const contexts = files.components[path[1]]?.contexts ?? {}
-    if (
-      contexts[value.path[1]] &&
-      contexts[value.path[1]].formulas.includes(value.path[2])
-    ) {
+    if (contexts[value.path[1]]?.formulas.includes(value.path[2])) {
       return
     }
 

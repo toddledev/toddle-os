@@ -4,7 +4,7 @@ export const unknownProjectFormulaRule: Rule<{ name: string }> = {
   code: 'unknown project formula',
   level: 'warning',
   category: 'Unknown Reference',
-  visit: (report, { path, files, value, nodeType, memo }) => {
+  visit: (report, { path, files, value, nodeType }) => {
     if (
       nodeType !== 'formula' ||
       value.type !== 'function' ||

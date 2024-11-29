@@ -13,7 +13,7 @@ export const noReferenceComponentFormulaRule: Rule<{
       return
     }
 
-    const { path, files, value, component, memo } = args
+    const { path, files, value, component } = args
     const [, componentName, , formulaKey] = path
     for (const [formulaPath, formula] of component.formulasInComponent()) {
       if (
@@ -30,7 +30,7 @@ export const noReferenceComponentFormulaRule: Rule<{
     }
 
     // It is possible that a formula is never used, but still has subscribers
-    let contextSubscribers = []
+    const contextSubscribers = []
     if (value.exposeInContext) {
       for (const _component of Object.values(files.components)) {
         // Enforce that the component is not undefined since we're iterating

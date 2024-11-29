@@ -7,7 +7,7 @@ export const legacyActionRule: Rule<{
   code: 'legacy action',
   level: 'warning',
   category: 'Deprecation',
-  visit: (report, { path, files, value, nodeType, memo }) => {
+  visit: (report, { path, value, nodeType }) => {
     if (nodeType !== 'action-model') {
       return
     }
