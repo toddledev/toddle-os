@@ -63,14 +63,22 @@ export function* getFormulasInFormula<Handler>({
       }
       break
     case 'function': {
-      const formulaKey = [formula.package, formula.name]
-        .filter(isDefined)
-        .join('/')
-      if (visitedFormulas.has(formulaKey)) {
-        // Prevent infinite loops when visiting global formulas (potentially in a package)
-        break
+      const globalFormula = formula.package
+        ? globalFormulas.packages?.[formula.package]?.formulas?.[formula.name]
+        : globalFormulas.formulas?.[formula.name]
+      if (globalFormula) {
+        const formulaKey = [formula.package, formula.name]
+          .filter(isDefined)
+          .join('/')
+        if (visitedFormulas.has(formulaKey)) {
+          // Prevent infinite loops when visiting global formulas (potentially in a package)
+          break
+        }
+        visitedFormulas.add(formulaKey)
+
+        console.log('Formula', formulaKey)
       }
-      visitedFormulas.add(formulaKey)
+
       for (const [key, arg] of (
         (formula.arguments as typeof formula.arguments | undefined) ?? []
       ).entries()) {
@@ -82,9 +90,6 @@ export function* getFormulasInFormula<Handler>({
         })
       }
       // Lookup the actual function and traverse its potential formula references
-      const globalFormula = formula.package
-        ? globalFormulas.packages?.[formula.package]?.formulas?.[formula.name]
-        : globalFormulas.formulas?.[formula.name]
       if (globalFormula && isToddleFormula(globalFormula)) {
         yield* getFormulasInFormula({
           formula: globalFormula.formula,
