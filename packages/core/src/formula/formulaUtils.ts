@@ -75,8 +75,6 @@ export function* getFormulasInFormula<Handler>({
           break
         }
         visitedFormulas.add(formulaKey)
-
-        console.log('Formula', formulaKey)
       }
 
       for (const [key, arg] of (
@@ -116,11 +114,6 @@ export function* getFormulasInFormula<Handler>({
       }
       break
     case 'apply':
-      if (visitedFormulas.has(formula.name)) {
-        // Prevent infinite loops when visiting other component formulas
-        break
-      }
-      visitedFormulas.add(formula.name)
       for (const [key, arg] of (
         (formula.arguments as typeof formula.arguments | undefined) ?? []
       ).entries()) {
