@@ -12,6 +12,7 @@ This repository holds different packages that are used internally by the toddle 
 
 - core 👈 holds core (shared) logic used by the other packages
 - ssr 👈 holds part of the server-side rendering logic
+- lib 👈 holds all builtin [formulas](https://toddle.dev/docs/formula-editor) and [actions](https://toddle.dev/docs/workflows) used by the runtime and during ssr
 
 ## Requirements
 
@@ -36,7 +37,6 @@ As [announced in July '24](https://toddle.dev/blog/toddle-is-soon-open-source), 
 The next packages that will be moved into this repository are:
 
 - runtime 👈 the runtime needed to run a toddle application on the client
-- lib 👈 the core library of [formulas](https://toddle.dev/docs/formula-editor) and [actions](https://toddle.dev/docs/workflows) used by the runtime (formulas are also used during server-side rendering)
 - search 👈 the code that powers the issue panel in toddle
 
 Also, we plan to move more and more of the server-side rendering logic into this repository.
