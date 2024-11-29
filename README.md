@@ -43,7 +43,7 @@ Also, we plan to move more and more of the server-side rendering logic into this
 
 ### Releases
 
-Currently, we're not using GitHub releases, but once the repository is more mature, we will start using them. Later, we also aim to publish the packages to npm/jsr
+Currently, we're not using GitHub releases, but once the repository is more mature, we will start using them. We do release to npm atm though, which is also where we consume packages from internally.
 
 ## Contributing
 
