@@ -1,0 +1,33 @@
+{
+  "name": "Set session cookies",
+  "description": "Save authentication tokens as session cookies",
+  "arguments": [
+    {
+      "name": "Access token",
+      "description": "Access tokens are the most common way to authenticate with a server",
+      "formula": {
+        "type": "value",
+        "value": ""
+      }
+    },
+    {
+      "name": "Expires in",
+      "description": "(Optional) Seconds till the token expires. Defaults to 3600 (1 hour). This should be left blank for JWTs",
+      "type": { "type": "Number" },
+      "formula": {
+        "type": "value",
+        "value": ""
+      }
+    }
+  ],
+  "events": {
+    "Success": {
+      "description": "This event is triggered once the tokens have been saved.",
+      "actions": []
+    },
+    "Error": {
+      "description": "This event is triggered if toddle is unable to set the session cookies",
+      "actions": []
+    }
+  }
+}

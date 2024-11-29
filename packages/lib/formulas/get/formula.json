@@ -1,0 +1,36 @@
+{
+  "name": "Get",
+  "description": "Extract a value from an object, array or string at the specified path.",
+  "arguments": [
+    {
+      "name": "Object",
+      "formula": { "type": "value", "value": null },
+      "description": "The object, array or string you want to extract an item from",
+      "type": {
+        "type": "Union",
+        "types": [
+          { "type": "Object" },
+          { "type": "Array" },
+          { "type": "String" }
+        ]
+      }
+    },
+    {
+      "name": "Path",
+      "formula": { "type": "value", "value": "Item" },
+      "description": "The Path can be either a number, a string or an array.",
+      "type": {
+        "type": "Union",
+        "types": [
+          { "type": "Array", "ofType": { "type": "String" } },
+          { "type": "String" },
+          { "type": "Number" }
+        ]
+      }
+    }
+  ],
+  "output": {
+    "description": "The value found at the path. If no value is found the NULL is returned",
+    "type": { "type": "Any" }
+  }
+}

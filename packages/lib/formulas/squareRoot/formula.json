@@ -1,0 +1,16 @@
+{
+  "name": "Square root",
+  "description": "Get the square root of a number",
+  "arguments": [
+    {
+      "name": "Number",
+      "formula": { "type": "value", "value": 1 },
+      "description": "Get input number",
+      "type": { "type": "Number" }
+    }
+  ],
+  "output": {
+    "description": "The square root of the input number",
+    "type": { "type": "Number" }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "Drop",
+  "description": "Remove items from the start of an array or String.",
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": null },
+      "description": "Input array",
+      "type": {
+        "type": "Union",
+        "types": [
+          {
+            "type": "String"
+          },
+          { "type": "Array" }
+        ]
+      }
+    },
+    {
+      "name": "Count",
+      "formula": { "type": "value", "value": 1 },
+      "description": "Number of items to remove"
+    }
+  ],
+  "output": {
+    "description": "A copy of the list with out the first items",
+    "type": {
+      "type": "Union",
+      "types": [
+        {
+          "type": "String"
+        },
+        { "type": "Array" }
+      ]
+    }
+  }
+}

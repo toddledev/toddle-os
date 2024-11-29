@@ -1,0 +1,22 @@
+{
+  "name": "Not equal",
+  "description": "Returns True if the values are NOT identical",
+  "arguments": [
+    {
+      "name": "First",
+      "formula": { "type": "value", "value": "" },
+      "description": "First Value",
+      "type": { "type": "Any" }
+    },
+    {
+      "name": "Second",
+      "formula": { "type": "value", "value": "" },
+      "description": "Second Value",
+      "type": { "type": "Any" }
+    }
+  ],
+  "output": {
+    "description": "True if the values are not identical, otherwise False",
+    "type": { "type": "Any" }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Delete from Session Storage",
+  "description": "Deletes the value from Session Storage (if found) based on the provided key",
+  "arguments": [
+    {
+      "name": "Key",
+      "description": "The key to use when deleting in Session Storage",
+      "formula": {
+        "type": "value",
+        "value": ""
+      }
+    }
+  ]
+}

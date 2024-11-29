@@ -1,0 +1,21 @@
+{
+  "name": "Can Share",
+  "description": "Returns a boolean indicating whether the provided data can be shared (with the \"Share\" action)",
+  "arguments": [
+    {
+      "name": "URL to share",
+      "type": { "type": "String" },
+      "formula": { "type": "value", "value": null }
+    },
+    {
+      "name": "Title to share",
+      "type": { "type": "String" },
+      "formula": { "type": "value", "value": null }
+    },
+    {
+      "name": "Text to share",
+      "type": { "type": "String" },
+      "formula": { "type": "value", "value": null }
+    }
+  ]
+}

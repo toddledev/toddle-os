@@ -1,0 +1,29 @@
+{
+  "name": "Includes",
+  "description": "Test if an array or string includes a specific item",
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": "" },
+      "description": "The array to search",
+      "type": {
+        "type": "Union",
+        "types": [{ "type": "String" }, { "type": "Array" }]
+      }
+    },
+    {
+      "name": "Item",
+      "formula": { "type": "value", "value": "" },
+      "description": "The items to search for",
+      "type": {
+        "type": "Any"
+      }
+    }
+  ],
+  "output": {
+    "description": "True if the item exists in the array. Otherwise False",
+    "type": {
+      "type": "Boolean"
+    }
+  }
+}

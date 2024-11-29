@@ -1,0 +1,16 @@
+{
+  "name": "Entries",
+  "description": "Get an array of entries from the given Object",
+  "arguments": [
+    {
+      "name": "Object",
+      "formula": { "type": "value", "value": null },
+      "description": "Input record",
+      "type": { "type": "Object" }
+    }
+  ],
+  "output": {
+    "description": "Returns an array of entries for the given record.\nThe entries are Objects with a “Key” and “Value” property",
+    "type": { "type": "Array" }
+  }
+}

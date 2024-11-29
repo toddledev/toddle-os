@@ -1,0 +1,22 @@
+{
+  "name": "Starts with",
+  "description": "Check if a string has a given prefix",
+  "arguments": [
+    {
+      "name": "String",
+      "formula": { "type": "value", "value": "" },
+      "description": "The string to check",
+      "type": { "type": "String" }
+    },
+    {
+      "name": "Prefix",
+      "formula": { "type": "value", "value": "" },
+      "description": "The prefix to check for",
+      "type": { "type": "String" }
+    }
+  ],
+  "output": {
+    "description": "True if the Input string starts with the Prefix, otherwise False",
+    "type": { "type": "Boolean" }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Equals",
+  "description": "Returns TRUE if the input values are identical",
+  "arguments": [
+    {
+      "name": "First",
+      "formula": { "type": "value", "value": "" },
+      "description": "First Value",
+      "type": { "type": "Any" }
+    },
+    {
+      "name": "Second",
+      "formula": { "type": "value", "value": "" },
+      "description": "Second Value",
+      "type": { "type": "Any" }
+    }
+  ],
+  "output": {
+    "description": "TRUE if the input values are identical, otherwise FALSE",
+    "type": { "type": "Any" }
+  }
+}

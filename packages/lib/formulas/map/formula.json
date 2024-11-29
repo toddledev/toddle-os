@@ -1,0 +1,23 @@
+{
+  "name": "Map",
+  "description": "Pass each item of an array through the Mapping formula.",
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": null },
+      "description": "The array of items to be mapped",
+      "type": { "type": "Array" }
+    },
+    {
+      "name": "Formula",
+      "isFunction": true,
+      "formula": { "type": "path", "path": ["Args", "item"] },
+      "description": "The mapping formula each item will be passed through",
+      "type": { "type": "Formula" }
+    }
+  ],
+  "output": {
+    "description": "A new array containing all the values returned from passing each array item through the Mapping formula",
+    "type": { "type": "Array" }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Focus",
+  "description": "Move focus to a DOM element",
+  "arguments": [
+    {
+      "name": "Element",
+      "description": "The DOM element that should receive focus",
+      "type": {
+        "type": "Element"
+      },
+      "formula": {
+        "type": "Element",
+        "value": null
+      }
+    }
+  ]
+}

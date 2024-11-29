@@ -1,0 +1,16 @@
+{
+  "name": "First",
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": [] },
+      "type": { "type": "Array" },
+      "description": "The input list"
+    }
+  ],
+  "description": "Get first item in an array",
+  "output": {
+    "description": "The first item in the array",
+    "type": { "type": "Any" }
+  }
+}

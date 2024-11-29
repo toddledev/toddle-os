@@ -1,0 +1,33 @@
+{
+  "name": "Shuffle",
+  "description": "Shuffles the items in an Array or String",
+  "cache": false,
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": null },
+      "description": "Input array or string",
+      "type": {
+        "type": "Union",
+        "types": [
+          {
+            "type": "String"
+          },
+          { "type": "Array" }
+        ]
+      }
+    }
+  ],
+  "output": {
+    "description": "The elements in the Array/String shuffled",
+    "type": {
+      "type": "Union",
+      "types": [
+        {
+          "type": "String"
+        },
+        { "type": "Array" }
+      ]
+    }
+  }
+}

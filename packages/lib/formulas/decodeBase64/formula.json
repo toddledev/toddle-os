@@ -1,0 +1,16 @@
+{
+  "name": "Decode base64",
+  "arguments": [
+    {
+      "name": "Base64 value",
+      "formula": { "type": "value", "value": "Input value" },
+      "type": { "type": "String" },
+      "description": "The input data encoded as base64"
+    }
+  ],
+  "description": "Deocde a base64 string to utf-8",
+  "output": {
+    "description": "The decoded string",
+    "type": { "type": "String" }
+  }
+}

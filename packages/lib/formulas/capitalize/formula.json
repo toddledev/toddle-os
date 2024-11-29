@@ -1,0 +1,16 @@
+{
+  "name": "Capitalize",
+  "description": "Capitalize a string, making the first letter uppercase and the rest lowercase.",
+  "arguments": [
+    {
+      "name": "String",
+      "formula": { "type": "value", "value": "string" },
+      "description": "Input string",
+      "type": { "type": "String" }
+    }
+  ],
+  "output": {
+    "description": "The capitalized string",
+    "type": { "type": "String" }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Go to URL",
+  "description": "Navigate to a different URL",
+  "arguments": [
+    {
+      "name": "URL",
+      "formula": {
+        "type": "value",
+        "value": "https://example.com"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "Replace all",
+  "description": "Replace all occurrences of a substring in a string",
+  "arguments": [
+    {
+      "name": "Input",
+      "description": "The input string to search in",
+      "type": "String",
+      "required": true
+    },
+    {
+      "name": "Search",
+      "description": "The substring to search for",
+      "type": "String",
+      "required": true
+    },
+    {
+      "name": "Replace with",
+      "description": "The replacement value",
+      "type": "String",
+      "required": true
+    }
+  ],
+  "output": {
+    "type": "String",
+    "name": "Output",
+    "description": "The resulting string"
+  }
+}

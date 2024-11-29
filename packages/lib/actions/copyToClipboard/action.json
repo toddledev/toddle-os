@@ -1,0 +1,13 @@
+{
+  "name": "Copy to clipboard",
+  "arguments": [
+    {
+      "name": "Value",
+      "type": { "type": "String" },
+      "formula": {
+        "type": "value",
+        "value": "<Param Value>"
+      }
+    }
+  ]
+}

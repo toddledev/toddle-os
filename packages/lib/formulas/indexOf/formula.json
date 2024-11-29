@@ -1,0 +1,29 @@
+{
+  "name": "Index of",
+  "description": "Find the index of a specific item in an array or string",
+  "arguments": [
+    {
+      "name": "Array",
+      "formula": { "type": "value", "value": "" },
+      "description": "The array or string to search",
+      "type": {
+        "type": "Union",
+        "types": [{ "type": "String" }, { "type": "Array" }]
+      }
+    },
+    {
+      "name": "Item",
+      "formula": { "type": "value", "value": "" },
+      "description": "The items to search for",
+      "type": {
+        "type": "Any"
+      }
+    }
+  ],
+  "output": {
+    "description": "If the item exists in the array then the index of that item is returned. If the item is not found -1 is returned",
+    "type": {
+      "type": "Boolean"
+    }
+  }
+}
