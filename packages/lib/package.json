@@ -1,6 +1,6 @@
 {
   "name": "@toddledev/std-lib",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "license": "Apache-2.0",
   "homepage": "https://github.com/toddledev/toddle",
   "dependencies": {
@@ -24,6 +24,8 @@
     "typecheck:watch": "tsc --noEmit -w"
   },
   "files": [
-    "dist"
+    "dist",
+    "actions",
+    "formulas"
   ]
 }
