@@ -1,0 +1,25 @@
+{
+  "name": "@toddledev/search",
+  "description": "Used for searching and reporting linting problems in toddle projects.",
+  "version": "0.0.1-alpha.1",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/jest": "29.5.13",
+    "jest": "29.7.0",
+    "ts-jest": "29.2.5",
+    "typescript": "5.7.2"
+  },
+  "dependencies": {
+    "@toddledev/ssr": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc",
+    "npm-publish": "bun run build && bun publish --access public",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit -w"
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
+}

@@ -10,9 +10,10 @@ Create highly performant web apps with SSR, branching, version control, componen
 
 This repository holds different packages that are used internally by the toddle framework. The packages that are currently available are:
 
-- core 👈 holds core (shared) logic used by the other packages
-- ssr 👈 holds part of the server-side rendering logic
-- lib 👈 holds all builtin [formulas](https://toddle.dev/docs/formula-editor) and [actions](https://toddle.dev/docs/workflows) used by the runtime and during ssr
+- [core](https://www.npmjs.com/package/@toddledev/core) 👈 holds core (shared) logic used by the other packages
+- [ssr](https://www.npmjs.com/package/@toddledev/ssr) 👈 holds part of the server-side rendering logic
+- [lib](https://www.npmjs.com/package/@toddledev/std-lib) 👈 holds all builtin [formulas](https://toddle.dev/docs/formula-editor) and [actions](https://toddle.dev/docs/workflows) used by the runtime and during ssr
+- [search](https://www.npmjs.com/package/@toddledev/search) 👈 holds all issue rules and search functionality for traversing a toddle project. This powers the issue panel in the toddle editor in a web worker atm
 
 ## Requirements
 
@@ -37,7 +38,6 @@ As [announced in July '24](https://toddle.dev/blog/toddle-is-soon-open-source), 
 The next packages that will be moved into this repository are:
 
 - runtime 👈 the runtime needed to run a toddle application on the client
-- search 👈 the code that powers the issue panel in toddle
 
 Also, we plan to move more and more of the server-side rendering logic into this repository.
 

@@ -75,3 +75,18 @@ jobs:
         run: |
           cd packages/lib
           bun run test
+  test-search:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout search
+        uses: actions/checkout@v4
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Build
+        run: bun run build
+      - name: Test search
+        run: |
+          cd packages/search
+          bun test

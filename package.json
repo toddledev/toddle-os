@@ -1,6 +1,5 @@
 {
   "name": "toddle",
-  "module": "index.ts",
   "type": "module",
   "license": "Apache-2.0",
   "homepage": "https://github.com/toddledev/toddle",
@@ -20,10 +19,10 @@
     "typescript": "5.6.3"
   },
   "scripts": {
-    "build": "cd packages/core && bun run build && cd ../ssr && bun run build",
+    "build": "cd packages/core && bun run build && cd ../ssr && bun run build && cd ../lib && bun run build && cd ../search && bun run build",
     "lint": "eslint --quiet .",
     "prettier": "prettier --check '*.{json,js}' '**/*.{js,ts}'",
     "prettier:write": "prettier --write  '*.{json,js}' './**/*.{js,ts}'",
-    "typecheck": "cd packages/core && bun typecheck && cd ../ssr && bun run typecheck && cd ../lib && bun run typecheck"
+    "typecheck": "cd packages/core && bun typecheck && cd ../ssr && bun run typecheck && cd ../lib && bun run typecheck && cd ../search && bun run typecheck"
   }
 }

@@ -7,7 +7,6 @@
   "scripts": {
     "build": "tsc",
     "npm-publish": "bun run build && bun publish --access public",
-    "test": "bun test",
     "typecheck": "tsc --noEmit",
     "watch": "tsc --noEmit -w"
   },
