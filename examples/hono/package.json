@@ -1,0 +1,9 @@
+{
+  "name": "hono",
+  "scripts": {
+    "dev": "bun run -p 3030 --hot src/index.ts"
+  },
+  "dependencies": {
+    "hono": "4.6.12"
+  }
+}
