@@ -1,4 +1,4 @@
-# @toddledev/lib
+# @toddledev/search
 
 [npm](https://www.npmjs.com/package/@toddledev/search)
 

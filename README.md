@@ -11,6 +11,7 @@ Create highly performant web apps with SSR, branching, version control, componen
 This repository holds different packages that are used internally by the toddle framework. The packages that are currently available are:
 
 - [core](https://www.npmjs.com/package/@toddledev/core) 👈 holds core (shared) logic used by the other packages
+- [runtime](https://www.npmjs.com/package/@toddledev/runtime) 👈 includes logic for hydrating/running/updating a toddle application on the front-end
 - [ssr](https://www.npmjs.com/package/@toddledev/ssr) 👈 holds part of the server-side rendering logic
 - [lib](https://www.npmjs.com/package/@toddledev/std-lib) 👈 holds all builtin [formulas](https://toddle.dev/docs/formula-editor) and [actions](https://toddle.dev/docs/workflows) used by the runtime and during ssr
 - [search](https://www.npmjs.com/package/@toddledev/search) 👈 holds all issue rules and search functionality for traversing a toddle project. This powers the issue panel in the toddle editor in a web worker atm
@@ -33,13 +34,7 @@ While we consume all packages internally in the toddle framework, this project i
 
 As [announced in July '24](https://toddle.dev/blog/toddle-is-soon-open-source), toddle is going open source. The goal is to move more and more code into this repository and make it possible to self host a toddle application.
 
-### Packages
-
-The next packages that will be moved into this repository are:
-
-- runtime 👈 the runtime needed to run a toddle application on the client
-
-Also, we plan to move more and more of the server-side rendering logic into this repository.
+We're currently working on moving more and more of the server-side rendering logic into this repository. This means that most updates are going to be in the ssr package for the time being.
 
 ### Releases
 
