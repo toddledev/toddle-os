@@ -1,6 +1,6 @@
 import { PageComponent } from '@toddledev/core/dist/component/component.types'
 import { isDefined } from '@toddledev/core/dist/utils/util'
-import { ProjectFiles } from '@toddledev/ssr/src/ssr.types'
+import { ProjectFiles } from '@toddledev/ssr/dist/ssr.types'
 
 export const matchPageForUrl = ({
   url,
