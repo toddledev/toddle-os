@@ -98,14 +98,14 @@ ${
                 }
                 `
             : variant.breakpoint
-            ? `
+              ? `
                 @media (min-width: ${
                   LEGACY_BREAKPOINTS[variant.breakpoint]
                 }px) {
                 ${renderedVariant}
                 }
                 `
-            : renderedVariant
+              : renderedVariant
         })
         .join('\n')
     : ''
