@@ -1,0 +1,104 @@
+{
+  "kind": "Document",
+  "definitions": [
+    {
+      "kind": "OperationDefinition",
+      "operation": "query",
+      "name": { "kind": "Name", "value": "comps" },
+      "variableDefinitions": [],
+      "directives": [],
+      "selectionSet": {
+        "kind": "SelectionSet",
+        "selections": [
+          {
+            "kind": "Field",
+            "name": { "kind": "Name", "value": "components" },
+            "arguments": [
+              {
+                "kind": "Argument",
+                "name": { "kind": "Name", "value": "where" },
+                "value": {
+                  "kind": "ObjectValue",
+                  "fields": [
+                    {
+                      "kind": "ObjectField",
+                      "name": { "kind": "Name", "value": "_or" },
+                      "value": {
+                        "kind": "ListValue",
+                        "values": [
+                          {
+                            "kind": "ObjectValue",
+                            "fields": [
+                              {
+                                "kind": "ObjectField",
+                                "name": { "kind": "Name", "value": "id" },
+                                "value": {
+                                  "kind": "ObjectValue",
+                                  "fields": [
+                                    {
+                                      "kind": "ObjectField",
+                                      "name": {
+                                        "kind": "Name",
+                                        "value": "_eq"
+                                      },
+                                      "value": {
+                                        "kind": "IntValue",
+                                        "value": "1"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ObjectValue",
+                            "fields": [
+                              {
+                                "kind": "ObjectField",
+                                "name": { "kind": "Name", "value": "name" },
+                                "value": {
+                                  "kind": "ObjectValue",
+                                  "fields": [
+                                    {
+                                      "kind": "ObjectField",
+                                      "name": {
+                                        "kind": "Name",
+                                        "value": "_eq"
+                                      },
+                                      "value": {
+                                        "kind": "StringValue",
+                                        "value": "bob",
+                                        "block": false
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "directives": [],
+            "selectionSet": {
+              "kind": "SelectionSet",
+              "selections": [
+                {
+                  "kind": "Field",
+                  "name": { "kind": "Name", "value": "id" },
+                  "arguments": [],
+                  "directives": []
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

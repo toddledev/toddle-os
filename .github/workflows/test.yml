@@ -60,6 +60,21 @@ jobs:
         run: |
           cd packages/ssr
           bun test
+  test-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout runtime
+        uses: actions/checkout@v4
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Build
+        run: bun run build
+      - name: Test runtime
+        run: |
+          cd packages/runtime
+          bun test
   test-lib:
     runs-on: ubuntu-latest
     steps:
