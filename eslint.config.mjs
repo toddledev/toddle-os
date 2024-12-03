@@ -47,6 +47,7 @@ export default [
 
     rules: {
       'no-return-await': 'off',
+      'max-params': ['error', 3],
       '@typescript-eslint/no-unsafe-function-type': 'off',
       '@typescript-eslint/return-await': 'warn',
       '@typescript-eslint/await-thenable': 'error',

@@ -183,6 +183,7 @@ export const initGlobalObject = ({
           toddle.formulas[window.__toddle.project]?.[name]
         )
       },
+      // eslint-disable-next-line max-params
       getArgumentInputData: (formulaName, args, argIndex, data) =>
         argumentInputDataList[formulaName]?.(args, argIndex, data) || data,
       data: {},

@@ -61,7 +61,7 @@ export type Options = {
 }
 
 const RULES = [
-  createActionNameRule('@toddle/logToConsole', 'no-console'),
+  createActionNameRule({ name: '@toddle/logToConsole', code: 'no-console' }),
   createRequiredElementAttributeRule('a', 'href'),
   createRequiredElementAttributeRule('img', 'alt'),
   createRequiredElementAttributeRule('img', 'src'),

@@ -71,6 +71,7 @@ export const createStylesheet = (
   components: Component[],
   theme: Theme | OldTheme,
   options: ThemeOptions,
+  // eslint-disable-next-line max-params
 ) => {
   const hashes = new Set<string>()
 

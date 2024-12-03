@@ -6,12 +6,17 @@ import { Category, Code, Level, Rule } from '../types'
  * @example
  * myRule = () => createActionNameRule('myAction', myRule.code)
  */
-export function createActionNameRule(
-  name: string,
-  code: Code,
-  category: Category = 'Other',
-  level: Level = 'info',
-): Rule<{
+export function createActionNameRule({
+  name,
+  code,
+  category = 'Other',
+  level = 'info',
+}: {
+  name: string
+  code: Code
+  category?: Category
+  level?: Level
+}): Rule<{
   name: string
 }> {
   return {

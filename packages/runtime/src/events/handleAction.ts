@@ -5,6 +5,7 @@ import { mapValues, omitKeys } from '@toddledev/core/dist/utils/collections'
 import { isDefined, toBoolean } from '@toddledev/core/dist/utils/util'
 import { ComponentContext } from '../types'
 
+// eslint-disable-next-line max-params
 export function handleAction(
   action: ActionModel,
   data: ComponentData,

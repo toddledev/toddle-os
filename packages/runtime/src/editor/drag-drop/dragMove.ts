@@ -76,13 +76,13 @@ export function dragMove(dragState: DragState | null, exclude: HTMLElement[]) {
       .querySelectorAll('.__drag-container')
       .forEach((c) => c.classList.remove('__drag-container'))
     insertArea.parent.classList.add('__drag-container')
-    setExternalDropHighlight(
-      insertArea.layout,
-      insertArea.center,
-      insertArea.size,
-      dragState.elementType === 'component' ? 'D946EF' : '2563EB',
+    setExternalDropHighlight({
+      layout: insertArea.layout,
+      center: insertArea.center,
+      length: insertArea.size,
+      color: dragState.elementType === 'component' ? 'D946EF' : '2563EB',
       projectionPoint,
-    )
+    })
   } else {
     removeDropHighlight()
   }
