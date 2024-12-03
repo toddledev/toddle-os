@@ -3,7 +3,7 @@ import {
   PageComponent,
   PageRoute,
 } from '@toddledev/core/dist/component/component.types'
-import { ProjectFiles } from '@toddledev/ssr/dist/ssr.types'
+import { ProjectFiles } from '../ssr.types'
 import { matchPageForUrl } from './routing'
 
 describe('matchPageForUrl', () => {

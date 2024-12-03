@@ -1,0 +1,13 @@
+{
+  "name": "hono",
+  "scripts": {
+    "dev": "bun run -p 3030 --hot src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hono": "4.6.12"
+  },
+  "devDependencies": {
+    "@types/bun": "1.1.14"
+  }
+}

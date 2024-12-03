@@ -3,7 +3,7 @@ import type {
   NodeModel,
 } from '@toddledev/core/dist/component/component.types'
 import { isDefined } from '@toddledev/core/dist/utils/util'
-import type { ProjectFiles } from '@toddledev/ssr/dist/ssr.types'
+import type { ProjectFiles } from '../ssr.types'
 
 export function takeIncludedComponents({
   root,

@@ -19,7 +19,7 @@ export interface ProjectFiles {
   packages?: Record<string, InstalledPackage>
   actions?: Record<string, PluginAction>
   formulas?: Record<string, PluginFormula<string>>
-  config: {
+  config?: {
     theme: OldTheme
     meta?: {
       icon?: { formula: Formula }
