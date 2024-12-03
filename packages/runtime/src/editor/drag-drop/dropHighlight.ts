@@ -33,13 +33,19 @@ export function setDropHighlight(
 /**
  * Visual representation of where a dragged node will be dropped outside of its own container.
  */
-export function setExternalDropHighlight(
-  layout: 'block' | 'inline',
-  center: Point,
-  length: number,
-  color: string,
-  projectionPoint: number,
-) {
+export function setExternalDropHighlight({
+  layout,
+  center,
+  length,
+  color,
+  projectionPoint,
+}: {
+  layout: 'block' | 'inline'
+  center: Point
+  length: number
+  color: string
+  projectionPoint: number
+}) {
   highlight?.remove()
   highlight = document.createElement('div')
   highlight.classList.add('__drop-area-line')
