@@ -360,17 +360,20 @@ export const createRoot = (
           }
 
           dataSignal.update((data) => {
-            return {
+            const newData: ComponentData = {
               ...data,
-              Location: {
-                ...data.Location,
-                path: component?.page ?? '',
-              },
+              Location: data.Location
+                ? {
+                    ...data.Location,
+                    path: component?.page ?? '',
+                  }
+                : undefined,
               // Ensure that URL parameters are only available for pages and not components
               'URL parameters': component?.route
                 ? data['URL parameters']
                 : undefined,
             }
+            return newData
           })
 
           update()
@@ -462,16 +465,23 @@ export const createRoot = (
               false
           ) {
             const attrs = message.data.attrs
-            dataSignal.update((data) => ({
-              ...data,
-              Location: component?.page
-                ? {
-                    ...data.Location,
-                    query: attrs,
-                  }
-                : data.Location,
-              Props: attrs ?? {},
-            }))
+            dataSignal.update((data) => {
+              // We should figure out if "Props" is used anywhere and get rid of it if it's not
+              const newData: ComponentData & {
+                Props: Record<string, unknown>
+              } = {
+                ...data,
+                Location:
+                  data.Location && component?.page
+                    ? {
+                        ...data.Location,
+                        query: attrs as Record<string, string>,
+                      }
+                    : data.Location,
+                Props: attrs ?? {},
+              }
+              return newData
+            })
           }
           break
         }

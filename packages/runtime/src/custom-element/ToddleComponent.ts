@@ -266,7 +266,7 @@ export const createSignal = ({
 }) => {
   return signal<ComponentData>({
     // Pages are not supported as custom elements, so no need to add location signal
-    Location: {},
+    Location: undefined,
     Variables: mapObject(component.variables, ([name, { initialValue }]) => {
       if (!component) {
         throw new Error(`Component not found`)
