@@ -37,10 +37,8 @@ export const toddlePage = async (c: Context<HonoEnv>) => {
         <head>
           <meta charset="UTF-8" />
           <title>
-            ${applyFormula(
-              page.route.info?.title?.formula ?? page.name,
-              formulaContext,
-            )}
+            ${applyFormula(page.route.info?.title?.formula, formulaContext) ??
+            page.name}
           </title>
         </head>
         <body>
