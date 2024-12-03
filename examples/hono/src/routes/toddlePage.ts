@@ -3,8 +3,9 @@ import {
   getHtmlLanguage,
   matchPageForUrl,
 } from '@toddledev/ssr/dist'
-import { Context } from 'hono'
-import { HonoEnv } from '../../hono'
+import type { Context } from 'hono'
+import { html } from 'hono/html'
+import type { HonoEnv } from '../../hono'
 
 export const toddlePage = async (c: Context<HonoEnv>) => {
   const url = new URL(c.req.url)
@@ -23,13 +24,15 @@ export const toddlePage = async (c: Context<HonoEnv>) => {
     formulaContext: undefined as any,
     defaultLanguage: 'en',
   })
-  return c.html(`<!DOCTYPE html>
-<html lang="${language}">
-  <head>
-    <meta charset="UTF-8">
-  </head>
-  <body>
-    <h1>${page.name}</h1>
-  </body>
-</html>`)
+  return c.html(
+    html`<!doctype html>
+      <html lang="${language}">
+        <head>
+          <meta charset="UTF-8" />
+        </head>
+        <body>
+          <h1>${page.name}</h1>
+        </body>
+      </html>`,
+  )
 }

@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { HonoEnv } from '../hono'
+import type { HonoEnv } from '../hono'
 import { robots } from './routes/robots'
 import { sitemap } from './routes/sitemap'
 import { toddlePage } from './routes/toddlePage'
@@ -26,6 +26,7 @@ app.get('/robots.txt', robots)
 // .toddle/serviceWorker/...
 // .toddle/manifest/...
 // .toddle/icon/...
+// .toddle/api-proxy/...
 
 app.get('/*', toddlePage)
 

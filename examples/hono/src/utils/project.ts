@@ -1,4 +1,4 @@
-import { ProjectFiles } from '@toddledev/ssr/dist/ssr.types'
+import type { ProjectFiles } from '@toddledev/ssr/dist/ssr.types'
 import { readFileSync } from 'fs'
 import { resolve } from 'path'
 
