@@ -10,9 +10,6 @@
     "strict": true,
     "strictBuiltinIteratorReturn": true,
     "target": "ESNext",
-    "paths": {
-      "@toddledev/ssr/*": ["./*"]
-    },
     "outDir": "dist",
     "declaration": true
   },
