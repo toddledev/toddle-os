@@ -1,9 +1,9 @@
+import type { PageComponent } from '@toddledev/core/dist/component/component.types'
 import {
   applyFormula,
   FormulaContext,
   ToddleServerEnv,
-} from '@toddle/core/dist/formula/formula'
-import { PageComponent } from '@toddledev/core/dist/component/component.types'
+} from '@toddledev/core/dist/formula/formula'
 import { mapValues } from '@toddledev/core/dist/utils/collections'
 import { isDefined } from '@toddledev/core/dist/utils/util'
 import { getPathSegments } from '../routing/routing'
