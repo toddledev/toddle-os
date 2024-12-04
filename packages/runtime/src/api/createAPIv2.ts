@@ -306,7 +306,7 @@ export function createAPI(
         if (proxy === false) {
           response = await fetch(url, requestSettings)
         } else {
-          const proxyUrl = `/.toddle/api-proxy/components/${encodeURIComponent(
+          const proxyUrl = `/.toddle/omvej/components/${encodeURIComponent(
             ctx.component.name,
           )}/apis/${encodeURIComponent(
             ctx.component.name,
