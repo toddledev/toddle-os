@@ -4,8 +4,9 @@ on:
   push:
     branches-ignore:
       - main
-    paths:
-      - 'examples/hono/**/*'
+    paths-ignore:
+      - '.vscode/**'
+      - '**/*/README.md'
 
 jobs:
   tsc-hono-example:

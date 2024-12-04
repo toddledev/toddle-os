@@ -10,7 +10,14 @@ interface ListItem {
 }
 
 export interface ComponentData {
-  Location?: any
+  Location?: {
+    page?: string
+    path: string
+    // params is a combination of path and query parameters
+    params: Record<string, string | null>
+    query: Record<string, string | null>
+    hash: string
+  }
   Attributes: Record<string, unknown>
   Variables?: Record<string, unknown>
   Contexts?: Record<string, Record<string, unknown>>

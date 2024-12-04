@@ -1,6 +1,6 @@
 {
   "name": "@toddledev/ssr",
-  "version": "0.0.2-alpha.3",
+  "version": "0.0.2-alpha.4",
   "license": "Apache-2.0",
   "homepage": "https://github.com/toddledev/toddle",
   "private": "false",
@@ -8,7 +8,7 @@
     "build": "tsc",
     "npm-publish": "bun run build && bun publish --access public",
     "typecheck": "tsc --noEmit",
-    "watch": "tsc --noEmit -w"
+    "watch": "tsc -w"
   },
   "files": [
     "dist",
@@ -17,6 +17,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@toddledev/core": "workspace:*"
+    "@toddledev/core": "workspace:*",
+    "cookie": "1.0.2",
+    "xss": "1.0.15"
   }
 }

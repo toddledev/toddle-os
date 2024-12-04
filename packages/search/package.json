@@ -13,7 +13,7 @@
     "build": "tsc",
     "npm-publish": "bun run build && bun publish --access public",
     "typecheck": "tsc --noEmit",
-    "typecheck:watch": "tsc --noEmit -w"
+    "watch": "tsc -w"
   },
   "files": [
     "dist",

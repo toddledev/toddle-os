@@ -1,8 +1,10 @@
+import { applyFormula } from '@toddledev/core/dist/formula/formula'
+import { getPageFormulaContext } from '@toddledev/ssr/dist/rendering/formulaContext'
+import { getHtmlLanguage } from '@toddledev/ssr/dist/rendering/html'
 import {
   get404Page,
-  getHtmlLanguage,
   matchPageForUrl,
-} from '@toddledev/ssr/dist'
+} from '@toddledev/ssr/dist/routing/routing'
 import type { Context } from 'hono'
 import { html } from 'hono/html'
 import type { HonoEnv } from '../../hono'
@@ -19,9 +21,14 @@ export const toddlePage = async (c: Context<HonoEnv>) => {
       return c.html('Page not found', { status: 404 })
     }
   }
+  const formulaContext = getPageFormulaContext({
+    component: page,
+    branchName: 'main',
+    req: c.req.raw,
+  })
   const language = getHtmlLanguage({
     pageInfo: page.route.info,
-    formulaContext: undefined as any,
+    formulaContext,
     defaultLanguage: 'en',
   })
   return c.html(
@@ -29,6 +36,10 @@ export const toddlePage = async (c: Context<HonoEnv>) => {
       <html lang="${language}">
         <head>
           <meta charset="UTF-8" />
+          <title>
+            ${applyFormula(page.route.info?.title?.formula, formulaContext) ??
+            page.name}
+          </title>
         </head>
         <body>
           <h1>${page.name}</h1>
