@@ -1,13 +1,19 @@
 import { Hono } from 'hono'
 import type { HonoEnv } from '../hono'
+import { favicon } from './routes/favicon'
+import { manifest } from './routes/manifest'
 import { robots } from './routes/robots'
 import { sitemap } from './routes/sitemap'
+import { staticRouter } from './routes/static'
 import { toddlePage } from './routes/toddlePage'
 import { getProject } from './utils/project'
 
 const app = new Hono<HonoEnv>()
 
-// Load the project onto context as a middleware
+// Static routes don't need access to the project
+app.route('/_static', staticRouter)
+
+// Load the project onto context to make it easier to use for other routes
 app.use(async (c, next) => {
   const project = getProject()
   if (!project) {
@@ -19,16 +25,14 @@ app.use(async (c, next) => {
 
 app.get('/sitemap.xml', sitemap)
 app.get('/robots.txt', robots)
+app.get('/manifest.json', manifest)
+app.get('/favicon.ico', favicon)
 
 // TODO: add missing routes below
 // .toddle/custom-code
 // .toddle/fonts/...
 // .toddle/serviceWorker/...
-// .toddle/manifest/...
-// .toddle/icon/...
 // .toddle/api-proxy/...
-// reset stylesheet ...
-// others?
 
 app.get('/*', toddlePage)
 
