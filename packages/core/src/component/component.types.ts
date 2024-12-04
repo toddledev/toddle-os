@@ -11,7 +11,6 @@ interface ListItem {
 
 export interface ComponentData {
   Location?: {
-    // Used for legacy routing
     page?: string
     path: string
     // params is a combination of path and query parameters

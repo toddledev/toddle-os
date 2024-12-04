@@ -466,7 +466,7 @@ export const createRoot = (
           ) {
             const attrs = message.data.attrs
             dataSignal.update((data) => {
-              // We should figure out if "Props" is used anywhere and get rid of it if it's not
+              // TODO: We should figure out if "Props" is used anywhere and get rid of it if it's not
               const newData: ComponentData & {
                 Props: Record<string, unknown>
               } = {
