@@ -23,6 +23,9 @@ export function* getActionsInAction(
       for (const [key, a] of Object.entries(action.onError?.actions ?? {})) {
         yield* getActionsInAction(a, [...path, 'onError', 'actions', key])
       }
+      for (const [key, a] of Object.entries(action.onMessage?.actions ?? {})) {
+        yield* getActionsInAction(a, [...path, 'onMessage', 'actions', key])
+      }
       break
     case 'Custom':
     case undefined:

@@ -254,7 +254,7 @@ export class ToddleApiV2<Handler> implements ApiRequest {
       yield* getFormulasInAction({
         action,
         globalFormulas: this.globalFormulas,
-        path: ['apis', apiKey, 'client', 'onData', 'actions', actionKey],
+        path: ['apis', apiKey, 'client', 'onMessage', 'actions', actionKey],
       })
     }
     for (const [rule, value] of Object.entries(api.redirectRules ?? {})) {

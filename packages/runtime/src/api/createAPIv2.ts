@@ -536,7 +536,7 @@ export function createAPI(
     } = {
       chunks: [],
       currentChunk: '',
-      // Function to add a chunk to the chunks array and emits the data to the onData event
+      // Function to add a chunk to the chunks array and emits the data to the onMessage event
       add(chunk: string | Uint8Array) {
         const parsedChunk = parseChunk(chunk)
         this.chunks.push(parsedChunk)

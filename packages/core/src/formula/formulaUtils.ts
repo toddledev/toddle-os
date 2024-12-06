@@ -190,6 +190,14 @@ export function* getFormulasInAction<Handler>({
           visitedFormulas,
         })
       }
+      for (const [key, a] of Object.entries(action.onMessage?.actions ?? {})) {
+        yield* getFormulasInAction({
+          action: a,
+          globalFormulas,
+          path: [...path, 'onMessage', 'actions', key],
+          visitedFormulas,
+        })
+      }
       break
     case 'Custom':
     case undefined:
