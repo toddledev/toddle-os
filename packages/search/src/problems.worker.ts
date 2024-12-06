@@ -89,6 +89,8 @@ const RULES = [
   createRequiredDirectChildRule(['optgroup'], ['option']),
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend#technical_summary
   createRequiredDirectParentRule(['fieldset'], ['legend']),
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl#technical_summary
+  createRequiredDirectChildRule(['dl'], ['dd', 'dt', 'script', 'template']),
   imageWithoutDimensionRule,
   duplicateEventTriggerRule,
   duplicateUrlParameterRule,
