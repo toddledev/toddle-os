@@ -7,7 +7,6 @@ on:
     paths-ignore:
       - '.vscode/**'
       - '**/*/README.md'
-      - 'examples/**'
 
 # This allows a subsequently queued workflow run to interrupt previous runs
 concurrency:
