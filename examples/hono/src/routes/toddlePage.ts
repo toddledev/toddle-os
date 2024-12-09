@@ -6,7 +6,7 @@ import {
 import { createStylesheet } from '@toddledev/core/dist/styling/style.css'
 import { theme as defaultTheme } from '@toddledev/core/dist/styling/theme.const'
 import { isDefined } from '@toddledev/core/dist/utils/util'
-import { takeIncludedComponents } from '@toddledev/ssr/dist/components'
+import { takeIncludedComponents } from '@toddledev/ssr/dist/components/utils'
 import { renderPageBody } from '@toddledev/ssr/dist/rendering/components'
 import { getPageFormulaContext } from '@toddledev/ssr/dist/rendering/formulaContext'
 import { getHtmlLanguage } from '@toddledev/ssr/dist/rendering/html'
