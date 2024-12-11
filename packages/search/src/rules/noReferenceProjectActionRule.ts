@@ -1,3 +1,4 @@
+import { CustomActionModel } from '@toddledev/core/dist/component/component.types'
 import { ToddleComponent } from '@toddledev/core/dist/component/ToddleComponent'
 import type { Rule } from '../types'
 
@@ -27,8 +28,12 @@ export const noReferenceProjectActionRule: Rule<void> = {
           },
         })
         for (const [, action] of c.actionModelsInComponent()) {
-          if (action.type === 'Custom' || action.type === undefined) {
-            usedActions.add(action.name)
+          if (
+            action.type === 'Custom' ||
+            action.type === ('function' as any) ||
+            action.type === undefined
+          ) {
+            usedActions.add((action as CustomActionModel).name)
           }
         }
       }
