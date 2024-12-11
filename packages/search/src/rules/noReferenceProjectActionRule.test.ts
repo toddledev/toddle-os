@@ -45,6 +45,12 @@ describe('noReferenceProjectAction', () => {
               handler: '() => console.log("test")',
               variableArguments: false,
             },
+            'my-action2': {
+              name: 'my-action2',
+              arguments: [],
+              handler: '() => console.log("test")',
+              variableArguments: false,
+            },
           },
           components: {
             test: {
@@ -54,6 +60,18 @@ describe('noReferenceProjectAction', () => {
               apis: {},
               attributes: {},
               variables: {},
+              workflows: {
+                test: {
+                  name: 'test',
+                  parameters: [],
+                  actions: [
+                    {
+                      name: 'my-action2',
+                      arguments: [],
+                    },
+                  ],
+                },
+              },
               onLoad: {
                 trigger: 'onLoad',
                 actions: [

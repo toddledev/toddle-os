@@ -27,7 +27,7 @@ export const noReferenceProjectActionRule: Rule<void> = {
           },
         })
         for (const [, action] of c.actionModelsInComponent()) {
-          if (action.type === 'Custom') {
+          if (action.type === 'Custom' || action.type === undefined) {
             usedActions.add(action.name)
           }
         }
