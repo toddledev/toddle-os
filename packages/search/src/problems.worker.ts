@@ -15,6 +15,7 @@ import { noReferenceAttributeRule } from './rules/noReferenceAttributeRule'
 import { noReferenceComponentFormulaRule } from './rules/noReferenceComponentFormulaRule'
 import { noReferenceComponentRule } from './rules/noReferenceComponentRule'
 import { noReferenceComponentWorkflowRule } from './rules/noReferenceComponentWorkflowRule'
+import { noReferenceProjectActionRule } from './rules/noReferenceProjectActionRule'
 import { noReferenceProjectFormulaRule } from './rules/noReferenceProjectFormulaRule'
 import { noReferenceVariableRule } from './rules/noReferenceVariableRule'
 import { noUnnecessaryConditionFalsy } from './rules/noUnnecessaryConditionFalsy'
@@ -104,6 +105,7 @@ const RULES = [
   noReferenceComponentFormulaRule,
   noReferenceComponentRule,
   noReferenceComponentWorkflowRule,
+  noReferenceProjectActionRule,
   noReferenceProjectFormulaRule,
   noReferenceVariableRule,
   noUnnecessaryConditionFalsy,
