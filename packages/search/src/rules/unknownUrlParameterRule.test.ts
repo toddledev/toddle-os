@@ -2,7 +2,7 @@ import { searchProject } from '../searchProject'
 import { unknownUrlParameterRule } from './unknownUrlParameterRule'
 
 describe('unknownUrlParameterRule', () => {
-  test('should report reading unknown variables', () => {
+  test('should report reading unknown URL parameters', () => {
     const problems = Array.from(
       searchProject({
         files: {
