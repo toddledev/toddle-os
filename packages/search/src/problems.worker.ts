@@ -15,6 +15,7 @@ import { noReferenceAttributeRule } from './rules/noReferenceAttributeRule'
 import { noReferenceComponentFormulaRule } from './rules/noReferenceComponentFormulaRule'
 import { noReferenceComponentRule } from './rules/noReferenceComponentRule'
 import { noReferenceComponentWorkflowRule } from './rules/noReferenceComponentWorkflowRule'
+import { noReferenceProjectActionRule } from './rules/noReferenceProjectActionRule'
 import { noReferenceProjectFormulaRule } from './rules/noReferenceProjectFormulaRule'
 import { noReferenceVariableRule } from './rules/noReferenceVariableRule'
 import { noUnnecessaryConditionFalsy } from './rules/noUnnecessaryConditionFalsy'
@@ -31,6 +32,7 @@ import { unknownContextWorkflowRule } from './rules/unknownContextWorkflowRule'
 import { unknownFormulaRule } from './rules/unknownFormulaRule'
 import { unknownProjectActionRule } from './rules/unknownProjectActionRule'
 import { unknownProjectFormulaRule } from './rules/unknownProjectFormulaRule'
+import { unknownUrlParameterRule } from './rules/unknownUrlParameterRule'
 import { unknownVariableRule } from './rules/unknownVariableRule'
 import { unknownVariableSetterRule } from './rules/unknownVariableSetterRule'
 import { searchProject } from './searchProject'
@@ -103,6 +105,7 @@ const RULES = [
   noReferenceComponentFormulaRule,
   noReferenceComponentRule,
   noReferenceComponentWorkflowRule,
+  noReferenceProjectActionRule,
   noReferenceProjectFormulaRule,
   noReferenceVariableRule,
   noUnnecessaryConditionFalsy,
@@ -120,6 +123,7 @@ const RULES = [
   unknownFormulaRule,
   unknownProjectActionRule,
   unknownProjectFormulaRule,
+  unknownUrlParameterRule,
   unknownVariableRule,
   unknownVariableSetterRule,
 ]
