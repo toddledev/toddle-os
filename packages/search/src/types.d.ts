@@ -4,6 +4,7 @@ import type {
   ComponentAPI,
 } from '@toddledev/core/dist/api/apiTypes'
 import type {
+  ComponentEvent as _ComponentEvent,
   ActionModel,
   Component,
   ElementNodeModel,
@@ -29,6 +30,7 @@ type Code =
   | 'no-reference component formula'
   | 'no-reference component workflow'
   | 'no-reference component'
+  | 'no-reference event'
   | 'no-reference project action'
   | 'no-reference project formula'
   | 'no-reference variable'
@@ -213,6 +215,11 @@ type ComponentContext = {
   }
 } & Base
 
+type ComponentEvent = {
+  nodeType: 'component-event'
+  value: { component: ToddleComponent<Function>; event: _ComponentEvent }
+} & Base
+
 type ComponentNodeNode = {
   nodeType: 'component-node'
   value: NodeModel
@@ -235,22 +242,23 @@ type StyleVariantNode = {
 } & Base
 
 export type NodeType =
-  | ProjectFormulaNode
-  | ProjectActionNode
-  | ComponentNode
-  | ComponentAPINode
-  | ComponentAPIInputNode
-  | ComponentWorkflowNode
-  | ComponentFormulaNode
-  | ComponentVariableNode
-  | ComponentAttributeNode
-  | FormulaNode
   | ActionModelNode
+  | ComponentAPIInputNode
+  | ComponentAPINode
+  | ComponentAttributeNode
   | ComponentContext
+  | ComponentEvent
+  | ComponentFormulaNode
+  | ComponentNode
   | ComponentNodeNode
-  | StyleVariantNode
-  | ProjectThemeNode
+  | ComponentVariableNode
+  | ComponentWorkflowNode
+  | FormulaNode
+  | ProjectActionNode
   | ProjectConfigNode
+  | ProjectFormulaNode
+  | ProjectThemeNode
+  | StyleVariantNode
 
 export interface Rule<T = unknown, V = NodeType> {
   category: Category

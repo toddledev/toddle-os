@@ -262,6 +262,21 @@ function* visitNode(
         )
       }
 
+      for (const event of value.events ?? []) {
+        yield* visitNode(
+          {
+            nodeType: 'component-event',
+            path: [...path, 'events', event.name],
+            rules,
+            files,
+            pathsToVisit,
+            memo,
+            value: { component, event },
+          },
+          state,
+        )
+      }
+
       for (const key in value.contexts) {
         yield* visitNode(
           {

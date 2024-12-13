@@ -189,8 +189,7 @@ export interface Component {
   >
   apis: Record<string, ComponentAPI>
   nodes: Record<string, NodeModel>
-  // eslint-disable-next-line inclusive-language/use-inclusive-words
-  events?: { name: string; dummyEvent: any }[]
+  events?: ComponentEvent[]
   onLoad?: EventModel
   onAttributeChange?: EventModel
   // exported indicates that a component is exported in a package
@@ -318,3 +317,9 @@ export type ActionModel =
   | CustomActionModel
   | SetURLParameterAction
   | WorkflowActionModel
+
+export interface ComponentEvent {
+  name: string
+  // eslint-disable-next-line inclusive-language/use-inclusive-words
+  dummyEvent: any
+}
