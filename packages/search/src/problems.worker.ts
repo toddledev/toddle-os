@@ -29,6 +29,7 @@ import { unknownContextProviderFormulaRule } from './rules/unknownContextProvide
 import { unknownContextProviderRule } from './rules/unknownContextProviderRule'
 import { unknownContextProviderWorkflowRule } from './rules/unknownContextProviderWorkflowRule'
 import { unknownContextWorkflowRule } from './rules/unknownContextWorkflowRule'
+import { unknownEventRule } from './rules/unknownEventRule'
 import { unknownFormulaRule } from './rules/unknownFormulaRule'
 import { unknownProjectActionRule } from './rules/unknownProjectActionRule'
 import { unknownProjectFormulaRule } from './rules/unknownProjectFormulaRule'
@@ -120,6 +121,7 @@ const RULES = [
   unknownContextProviderWorkflowRule,
   unknownContextWorkflowRule,
   // unknownCookieRule,
+  unknownEventRule,
   unknownFormulaRule,
   unknownProjectActionRule,
   unknownProjectFormulaRule,
