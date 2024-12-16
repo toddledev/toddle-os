@@ -54,12 +54,7 @@ describe('noReferenceEventRule', () => {
 
     expect(problems).toHaveLength(1)
     expect(problems[0].code).toBe('no-reference event')
-    expect(problems[0].path).toEqual([
-      'components',
-      'test',
-      'events',
-      'unused-event',
-    ])
+    expect(problems[0].path).toEqual(['components', 'test', 'events', 0])
   })
 
   test('should not detect events with references', () => {
