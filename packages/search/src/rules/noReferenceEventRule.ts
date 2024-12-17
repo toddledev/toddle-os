@@ -1,6 +1,6 @@
 import type { Rule } from '../types'
 
-export const noReferenceEventRule: Rule<void> = {
+export const noReferenceEventRule: Rule<{ name: string }> = {
   code: 'no-reference event',
   level: 'warning',
   category: 'No References',
@@ -24,6 +24,6 @@ export const noReferenceEventRule: Rule<void> = {
       return
     }
 
-    report(path)
+    report(path, { name: event.name })
   },
 }
