@@ -13,7 +13,7 @@ import { subscribeToContext } from '../context/subscribeToContext'
 import { registerComponentToLogState } from '../debug/logState'
 import { handleAction } from '../events/handleAction'
 import { Signal, signal } from '../signal/signal'
-import { ComponentChild, ComponentContext } from '../types'
+import { ComponentChild, ComponentContext, ContextApi } from '../types'
 import { createFormulaCache } from '../utils/createFormulaCache'
 import { renderComponent } from './renderComponent'
 
@@ -113,7 +113,7 @@ export function createComponent({
   const formulaCache = createFormulaCache(component)
 
   // Note: this function must run procedurally to ensure apis (which are in correct order) can reference each other
-  const apis: Record<string, { fetch: Function; destroy: Function }> = {}
+  const apis: ContextApi = {}
   sortApiObjects(Object.entries(component.apis)).forEach(([name, api]) => {
     if (isLegacyApi(api)) {
       apis[name] = createLegacyAPI(api, {
@@ -159,6 +159,11 @@ export function createComponent({
       })
     }
   })
+  Object.entries(apis)
+    .filter(([_, api]) => api.triggerActions !== undefined)
+    .forEach(([_, api]) => {
+      api.triggerActions?.()
+    })
 
   const onEvent = (eventTrigger: string, data: any) => {
     const eventHandler = Object.values(node.events).find(

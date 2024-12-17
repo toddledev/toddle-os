@@ -93,6 +93,12 @@ export class ToddleComponent extends HTMLElement {
         }
       },
     )
+    Object.entries(this.#ctx.apis)
+      .filter(([_, api]) => api.triggerActions !== undefined)
+      .forEach(([_, api]) => {
+        api.triggerActions?.()
+      })
+
     let providers = this.#ctx.providers
     if (isContextProvider(this.#component)) {
       // Subscribe to exposed formulas and update the component's data signal

@@ -54,10 +54,7 @@ export interface ComponentContext {
   isRootComponent: boolean
   dataSignal: Signal<ComponentData>
   triggerEvent: (event: string, data: unknown) => void
-  apis: Record<
-    string,
-    { fetch: Function; destroy: Function; update?: Function }
-  >
+  apis: ContextApi
   children: Record<string, Array<ComponentChild>>
   formulaCache: Record<
     string,
@@ -77,6 +74,16 @@ export interface ComponentContext {
   toddle: Toddle<LocationSignal, PreviewShowSignal>
   env: ToddleEnv
 }
+
+export type ContextApi = Record<
+  string,
+  {
+    fetch: Function
+    destroy: Function
+    update?: Function
+    triggerActions?: Function
+  }
+>
 
 export type FormulaCache = Record<
   string,

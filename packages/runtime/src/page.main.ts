@@ -421,6 +421,13 @@ export const createRoot = (domNode: HTMLElement) => {
       ctx.apis[name] = createAPI(api, ctx)
     }
   })
+  // Trigger actions for all APIs after all of them are created.
+  Object.entries(ctx.apis)
+    .filter(([_, api]) => api.triggerActions !== undefined)
+    .forEach(([_, api]) => {
+      api.triggerActions?.()
+    })
+
   let providers = ctx.providers
   if (isContextProvider(component)) {
     // Subscribe to exposed formulas and update the component's data signal
