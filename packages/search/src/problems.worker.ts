@@ -21,6 +21,7 @@ import { noReferenceProjectFormulaRule } from './rules/noReferenceProjectFormula
 import { noReferenceVariableRule } from './rules/noReferenceVariableRule'
 import { noUnnecessaryConditionFalsy } from './rules/noUnnecessaryConditionFalsy'
 import { noUnnecessaryConditionTruthy } from './rules/noUnnecessaryConditionTruthy'
+import { requireExtensionRule } from './rules/requireExtensionRule'
 import { unknownApiRule } from './rules/unknownApiRule'
 import { unknownAttributeRule } from './rules/unknownAttributeRule'
 import { unknownClassnameRule } from './rules/unknownClassnameRule'
@@ -30,6 +31,7 @@ import { unknownContextProviderFormulaRule } from './rules/unknownContextProvide
 import { unknownContextProviderRule } from './rules/unknownContextProviderRule'
 import { unknownContextProviderWorkflowRule } from './rules/unknownContextProviderWorkflowRule'
 import { unknownContextWorkflowRule } from './rules/unknownContextWorkflowRule'
+import { unknownCookieRule } from './rules/unknownCookieRule'
 import { unknownEventRule } from './rules/unknownEventRule'
 import { unknownFormulaRule } from './rules/unknownFormulaRule'
 import { unknownProjectActionRule } from './rules/unknownProjectActionRule'
@@ -100,7 +102,7 @@ const RULES = [
   duplicateUrlParameterRule,
   legacyActionRule,
   legacyFormulaRule,
-  // requireExtensionRule,
+  requireExtensionRule,
   noContextConsumersRule,
   noReferenceApiRule,
   noReferenceAttributeRule,
@@ -122,7 +124,7 @@ const RULES = [
   unknownContextProviderRule,
   unknownContextProviderWorkflowRule,
   unknownContextWorkflowRule,
-  // unknownCookieRule,
+  unknownCookieRule,
   unknownEventRule,
   unknownFormulaRule,
   unknownProjectActionRule,
