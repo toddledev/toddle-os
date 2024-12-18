@@ -25,7 +25,7 @@ import {
   ValueOperationValue,
   applyFormula,
 } from '@toddledev/core/dist/formula/formula'
-import { NestedOmit } from '@toddledev/core/dist/types'
+import { NestedOmit, RequireFields } from '@toddledev/core/dist/types'
 import {
   omitPaths,
   sortObjectEntries,
@@ -33,7 +33,7 @@ import {
 import { PROXY_URL_HEADER, validateUrl } from '@toddledev/core/dist/utils/url'
 import { handleAction } from '../events/handleAction'
 import { Signal } from '../signal/signal'
-import { ComponentContext } from '../types'
+import { ComponentContext, ContextApi } from '../types'
 
 /**
  * Set up an api v2 for a component.
@@ -41,7 +41,7 @@ import { ComponentContext } from '../types'
 export function createAPI(
   apiRequest: ApiRequest,
   ctx: ComponentContext,
-): { fetch: Function; update: Function; destroy: Function } {
+): RequireFields<ContextApi, 'update' | 'triggerActions'> {
   // If `__toddle` isn't found it is in a web component context. We behave as if the page isn't loaded.
   let timer: any = null
   let api = { ...apiRequest }
@@ -134,6 +134,58 @@ export function createAPI(
     }
   }
 
+  function triggerActions(
+    eventName: 'message' | 'success' | 'failed',
+    api: ApiRequest,
+    data: {
+      body: unknown
+      status?: number
+      headers?: Record<string, string>
+    },
+  ) {
+    switch (eventName) {
+      case 'message': {
+        const event = createApiEvent('message', data.body)
+        api.client?.onMessage?.actions?.forEach((action) => {
+          handleAction(
+            action,
+            { ...ctx.dataSignal.get(), Event: event },
+            ctx,
+            event,
+          )
+        })
+        break
+      }
+      case 'success': {
+        const event = createApiEvent('success', data.body)
+        api.client?.onCompleted?.actions?.forEach((action) => {
+          handleAction(
+            action,
+            { ...ctx.dataSignal.get(), Event: event },
+            ctx,
+            event,
+          )
+        })
+        break
+      }
+      case 'failed': {
+        const event = createApiEvent('failed', {
+          error: data.body,
+          status: data.status,
+        })
+        api.client?.onFailed?.actions?.forEach((action) => {
+          handleAction(
+            action,
+            { ...ctx.dataSignal.get(), Event: event },
+            ctx,
+            event,
+          )
+        })
+        break
+      }
+    }
+  }
+
   function apiSuccess(
     api: ApiRequest,
     data: {
@@ -190,15 +242,6 @@ export function createAPI(
         },
       })
     }
-    const event = createApiEvent('success', data.body)
-    api.client?.onCompleted?.actions?.forEach((action) => {
-      handleAction(
-        action,
-        { ...ctx.dataSignal.get(), Event: event },
-        ctx,
-        event,
-      )
-    })
   }
 
   function apiError(
@@ -256,18 +299,6 @@ export function createAPI(
         },
       })
     }
-    const event = createApiEvent('failed', {
-      error: data.body,
-      status: data.status,
-    })
-    api.client?.onFailed?.actions?.forEach((action) => {
-      handleAction(
-        action,
-        { ...ctx.dataSignal.get(), Event: event },
-        ctx,
-        event,
-      )
-    })
   }
 
   // Execute the request - potentially to the cloudflare Query proxy
@@ -328,6 +359,7 @@ export function createAPI(
           ? { message: error.message, data: error.cause }
           : error.message
         apiError(api, { body }, { ...performance, responseEnd: Date.now() })
+        triggerActions('failed', api, { body })
         return Promise.reject(error)
       }
     }
@@ -557,15 +589,7 @@ export function createAPI(
             },
           })
           if ((api.client?.onMessage?.actions ?? []).length > 0) {
-            const event = createApiEvent('message', parsedChunk)
-            api.client?.onMessage?.actions?.forEach((action) => {
-              handleAction(
-                action,
-                { ...ctx.dataSignal.get(), Event: event },
-                ctx,
-                event,
-              )
-            })
+            triggerActions('message', api, { body: parsedChunk })
           }
         }
       },
@@ -663,8 +687,10 @@ export function createAPI(
       }
 
       apiError(api, data, performance)
+      triggerActions('failed', api, data)
     } else {
       apiSuccess(api, data, performance)
+      triggerActions('success', api, data)
     }
   }
 
@@ -851,6 +877,25 @@ export function createAPI(
         payloadSignal?.set({
           request: constructRequest(newApi),
           api: getApiForComparison(newApi),
+        })
+      }
+    },
+    triggerActions: () => {
+      const apiData = ctx.dataSignal.get().Apis?.[api.name]
+      if (
+        apiData === undefined ||
+        (apiData.data === null && apiData.error === null)
+      ) {
+        return
+      }
+      if (apiData.error) {
+        triggerActions('failed', api, {
+          body: apiData.error,
+          status: apiData.response?.status,
+        })
+      } else {
+        triggerActions('success', api, {
+          body: apiData.data,
         })
       }
     },
