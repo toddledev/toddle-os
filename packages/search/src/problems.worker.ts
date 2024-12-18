@@ -40,7 +40,7 @@ import { unknownUrlParameterRule } from './rules/unknownUrlParameterRule'
 import { unknownVariableRule } from './rules/unknownVariableRule'
 import { unknownVariableSetterRule } from './rules/unknownVariableSetterRule'
 import { searchProject } from './searchProject'
-import { ApplicationState, Category, Level, Result } from './types'
+import { ApplicationState, Category, Code, Level, Result } from './types'
 
 export type Options = {
   /**
@@ -64,6 +64,8 @@ export type Options = {
    * Dynamic data that is used by some rules.
    */
   state?: ApplicationState
+
+  rulesToExclude?: Code[]
 }
 
 const RULES = [
@@ -144,7 +146,8 @@ onmessage = (
   const rules = RULES.filter(
     (rule) =>
       (!options.categories || options.categories.includes(rule.category)) &&
-      (!options.levels || options.levels.includes(rule.level)),
+      (!options.levels || options.levels.includes(rule.level)) &&
+      !options.rulesToExclude?.includes(rule.code),
   )
 
   let batch: Result[] = []
