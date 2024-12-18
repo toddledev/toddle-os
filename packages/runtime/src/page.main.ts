@@ -11,6 +11,7 @@ import {
   FormulaHandler,
   FormulaHandlerV2,
   PluginActionV2,
+  RequireFields,
   Toddle,
 } from '@toddledev/core/dist/types'
 import { mapObject } from '@toddledev/core/dist/utils/collections'
@@ -25,7 +26,7 @@ import { renderComponent } from './components/renderComponent'
 import { isContextProvider } from './context/isContextProvider'
 import { initLogState, registerComponentToLogState } from './debug/logState'
 import { signal } from './signal/signal'
-import type { ComponentContext, LocationSignal } from './types'
+import type { ComponentContext, ContextApi, LocationSignal } from './types'
 
 initLogState()
 
@@ -422,10 +423,13 @@ export const createRoot = (domNode: HTMLElement) => {
     }
   })
   // Trigger actions for all APIs after all of them are created.
-  Object.entries(ctx.apis)
-    .filter(([_, api]) => api.triggerActions !== undefined)
-    .forEach(([_, api]) => {
-      api.triggerActions?.()
+  Object.values(ctx.apis)
+    .filter(
+      (api): api is RequireFields<ContextApi, 'triggerActions'> =>
+        api.triggerActions !== undefined,
+    )
+    .forEach((api) => {
+      api.triggerActions()
     })
 
   let providers = ctx.providers

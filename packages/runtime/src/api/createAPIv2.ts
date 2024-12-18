@@ -25,7 +25,7 @@ import {
   ValueOperationValue,
   applyFormula,
 } from '@toddledev/core/dist/formula/formula'
-import { NestedOmit } from '@toddledev/core/dist/types'
+import { NestedOmit, RequireFields } from '@toddledev/core/dist/types'
 import {
   omitPaths,
   sortObjectEntries,
@@ -33,7 +33,7 @@ import {
 import { PROXY_URL_HEADER, validateUrl } from '@toddledev/core/dist/utils/url'
 import { handleAction } from '../events/handleAction'
 import { Signal } from '../signal/signal'
-import { ComponentContext } from '../types'
+import { ComponentContext, ContextApi } from '../types'
 
 /**
  * Set up an api v2 for a component.
@@ -41,12 +41,7 @@ import { ComponentContext } from '../types'
 export function createAPI(
   apiRequest: ApiRequest,
   ctx: ComponentContext,
-): {
-  fetch: Function
-  update: Function
-  destroy: Function
-  triggerActions: Function
-} {
+): RequireFields<ContextApi, 'update' | 'triggerActions'> {
   // If `__toddle` isn't found it is in a web component context. We behave as if the page isn't loaded.
   let timer: any = null
   let api = { ...apiRequest }

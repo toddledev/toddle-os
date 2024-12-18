@@ -7,14 +7,14 @@ import { applyFormula, ToddleEnv } from '@toddledev/core/dist/formula/formula'
 import { createStylesheet } from '@toddledev/core/dist/styling/style.css'
 import { Theme } from '@toddledev/core/dist/styling/theme'
 import { theme as defaultTheme } from '@toddledev/core/dist/styling/theme.const'
-import { Toddle } from '@toddledev/core/dist/types'
+import { RequireFields, Toddle } from '@toddledev/core/dist/types'
 import { mapObject } from '@toddledev/core/dist/utils/collections'
 import { createLegacyAPI } from '../api/createAPI'
 import { createAPI } from '../api/createAPIv2'
 import { renderComponent } from '../components/renderComponent'
 import { isContextProvider } from '../context/isContextProvider'
 import { Signal, signal } from '../signal/signal'
-import { ComponentContext, LocationSignal } from '../types'
+import { ComponentContext, ContextApi, LocationSignal } from '../types'
 
 /**
  * Base class for all toddle components
@@ -93,10 +93,13 @@ export class ToddleComponent extends HTMLElement {
         }
       },
     )
-    Object.entries(this.#ctx.apis)
-      .filter(([_, api]) => api.triggerActions !== undefined)
-      .forEach(([_, api]) => {
-        api.triggerActions?.()
+    Object.values(this.#ctx.apis)
+      .filter(
+        (api): api is RequireFields<ContextApi, 'triggerActions'> =>
+          api.triggerActions !== undefined,
+      )
+      .forEach((api) => {
+        api.triggerActions()
       })
 
     let providers = this.#ctx.providers

@@ -4,6 +4,7 @@ import type {
   ComponentNodeModel,
 } from '@toddledev/core/dist/component/component.types'
 import { applyFormula } from '@toddledev/core/dist/formula/formula'
+import { RequireFields } from '@toddledev/core/dist/types'
 import { mapObject } from '@toddledev/core/dist/utils/collections'
 import { isDefined } from '@toddledev/core/dist/utils/util'
 import { createLegacyAPI } from '../api/createAPI'
@@ -113,7 +114,7 @@ export function createComponent({
   const formulaCache = createFormulaCache(component)
 
   // Note: this function must run procedurally to ensure apis (which are in correct order) can reference each other
-  const apis: ContextApi = {}
+  const apis: Record<string, ContextApi> = {}
   sortApiObjects(Object.entries(component.apis)).forEach(([name, api]) => {
     if (isLegacyApi(api)) {
       apis[name] = createLegacyAPI(api, {
@@ -159,10 +160,13 @@ export function createComponent({
       })
     }
   })
-  Object.entries(apis)
-    .filter(([_, api]) => api.triggerActions !== undefined)
-    .forEach(([_, api]) => {
-      api.triggerActions?.()
+  Object.values(apis)
+    .filter(
+      (api): api is RequireFields<ContextApi, 'triggerActions'> =>
+        api.triggerActions !== undefined,
+    )
+    .forEach((api) => {
+      api.triggerActions()
     })
 
   const onEvent = (eventTrigger: string, data: any) => {
