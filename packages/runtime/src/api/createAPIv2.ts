@@ -699,7 +699,6 @@ export function createAPI(
       ['client', 'onCompleted'],
       ['client', 'onFailed'],
       ['client', 'onMessage'],
-      ['redirectRules'],
       ['service'],
       ['server', 'ssr'],
     ]) as NestedOmit<
@@ -707,7 +706,6 @@ export function createAPI(
       | 'client.onCompleted'
       | 'client.onFailed'
       | 'client.onMessage'
-      | 'redirectRules'
       | 'service'
       | 'server.ssr'
     >
@@ -717,14 +715,26 @@ export function createAPI(
     | Signal<{
         request: ReturnType<typeof constructRequest>
         api: ReturnType<typeof getApiForComparison>
+        // if the evaluated value of autoFetch changes from false -> true, we need to refetch the api
+        autoFetch: boolean
+        // currently, the proxy setting is always controlled by a "value formula", but in case we later
+        // open up for controlling it with a dynamic formula, we should also include it here
+        proxy: boolean
       }>
     | undefined
 
   // eslint-disable-next-line prefer-const
-  payloadSignal = ctx.dataSignal.map((_) => ({
-    request: constructRequest(api),
-    api: getApiForComparison(api),
-  }))
+  payloadSignal = ctx.dataSignal.map((_) => {
+    const payloadContext = getFormulaContext(api)
+    return {
+      request: constructRequest(api),
+      api: getApiForComparison(api),
+      autoFetch: api.autoFetch
+        ? applyFormula(api.autoFetch, payloadContext)
+        : false,
+      proxy: applyFormula(api.server?.proxy?.enabled.formula, payloadContext),
+    }
+  })
   payloadSignal.subscribe(async (_) => {
     if (api.autoFetch && applyFormula(api.autoFetch, getFormulaContext(api))) {
       // Ensure we only use caching if the page is currently loading
@@ -870,13 +880,18 @@ export function createAPI(
     },
     update: (newApi: ApiRequest) => {
       api = newApi
-      if (
-        api.autoFetch &&
-        applyFormula(api.autoFetch, getFormulaContext(api))
-      ) {
+      const updateContext = getFormulaContext(api)
+      const autoFetch =
+        api.autoFetch && applyFormula(api.autoFetch, updateContext)
+      if (autoFetch) {
         payloadSignal?.set({
           request: constructRequest(newApi),
           api: getApiForComparison(newApi),
+          autoFetch,
+          proxy: applyFormula(
+            newApi.server?.proxy?.enabled.formula,
+            updateContext,
+          ),
         })
       }
     },
