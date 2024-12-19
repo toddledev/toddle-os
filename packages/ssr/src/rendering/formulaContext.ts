@@ -18,12 +18,14 @@ export const getPageFormulaContext = ({
   branchName,
   component,
   req,
+  logErrors,
 }: {
   branchName: string
   component: PageComponent
   req: Request
+  logErrors: boolean
 }): FormulaContext => {
-  const env = serverEnv({ req, branchName })
+  const env = serverEnv({ req, branchName, logErrors })
   const { searchParamsWithDefaults, hash, combinedParams, url } = getParameters(
     { component, req },
   )
@@ -110,9 +112,11 @@ const getParameters = ({
 export const serverEnv = ({
   branchName,
   req,
+  logErrors,
 }: {
   branchName: string
   req: Request
+  logErrors: boolean
 }) =>
   ({
     branchName: branchName,
@@ -123,4 +127,5 @@ export const serverEnv = ({
       cookies: getRequestCookies(req),
       url: req.url,
     },
+    logErrors,
   }) as ToddleServerEnv

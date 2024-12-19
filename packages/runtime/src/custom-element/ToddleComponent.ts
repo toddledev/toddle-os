@@ -45,6 +45,7 @@ export class ToddleComponent extends HTMLElement {
       isServer: false,
       request: undefined,
       runtime: 'custom-element',
+      logErrors: true,
     }
 
     this.#component = component
