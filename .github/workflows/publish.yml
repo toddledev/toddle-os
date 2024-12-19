@@ -23,6 +23,8 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
         run: bun install --frozen-lockfile
+      - name: Login to npm
+        run: bun npm login
       - name: Build
         run: bun run build
         # cd packages/${{ inputs.package }}
@@ -30,5 +32,5 @@ jobs:
         run: |
           cd packages/ssr
           bun npm-publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
