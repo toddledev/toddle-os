@@ -112,6 +112,7 @@ export type ToddleServerEnv = {
     url: string
   }
   runtime: never
+  logErrors: boolean
 }
 
 export type ToddleEnv =
@@ -122,6 +123,7 @@ export type ToddleEnv =
       isServer: false
       request: undefined
       runtime: 'page' | 'custom-element' | 'preview'
+      logErrors: boolean
     }
 
 export function isFormula(f: any): f is Formula {
@@ -221,8 +223,9 @@ export function applyFormula(
               const myWindow = window as any
               myWindow.toddle.errors.push(e as Error)
             }
-
-            console.error(e)
+            if (ctx.env?.logErrors) {
+              console.error(e)
+            }
             return null
           }
         } else if (typeof legacyFunc === 'function') {
@@ -250,17 +253,20 @@ export function applyFormula(
               const myWindow = window as any
               myWindow.toddle.errors.push(e as Error)
             }
-
-            console.error(e)
+            if (ctx.env?.logErrors) {
+              console.error(e)
+            }
             return null
           }
         }
-        console.error(
-          `Could not find formula ${formula.name} in package ${
-            packageName ?? ''
-          }`,
-          formula,
-        )
+        if (ctx.env?.logErrors) {
+          console.error(
+            `Could not find formula ${formula.name} in package ${
+              packageName ?? ''
+            }`,
+            formula,
+          )
+        }
         return null
       }
       case 'object':
@@ -284,10 +290,12 @@ export function applyFormula(
       case 'apply': {
         const componentFormula = ctx.component.formulas?.[formula.name]
         if (!componentFormula) {
-          console.log(
-            'Component does not have a formula with the name ',
-            formula.name,
-          )
+          if (ctx.env?.logErrors) {
+            console.log(
+              'Component does not have a formula with the name ',
+              formula.name,
+            )
+          }
           return null
         }
         const Input = Object.fromEntries(
@@ -330,10 +338,14 @@ export function applyFormula(
       }
 
       default:
-        console.error('Could not recognize formula', formula)
+        if (ctx.env?.logErrors) {
+          console.error('Could not recognize formula', formula)
+        }
     }
   } catch (e) {
-    console.error(e)
+    if (ctx.env?.logErrors) {
+      console.error(e)
+    }
     return null
   }
 }

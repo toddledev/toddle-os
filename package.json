@@ -21,6 +21,7 @@
   },
   "scripts": {
     "build": "cd packages/core && bun run build && cd ../ssr && bun run build && cd ../lib && bun run build && cd ../search && bun run build && cd ../runtime && bun run build",
+    "clean": "rm -rf node_modules && rm -rf packages/*/node_modules && bun i",
     "lint": "eslint --quiet .",
     "prettier": "prettier --check '*.{json,js}' '**/*.{js,ts}'",
     "prettier:write": "prettier --write  '*.{json,js}' './**/*.{js,ts}'",

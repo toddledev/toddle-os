@@ -1,11 +1,8 @@
 {
   "name": "@toddledev/search",
   "description": "Used for searching and reporting linting problems in toddle projects.",
-  "version": "0.0.1-alpha.7",
+  "version": "0.0.1-alpha.8",
   "license": "Apache-2.0",
-  "devDependencies": {
-    "ts-jest": "29.2.5"
-  },
   "dependencies": {
     "@toddledev/ssr": "workspace:*"
   },

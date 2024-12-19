@@ -43,6 +43,7 @@ export const initGlobalObject = (code?: {
     branchName: window.__toddle.branch,
     request: undefined,
     runtime: 'page',
+    logErrors: true,
   }
   window.toddle = (() => {
     const legacyActions: Record<string, ActionHandler> = {}
