@@ -21,6 +21,7 @@ import { noReferenceProjectFormulaRule } from './rules/noReferenceProjectFormula
 import { noReferenceVariableRule } from './rules/noReferenceVariableRule'
 import { noUnnecessaryConditionFalsy } from './rules/noUnnecessaryConditionFalsy'
 import { noUnnecessaryConditionTruthy } from './rules/noUnnecessaryConditionTruthy'
+import { requireExtensionRule } from './rules/requireExtensionRule'
 import { unknownApiRule } from './rules/unknownApiRule'
 import { unknownAttributeRule } from './rules/unknownAttributeRule'
 import { unknownClassnameRule } from './rules/unknownClassnameRule'
@@ -30,6 +31,7 @@ import { unknownContextProviderFormulaRule } from './rules/unknownContextProvide
 import { unknownContextProviderRule } from './rules/unknownContextProviderRule'
 import { unknownContextProviderWorkflowRule } from './rules/unknownContextProviderWorkflowRule'
 import { unknownContextWorkflowRule } from './rules/unknownContextWorkflowRule'
+import { unknownCookieRule } from './rules/unknownCookieRule'
 import { unknownEventRule } from './rules/unknownEventRule'
 import { unknownFormulaRule } from './rules/unknownFormulaRule'
 import { unknownProjectActionRule } from './rules/unknownProjectActionRule'
@@ -38,7 +40,7 @@ import { unknownUrlParameterRule } from './rules/unknownUrlParameterRule'
 import { unknownVariableRule } from './rules/unknownVariableRule'
 import { unknownVariableSetterRule } from './rules/unknownVariableSetterRule'
 import { searchProject } from './searchProject'
-import { ApplicationState, Category, Level, Result } from './types'
+import { ApplicationState, Category, Code, Level, Result } from './types'
 
 export type Options = {
   /**
@@ -62,6 +64,8 @@ export type Options = {
    * Dynamic data that is used by some rules.
    */
   state?: ApplicationState
+
+  rulesToExclude?: Code[]
 }
 
 const RULES = [
@@ -100,7 +104,7 @@ const RULES = [
   duplicateUrlParameterRule,
   legacyActionRule,
   legacyFormulaRule,
-  // requireExtensionRule,
+  requireExtensionRule,
   noContextConsumersRule,
   noReferenceApiRule,
   noReferenceAttributeRule,
@@ -122,7 +126,7 @@ const RULES = [
   unknownContextProviderRule,
   unknownContextProviderWorkflowRule,
   unknownContextWorkflowRule,
-  // unknownCookieRule,
+  unknownCookieRule,
   unknownEventRule,
   unknownFormulaRule,
   unknownProjectActionRule,
@@ -142,7 +146,8 @@ onmessage = (
   const rules = RULES.filter(
     (rule) =>
       (!options.categories || options.categories.includes(rule.category)) &&
-      (!options.levels || options.levels.includes(rule.level)),
+      (!options.levels || options.levels.includes(rule.level)) &&
+      !options.rulesToExclude?.includes(rule.code),
   )
 
   let batch: Result[] = []
