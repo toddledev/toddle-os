@@ -26,7 +26,7 @@
       "name": "@toddledev/std-lib",
       "version": "0.0.1-alpha.3",
       "dependencies": {
-        "@toddledev/core": "*",
+        "@toddledev/core": "packages/core",
         "fast-deep-equal": "3.1.3",
       },
       "devDependencies": {
@@ -39,7 +39,7 @@
       "name": "@toddledev/runtime",
       "version": "0.0.1-alpha.6",
       "dependencies": {
-        "@toddledev/core": "*",
+        "@toddledev/core": "packages/core",
         "fast-deep-equal": "3.1.3",
         "path-to-regexp": "6.3.0",
       },
@@ -51,14 +51,14 @@
       "name": "@toddledev/search",
       "version": "0.0.1-alpha.8",
       "dependencies": {
-        "@toddledev/ssr": "*",
+        "@toddledev/ssr": "packages/ssr",
       },
     },
     "packages/ssr": {
       "name": "@toddledev/ssr",
-      "version": "0.0.2-alpha.12",
+      "version": "0.0.2-alpha.13",
       "dependencies": {
-        "@toddledev/core": "*",
+        "@toddledev/core": "packages/core",
         "cookie": "1.0.2",
         "xss": "1.0.15",
       },
@@ -217,13 +217,13 @@
 
     "@toddledev/core": ["@toddledev/core@workspace:packages/core", { "dependencies": { "@types/react": "18.3.10" } }],
 
-    "@toddledev/runtime": ["@toddledev/runtime@workspace:packages/runtime", { "dependencies": { "@toddledev/core": "*", "fast-deep-equal": "3.1.3", "path-to-regexp": "6.3.0" }, "devDependencies": { "@happy-dom/global-registrator": "15.7.4" } }],
+    "@toddledev/runtime": ["@toddledev/runtime@workspace:packages/runtime", { "dependencies": { "@toddledev/core": "packages/core", "fast-deep-equal": "3.1.3", "path-to-regexp": "6.3.0" }, "devDependencies": { "@happy-dom/global-registrator": "15.7.4" } }],
 
-    "@toddledev/search": ["@toddledev/search@workspace:packages/search", { "dependencies": { "@toddledev/ssr": "*" } }],
+    "@toddledev/search": ["@toddledev/search@workspace:packages/search", { "dependencies": { "@toddledev/ssr": "packages/ssr" } }],
 
-    "@toddledev/ssr": ["@toddledev/ssr@workspace:packages/ssr", { "dependencies": { "@toddledev/core": "*", "cookie": "1.0.2", "xss": "1.0.15" } }],
+    "@toddledev/ssr": ["@toddledev/ssr@workspace:packages/ssr", { "dependencies": { "@toddledev/core": "packages/core", "cookie": "1.0.2", "xss": "1.0.15" } }],
 
-    "@toddledev/std-lib": ["@toddledev/std-lib@workspace:packages/lib", { "dependencies": { "@toddledev/core": "*", "fast-deep-equal": "3.1.3" }, "devDependencies": { "@types/node": "22.7.4", "jest-environment-jsdom": "29.7.0", "ts-jest": "29.2.5" } }],
+    "@toddledev/std-lib": ["@toddledev/std-lib@workspace:packages/lib", { "dependencies": { "@toddledev/core": "packages/core", "fast-deep-equal": "3.1.3" }, "devDependencies": { "@types/node": "22.7.4", "jest-environment-jsdom": "29.7.0", "ts-jest": "29.2.5" } }],
 
     "@tootallnate/once": ["@tootallnate/once@2.0.0", "", {}, ""],
 

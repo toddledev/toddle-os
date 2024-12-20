@@ -1,6 +1,6 @@
 {
   "name": "@toddledev/ssr",
-  "version": "0.0.2-alpha.12",
+  "version": "0.0.2-alpha.13",
   "license": "Apache-2.0",
   "homepage": "https://github.com/toddledev/toddle",
   "scripts": {
@@ -16,7 +16,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@toddledev/core": "*",
+    "@toddledev/core": "workspace:*",
     "cookie": "1.0.2",
     "xss": "1.0.15"
   },
