@@ -24,7 +24,7 @@
     },
     "packages/lib": {
       "name": "@toddledev/std-lib",
-      "version": "0.0.1-alpha.3",
+      "version": "0.0.1-alpha.4",
       "dependencies": {
         "@toddledev/core": "packages/core",
         "fast-deep-equal": "3.1.3",
@@ -37,7 +37,7 @@
     },
     "packages/runtime": {
       "name": "@toddledev/runtime",
-      "version": "0.0.1-alpha.6",
+      "version": "0.0.1-alpha.8",
       "dependencies": {
         "@toddledev/core": "packages/core",
         "fast-deep-equal": "3.1.3",
@@ -49,7 +49,7 @@
     },
     "packages/search": {
       "name": "@toddledev/search",
-      "version": "0.0.1-alpha.8",
+      "version": "0.0.1-alpha.9",
       "dependencies": {
         "@toddledev/ssr": "packages/ssr",
       },
