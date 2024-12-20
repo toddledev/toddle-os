@@ -5,7 +5,7 @@
   "homepage": "https://github.com/toddledev/toddle",
   "private": "false",
   "workspaces": [
-    "./packages/*"
+    "packages/*"
   ],
   "devDependencies": {
     "@eslint/js": "9.16.0",
