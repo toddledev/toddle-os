@@ -31,10 +31,11 @@ jobs:
           mkdir publish
           cd packages/ssr
           bun pm pack --destination ../../publish
+          mv ../../publish/ssr-*.tgz ../../publish/ssr.tgz
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          package: publish/*.tgz
+          package: publish/ssr.tgz
           access: public
       # - name: Publish
       #   run: |
