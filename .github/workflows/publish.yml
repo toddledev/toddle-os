@@ -31,7 +31,6 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
           package: packages/ssr
           access: public
-          tag: 0.0.3
       # - name: Publish
       #   run: |
       #     cd packages/ssr
