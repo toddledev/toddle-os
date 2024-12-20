@@ -3,7 +3,6 @@
   "version": "0.0.2-alpha.12",
   "license": "Apache-2.0",
   "homepage": "https://github.com/toddledev/toddle",
-  "private": "false",
   "dependencies": {
     "@types/react": "18.3.10"
   },
