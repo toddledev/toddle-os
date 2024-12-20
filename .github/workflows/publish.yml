@@ -28,12 +28,13 @@ jobs:
         # cd packages/${{ inputs.package }}
       - name: Pack
         run: |
+          mkdir publish
           cd packages/ssr
-          bun pm pack
+          bun pm pack --destination ../../publish
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          package: packages/ssr
+          package: publish
           access: public
       # - name: Publish
       #   run: |
