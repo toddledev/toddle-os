@@ -31,7 +31,7 @@ jobs:
           mkdir publish
           cd packages/ssr
           bun pm pack --destination ../../publish
-          mv ../../publish/ssr-*.tgz ../../publish/ssr.tgz
+          mv ../../publish/toddledev-ssr*.tgz ../../publish/ssr.tgz
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
