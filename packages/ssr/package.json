@@ -19,8 +19,5 @@
     "@toddledev/core": "workspace:*",
     "cookie": "1.0.2",
     "xss": "1.0.15"
-  },
-  "description": "[npm](https://www.npmjs.com/package/@toddledev/ssr)",
-  "devDependencies": {},
-  "author": ""
+  }
 }
