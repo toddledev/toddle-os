@@ -3,6 +3,9 @@
 # Legacy bun lockfile
 bun.lockb
 
+# We don't use npm
+package-lock.json
+
 # Logs
 
 logs
