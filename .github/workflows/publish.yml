@@ -29,7 +29,6 @@ jobs:
       - name: Publish
         run: |
           cd packages/ssr
-          bunx npm login
           bun npm-publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
