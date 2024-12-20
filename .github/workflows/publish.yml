@@ -26,6 +26,10 @@ jobs:
       - name: Build
         run: bun run build
         # cd packages/${{ inputs.package }}
+      - name: Pack
+        run: |
+          cd packages/ssr
+          bun pm pack
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
