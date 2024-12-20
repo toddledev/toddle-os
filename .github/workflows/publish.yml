@@ -1,19 +1,19 @@
 name: 'Publish to npm'
 
 on:
-  push
-  # inputs:
-  #   package:
-  #     description: 'Package to publish'
-  #     required: true
-  #     default: 'core'
-  #     type: choice
-  #     options:
-  #       - core
-  #       - lib
-  #       - runtime
-  #       - search
-  #       - ssr
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Package to publish'
+        required: true
+        default: 'core'
+        type: choice
+        options:
+          - core
+          - lib
+          - runtime
+          - search
+          - ssr
 
 jobs:
   publish:
@@ -27,15 +27,14 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Build
         run: bun run build
-        # cd packages/${{ inputs.package }}
       - name: Pack
         run: |
           mkdir publish
-          cd packages/ssr
+          cd packages/${{ inputs.package }}
           bun pm pack --destination ../../publish
-          mv ../../publish/toddledev-ssr*.tgz ../../publish/ssr.tgz
+          mv ../../publish/toddledev-*.tgz ../../publish/package.tgz
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          package: publish/ssr.tgz
+          package: publish/package.tgz
           access: public
