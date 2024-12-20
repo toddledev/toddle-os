@@ -26,9 +26,15 @@ jobs:
       - name: Build
         run: bun run build
         # cd packages/${{ inputs.package }}
-      - name: Publish
-        run: |
-          cd packages/ssr
-          bun npm-publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: packages/ssr
+          access: public
+          tag: 0.0.2-alpha.9
+      # - name: Publish
+      #   run: |
+      #     cd packages/ssr
+      #     bun npm-publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
