@@ -73,11 +73,9 @@ export const insertStyles = (
     ])
 
     const styleElem = document.createElement('style')
-
     styleElem.setAttribute('data-hash', classHash)
     styleElem.appendChild(
       document.createTextNode(`
-
     ${renderVariant('.' + classHash, style)}
 
 ${
@@ -140,7 +138,7 @@ ${
         )
         if (childComponent) {
           insertComponentStyles(childComponent, node.package ?? package_name) // write the dependant CSS first.
-          parent.querySelector(`[data-hash$="${id}"]`)?.remove() //  remove the old styles
+          parent.querySelector(`[data-hash="${id}"]`)?.remove() //  remove the old styles
           parent.appendChild(
             getNodeStyles(
               node,
