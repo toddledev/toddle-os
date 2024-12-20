@@ -13,7 +13,8 @@ export const unknownCookieRule: Rule<{
       value.type !== 'function' ||
       value.name !== '@toddle/getHttpOnlyCookie' ||
       value.arguments.length !== 1 ||
-      !state
+      !state ||
+      state.isBrowserExtensionAvailable !== true
     ) {
       return
     }
