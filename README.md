@@ -36,9 +36,25 @@ As [announced in July '24](https://toddle.dev/blog/toddle-is-soon-open-source), 
 
 We're currently working on moving more and more of the server-side rendering logic into this repository. This means that most updates are going to be in the ssr package for the time being.
 
-### Releases
+## Dependencies
+
+The dependencies between the packages are as follows:
+
+- `core` is a dependency for all other packages
+- `ssr` is a dependency for `search`
+
+## Releases
 
 Currently, we're not using GitHub releases, but once the repository is more mature, we will start using them. We do release to npm atm though, which is also where we consume packages from internally.
+
+To release a new version to npm:
+
+1. Update the version in the package.json file for the package you're changing
+2. Run `bun clean` in the root of the repository to bump the version in all package.json files
+3. Create a PR
+4. Once the PR is merged, start the `Publish to npm` workflow in the actions tab (requires write access)
+
+**Note:** If you modify the core package, you need to update the version in all other packages as well to make sure types are correct. See the [Dependencies](#dependencies) section for more information.
 
 ## Contributing
 
