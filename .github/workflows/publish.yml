@@ -1,3 +1,5 @@
+name: 'Publish to npm'
+
 on:
   push
   # inputs:
@@ -37,9 +39,3 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
           package: publish/ssr.tgz
           access: public
-      # - name: Publish
-      #   run: |
-      #     cd packages/ssr
-      #     bun npm-publish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

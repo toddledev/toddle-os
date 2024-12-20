@@ -21,7 +21,7 @@ export default [
       '**/*.js',
       '**/dist/',
       'eslint.config.mjs',
-      'examples/',
+      'bun.lock',
     ],
   },
   ...compat.extends(

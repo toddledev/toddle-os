@@ -1,5 +1,8 @@
 # Based on https://raw.githubusercontent.com/github/gitignore/main/Node.gitignore
 
+# Legacy bun lockfile
+bun.lockb
+
 # Logs
 
 logs
